@@ -1,0 +1,468 @@
+{
+    "Nom": "O'France 2019",
+    "Information": "Horaires de départ des étapes 1 à 4. Etape 5 en chasse.",
+    "Verbosite":1,
+
+    "RankingFFCO":
+    {
+        "FichierCSV":"CN-Ped-2019-05-09.csv",
+        "SeparateurColonnesCSV": ";",
+        "DebutTitre":"\"Place\";",
+        "Colonnes":
+        {
+            "Prenom":4,
+            "Nom":3,
+            "Ranking":1,
+            "CN":2,
+            "NumeroLicenceFFCO":5
+        }
+    },
+
+    "RankingIOF":
+    {
+        "FichierCSV":{
+            "Men":{
+                "PedestreSprint":"iof_ranking_MEN_FS_09-05-2019.csv",
+                "PedestreMDLD":"iof_ranking_MEN_F_09-05-2019.csv",
+                "MTBO":"",
+                "SkiO":"",
+                "TrailO":""
+            },
+            "Women":{
+                "PedestreSprint":"iof_ranking_WOMEN_FS_09-05-2019.csv",
+                "PedestreMDLD":"iof_ranking_WOMEN_F_09-05-2019.csv",
+                "MTBO":"",
+                "SkiO":"",
+                "TrailO":""
+            }
+        },
+        "SeparateurColonnesCSV": ";",
+        "DebutTitre":"IOF ID;",
+        "Colonnes":
+        {
+            "Id":1,
+            "Points":6
+        }
+    },
+
+    "Inscriptions":
+    {
+        "FichierCSV":"ofrance-test2-richard_2019_05_13.csv",
+        "SeparateurColonnesCSV": ";",
+        "DebutTitre":"Id;",
+        "Colonnes":
+        {
+            "Nom":2,
+            "Prenom":3,
+            "Sexe":4,
+            "Annee":5,
+            "Pays":6,
+            "NumeroClub":7,
+            "ReferenceClub":8,
+            "NomClub":9,
+            "NumeroLicenceFFCO":10,
+            "IOFid":11,
+            "Etapes":12,
+            "Categorie":13,
+            "NumeroPuceSI":14
+        },
+        "ParticipantsASupprimer": [
+            {"Nom":"LIMPACH", "Prenom":"Jessica", "Club":"ASUB ORIENTATION ASBL"},
+            {"Nom":"PAUL","Prenom":"Christel","Club":"ENS"},
+            {"Nom":"MAIRE","Prenom":"Sandrine","Club":"T.A. FAMECK"},
+            {"Nom":"ALEXANDRE", "Prenom":"Baconnet", "Club":"CS PERTUIS"}
+        ],
+        "ParticipantsSupplementaires": [
+            {"Nom":"LIMPACH", "Prenom":"Jessica", "Sexe":"F", "Annee":"1988", "Pays":"BEL",  "NumeroClub":"", "ReferenceClub":"", "NomClub":"ASUB ORIENTATION ASBL",
+                "NumeroLicenceFFCO":"", "IOFid":"3450", "Etapes":"1,2,4", "Categorie":"F21E", "NumeroPuceSI":"49129"},
+            {"Nom":"LIMPACH", "Prenom":"Jessica", "Sexe":"F", "Annee":"1988", "Pays":"BEL", "NumeroClub":"", "ReferenceClub":"", "NomClub":"ASUB ORIENTATION ASBL",
+                "NumeroLicenceFFCO":"", "IOFid":"3450", "Etapes":"3,5", "Categorie":"F21A",  "NumeroPuceSI":"49129"},
+            {"Nom":"PAUL", "Prenom":"Christel", "Sexe":"F", "Annee":"1966", "Pays":"FRA", "NumeroClub":"5101", "ReferenceClub":"5101GE", "NomClub":"ENS",
+                "NumeroLicenceFFCO":"25962", "IOFid":"", "Etapes":"1", "Categorie":"F50", "NumeroPuceSI":"2082274"},
+            {"Nom":"PAUL", "Prenom":"Christel", "Sexe":"F", "Annee":"1966", "Pays":"FRA", "NumeroClub":"5101", "ReferenceClub":"5101GE", "NomClub":"ENS",
+                "NumeroLicenceFFCO":"25962", "IOFid":"", "Etapes":"2,4", "Categorie":"OPEN C", "NumeroPuceSI":"2082274"},
+            {"Nom":"MAIRE", "Prenom":"Sandrine", "Sexe":"F", "Annee":"1972", "Pays":"FRA", "NumeroClub":"5703", "ReferenceClub":"5703GE", "NomClub":"T.A. FAMECK",
+                "NumeroLicenceFFCO":"31012", "IOFid":"", "Etapes":"1", "Categorie":"F45", "NumeroPuceSI":"1570306"},
+            {"Nom":"MAIRE", "Prenom":"Sandrine", "Sexe":"F", "Annee":"1972", "Pays":"FRA", "NumeroClub":"5703", "ReferenceClub":"5703GE", "NomClub":"T.A. FAMECK",
+                "NumeroLicenceFFCO":"31012", "IOFid":"", "Etapes":"2,3,4,5", "Categorie":"OPEN C", "NumeroPuceSI":"1570306"},
+            {"Nom":"BACONNET", "Prenom":"Alexandre", "Sexe":"H", "Annee":"2003", "Pays":"FRA", "NumeroClub":"8405", "ReferenceClub":"8405PZ", "NomClub":"CS PERTUIS",
+                "NumeroLicenceFFCO":"25503", "IOFid":"", "Etapes":"5 ETAPES", "Categorie":"H16", "NumeroPuceSI":"8002088"}
+        ]
+    },
+
+    "FichiersGeneres":
+    {
+        "NomFichierMD": "ofrance-out",
+        "GEC":"MeOS",
+        "NomFichierCSV": "ofrance",
+        "SeparateurColonnesCSV": ","
+    },
+
+    "Dossards":
+    {
+        "NomFichierCSVDossards": "ofrance-dossards",
+        "SeparateurColonnesCSV": ",",
+        "PremierDossard": 1001,
+        "DossardsSupplementaires":100
+    },
+
+    "TranchesHoraires":
+    {
+        "ReserveVacantsPourcent": 5,
+        "ReserveVacantsOffset": 1,
+        "SeuilClub": 12,
+        "SeuilPays": 12,
+        "NbTranches": 4,
+        "MargeTranches":2
+    },
+
+    "AliasCategories" :     [
+        { "input" : "H10",  "output" : "M10", "id":1},
+        { "input" : "H12",  "output" : "M12" , "id":2},
+        { "input" : "H14",  "output" : "M14" , "id":3},
+        { "input" : "H16",  "output" : "M16" , "id":4},
+        { "input" : "H18",  "output" : "M18" , "id":5},
+        { "input" : "H20",  "output" : "M20" , "id":6},
+        { "input" : "H21A",  "output" : "M21A" , "id":7},
+        { "input" : "H21E",  "output" : "M21E" , "id":8},
+        { "input" : "H35",  "output" : "M35" , "id":9},
+        { "input" : "H40",  "output" : "M40" , "id":10},
+        { "input" : "H45",  "output" : "M45" , "id":11},
+        { "input" : "H50",  "output" : "M50" , "id":12},
+        { "input" : "H55",  "output" : "M55" , "id":13},
+        { "input" : "H60",  "output" : "M60" , "id":14},
+        { "input" : "H65",  "output" : "M65" , "id":15},
+        { "input" : "H70",  "output" : "M70" , "id":16},
+        { "input" : "H75",  "output" : "M75" , "id":17},
+        { "input" : "H80",  "output" : "M80" , "id":18},
+        { "input" : "F10",  "output" : "W10" , "id":19},
+        { "input" : "F12",  "output" : "W12" , "id":20},
+        { "input" : "F14",  "output" : "W14" , "id":21},
+        { "input" : "F16",  "output" : "W16" , "id":22},
+        { "input" : "F18",  "output" : "W18" , "id":23},
+        { "input" : "F20",  "output" : "W20" , "id":24},
+        { "input" : "F21A",  "output" : "W21A" , "id":25},
+        { "input" : "F21E",  "output" : "W21E" , "id":26},
+        { "input" : "F35",  "output" : "W35" , "id":27},
+        { "input" : "F40",  "output" : "W40" , "id":28},
+        { "input" : "F45",  "output" : "W45" , "id":29},
+        { "input" : "F50",  "output" : "W50" , "id":30},
+        { "input" : "F55",  "output" : "W55" , "id":31},
+        { "input" : "F60",  "output" : "W60" , "id":32},
+        { "input" : "F65",  "output" : "W65" , "id":33},
+        { "input" : "F70",  "output" : "W70" , "id":34},
+        { "input" : "F75",  "output" : "W75" , "id":35},
+        { "input" : "F80",  "output" : "W80" , "id":36},
+        { "input" : "OPEN A",  "output" : "Open Violet A" , "id":37},
+        { "input" : "OPEN B",  "output" : "Open violet B" , "id":38},
+        { "input" : "OPEN C",  "output" : "Open Orange C" , "id":39},
+        { "input" : "OPEN D",  "output" : "Open Jaune D" , "id":40},
+        { "input" : "LOISIRS",  "output" : "LOISIRS" , "id":41},
+        { "input" : "Loisir Jaune Long",  "output" : "Loisir Jaune Long" , "id":42},
+        { "input" : "Loisir Jaune Court",  "output" : "Loisir Jaune Court" , "id":43},
+        { "input" : "Loisir Bleu",  "output" : "Loisir Bleu" , "id":44},
+        { "input" : "Loisir Vert",  "output" : "Loisir Vert" , "id":45},
+        { "input" : "SHADOWED",  "output" : "W10-M10 Shadowed (accompagné)" , "id":46}
+    ],
+
+    "AliasSexes" : [
+        { "H" : "M" },
+        { "F" : "F" }
+    ],
+
+    "AliasClubs": [
+        {"ASUB ORIENTATION":"ASUB ORIENTATION ASBL"},
+        {"COLIEGE":"CO LIEGE"},
+        {"FOSSUM":"FOSSUM IF"},
+        {"HAM OK":"HAMOK"},
+        {"HARLEQUINS":"HARLEQUINS (HOC)"},
+        {"KONGSBERG OL":"KONGSBERG O LAG"},
+        {"KONGSBERG ORIENTERINGSLA":"KONGSBERG O LAG"},
+        {"O\\'JURA":"O'JURA"},
+        {"VAREGG":"VAREGG FLERIDRETT"},
+        {"VAREGGFLERIDRETT":"VAREGG FLERIDRETT"},
+        {"GOTEBORG MAJORNA":"GOTEBORG MAJORNA OK"},
+        {"GOTEBORG MAJORNA ORIENTE":"GOTEBORG MAJORNA OK"},
+        {"GOTEBORG-MAJORNA OK":"GOTEBORG MAJORNA OK"}
+    ],
+
+    "AliasPrenoms":[
+        {"Jerome":"Jérôme"},
+        {"Joel":"Joël"},
+        {"Frederique":"Frédérique"},
+        {"Gerard":"Gérard"},
+        {"Francois":"François"}
+    ],
+
+    "ClubGroupeHoraireForce":[
+        {"OLV BASELLAND / BUUS" : 1},
+        {"O. CAENNAISE":4},
+        {"SAGC CESTAS":4},
+        {"T.A. FAMECK":4}
+    ],
+
+    "ParticipantsTranchesHorairesAutreClub":[
+        {"nom" :"CARLE", "prenom":"Odin", "club":"ADOCHENOVE", "autreclub":"OE42", "etapes" : [1,2,3,4,5]},
+        {"nom" :"CARLE", "prenom":"Titouan", "club":"ADOCHENOVE", "autreclub":"OE42", "etapes" : [1,2,3,4,5]},
+        {"nom" :"VIS", "prenom":"Iwan", "club":"SUD O LUX", "autreclub":"HOC",  "etapes":[1,2,3,4,5]},
+        {"nom" :"LORRE", "prenom":"Annie", "club":"VSAO", "autreclub":"TOULON SNATURE",  "etapes":[2,3,4,5]},
+        {"nom" :"SZNAIDER", "prenom":"Patrick", "club":"VSAO", "autreclub":"TOULON SNATURE",  "etapes":[2,3,4,5]}
+    ],
+
+    "ParticipantsTranchesHorairesForcees":[
+        {"nom" :"LIMPACH", "prenom":"Jessica", "club":"ASUB ORIENTATION ASBL", "tranches" : [0,0,1,1,1]},
+        {"nom" :"VAN DER OUDERAA", "prenom":"François", "club":"ASUB ORIENTATION ASBL", "tranches" : [0,0,1,1,1]},
+        {"nom" :"MEYER", "prenom":"Corinne", "club":"COCOLMAR", "tranches" : [4,0,0,0,0]},
+        {"nom" :"MEYER", "prenom":"J Marc", "club":"COCOLMAR", "tranches" : [4,0,0,0,0]},
+        {"nom" :"LOCATELLI", "prenom":"Yann", "club":"COCS", "tranches" : [1,1,1,1,1]},
+        {"nom" :"LOCATELLI", "prenom":"Lughan", "club":"COCS", "tranches" : [4,4,4,4,4]},
+        {"nom" :"LEONARDON", "prenom":"Joachim", "club":"ORIENTALP", "tranches" : [1,4,1,4,1]},
+        {"nom" :"POINSOTTE", "prenom":"Fanny", "club":"ORIENTALP", "tranches" : [4,1,4,1,4]},
+        {"nom" :"LORRE", "prenom":"Annie", "club":"VSAO","tranches" : [4,0,0,0,0]},
+        {"nom" :"SZNAIDER", "prenom":"Patrick", "club":"VSAO","tranches" : [4,0,0,0,0]}
+    ],
+
+    "ParticipantsTranchesHorairesIdentiques":[
+        {"nom1" :"LECLAND", "prenom1":"David", "club1":"ACBEAUCHAMP", "nom2" :"LECLAND", "prenom2":"Gwendoline", "club2":"NOYON CO", "etapes":[1,2,3,4,5] },
+        {"nom1" :"GARROS", "prenom1":"Olivier", "club1":"ASCOPA", "nom2" :"HAMON", "prenom2":"Patrick", "club2":"BALISE 77", "etapes":[1,2,3,4,5]},
+        {"nom1" :"SILLIEN", "prenom1":"Nicolas", "club1":"OTB", "nom2" :"TIMMERMANS", "prenom2":"Julie", "club2":"HOC", "etapes":[1,2,3,4,5]},
+        {"nom1" :"SION", "prenom1":"Germain", "club1":"OUTDOOR", "nom2" :"GRENOUILLAT", "prenom2":"Annick", "club2":"T.A.D.",  "etapes":[1,2,3,4,5]}
+    ],
+
+    "Etapes": [
+        {
+            "Nom": "Etape 1 : Sprint WRE",
+            "Lieu": "Mont-Dauphin",
+            "ZeroDate": "2019/07/07T8:00",
+            "Information": "Sprint WRE – Mont-Dauphin",
+            "Format":"PedestreSprint",
+            "Circuits":[
+                {"Nom": "A", "Depart": "1", "Horaires":"rank", "HeureDepart": "2019/07/07T09:00", "Ecart": "2", "Categories": ["M21E"]},
+                {"Nom": "B", "Depart": "1", "Horaires":"oui", "HeureDepart": "2019/07/07T09:00", "Ecart": "1", "Categories": ["M20","M21A"]},
+                {"Nom": "C1","Depart": "1", "Horaires":"oui", "HeureDepart": "2019/07/07T09:00", "Ecart": "1", "Categories": ["M35"]},
+                {"Nom": "C2","Depart": "1", "Horaires":"rank", "HeureDepart": "2019/07/07T09:00", "Ecart": "2", "Categories": ["W21E"]},
+                {"Nom": "D1","Depart": "1", "Horaires":"oui", "HeureDepart": "2019/07/07T09:00", "Ecart": "1", "Categories": ["W20"]},
+                {"Nom": "D2","Depart": "1", "Horaires":"oui", "HeureDepart": "2019/07/07T09:00", "Ecart": "1", "Categories": ["M45"]},
+                {"Nom": "E1","Depart": "1", "Horaires":"oui", "HeureDepart": "2019/07/07T09:00", "Ecart": "1", "Categories": ["M18"]},
+                {"Nom": "E2","Depart": "1", "Horaires":"oui", "HeureDepart": "2019/07/07T09:00", "Ecart": "1", "Categories": ["M40"]},
+                {"Nom": "F", "Depart": "1", "Horaires":"oui", "HeureDepart": "2019/07/07T09:00", "Ecart": "1", "Categories": ["W21A", "W35"]},
+                {"Nom": "G1","Depart": "1", "Horaires":"oui", "HeureDepart": "2019/07/07T09:00", "Ecart": "1", "Categories": ["M50"]},
+                {"Nom": "G2","Depart": "1", "Horaires":"boi", "HeureDepart": "2019/07/07T09:00", "Ecart": "1", "Categories": ["Open Violet A"]},
+                {"Nom": "G3","Depart": "1", "Horaires":"oui", "HeureDepart": "2019/07/07T09:00", "Ecart": "1", "Categories": ["W18"]},
+                {"Nom": "H1","Depart": "1", "Horaires":"oui", "HeureDepart": "2019/07/07T09:00", "Ecart": "1", "Categories": ["M55"]},
+                {"Nom": "H2","Depart": "1", "Horaires":"oui", "HeureDepart": "2019/07/07T09:00", "Ecart": "1", "Categories": ["W40"]},
+                {"Nom": "H3","Depart": "1", "Horaires":"oui", "HeureDepart": "2019/07/07T09:00", "Ecart": "1", "Categories": ["W45"]},
+                {"Nom": "I1","Depart": "1", "Horaires":"oui", "HeureDepart": "2019/07/07T09:00", "Ecart": "1", "Categories": ["W50"]},
+                {"Nom": "I2","Depart": "1", "Horaires":"oui", "HeureDepart": "2019/07/07T09:00", "Ecart": "1", "Categories": ["W55"]},
+                {"Nom": "I3","Depart": "1", "Horaires":"boi", "HeureDepart": "2019/07/07T09:00", "Ecart": "1", "Categories": ["Open violet B"]},
+                {"Nom": "J1","Depart": "1", "Horaires":"oui", "HeureDepart": "2019/07/07T09:00", "Ecart": "1", "Categories": ["M60"]},
+                {"Nom": "J2","Depart": "1", "Horaires":"oui", "HeureDepart": "2019/07/07T09:00", "Ecart": "1", "Categories": ["M65"]},
+                {"Nom": "K", "Depart": "1", "Horaires":"oui", "HeureDepart": "2019/07/07T09:00", "Ecart": "1", "Categories": ["W60", "W65"]},
+                {"Nom": "L", "Depart": "1", "Horaires":"oui", "HeureDepart": "2019/07/07T09:00", "Ecart": "1", "Categories": ["M70", "M75"]},
+                {"Nom": "M", "Depart": "1", "Horaires":"oui", "HeureDepart": "2019/07/07T09:00", "Ecart": "1", "Categories": ["W70", "W75", "M80", "W80"]},
+                {"Nom": "N1","Depart": "1", "Horaires":"oui", "HeureDepart": "2019/07/07T09:00", "Ecart": "1", "Categories": ["M16"]},
+                {"Nom": "N2","Depart": "1", "Horaires":"boi", "HeureDepart": "2019/07/07T09:00", "Ecart": "1", "Categories": ["Open Orange C"]},
+                {"Nom": "O", "Depart": "1", "Horaires":"oui", "HeureDepart": "2019/07/07T09:00", "Ecart": "1", "Categories": ["W16"]},
+                {"Nom": "P1","Depart": "1", "Horaires":"non", "HeureDepart": "2019/07/07T09:00", "Ecart": "1", "Categories": ["Loisir Jaune Long", "LOISIRS"]},
+                {"Nom": "P1","Depart": "1", "Horaires":"boi", "HeureDepart": "2019/07/07T09:00", "Ecart": "1", "Categories": ["Open Jaune D"]},
+                {"Nom": "P2","Depart": "1", "Horaires":"oui", "HeureDepart": "2019/07/07T09:00", "Ecart": "1", "Categories": ["M14"]},
+                {"Nom": "Q1","Depart": "1", "Horaires":"oui", "HeureDepart": "2019/07/07T09:00", "Ecart": "1", "Categories": ["W14"]},
+                {"Nom": "Q2","Depart": "1", "Horaires":"non", "HeureDepart": "2019/07/07T09:00", "Ecart": "1", "Categories": ["Loisir Jaune Court"]},
+                {"Nom": "R1","Depart": "1", "Horaires":"oui", "HeureDepart": "2019/07/07T09:00", "Ecart": "1", "Categories": ["W12"]},
+                {"Nom": "R2","Depart": "1", "Horaires":"oui", "HeureDepart": "2019/07/07T09:00", "Ecart": "1", "Categories": ["M12"]},
+                {"Nom": "R3","Depart": "1", "Horaires":"non", "HeureDepart": "2019/07/07T09:00", "Ecart": "1", "Categories": ["Loisir Bleu"]},
+                {"Nom": "S", "Depart": "1", "Horaires":"oui", "HeureDepart": "2019/07/07T09:00", "Ecart": "1", "Categories": ["W10", "M10"]},
+                {"Nom": "T", "Depart": "1", "Horaires":"non", "HeureDepart": "2019/07/07T09:00", "Ecart": "1", "Categories": ["Loisir Vert"]},
+                {"Nom": "T", "Depart": "1", "Horaires":"boi", "HeureDepart": "2019/07/07T09:00", "Ecart": "1", "Categories": ["W10-M10 Shadowed (accompagné)"]}
+            ]
+        },
+
+        {
+            "Nom": "Etape 2 : MD WRE",
+            "Lieu": "Vars Peyrol",
+            "ZeroDate": "2019/07/08T8:00",
+            "Information": "MD WRE – Vars Peyrol",
+            "Format":"PedestreMDLD",
+            "Circuits":[
+                {"Nom": "A", "Depart": "1", "Horaires":"rank", "HeureDepart": "2019/07/08T09:00", "Ecart": "3", "Categories": ["M21E"]},
+                {"Nom": "B", "Depart": "1", "Horaires":"oui", "HeureDepart": "2019/07/08T09:00", "Ecart": "2", "Categories": ["M20","M21A"]},
+                {"Nom": "C1","Depart": "1", "Horaires":"oui", "HeureDepart": "2019/07/08T09:00", "Ecart": "2", "Categories": ["M35"]},
+                {"Nom": "C2","Depart": "1", "Horaires":"rank", "HeureDepart": "2019/07/08T09:00", "Ecart": "3", "Categories": ["W21E"]},
+                {"Nom": "D1","Depart": "1", "Horaires":"oui", "HeureDepart": "2019/07/08T09:01", "Ecart": "2", "Categories": ["W20"]},
+                {"Nom": "D2","Depart": "1", "Horaires":"oui", "HeureDepart": "2019/07/08T09:00", "Ecart": "2", "Categories": ["M45"]},
+                {"Nom": "E1","Depart": "1", "Horaires":"oui", "HeureDepart": "2019/07/08T09:00", "Ecart": "2", "Categories": ["M18"]},
+                {"Nom": "E2","Depart": "1", "Horaires":"oui", "HeureDepart": "2019/07/08T09:00", "Ecart": "2", "Categories": ["M40"]},
+                {"Nom": "F", "Depart": "1", "Horaires":"oui", "HeureDepart": "2019/07/08T09:01", "Ecart": "2", "Categories": ["W21A", "W35"]},
+                {"Nom": "G1","Depart": "1", "Horaires":"oui", "HeureDepart": "2019/07/08T09:00", "Ecart": "2", "Categories": ["M50"]},
+                {"Nom": "G2","Depart": "1", "Horaires":"boi", "HeureDepart": "2019/07/08T09:00", "Ecart": "2", "Categories": ["Open Violet A"]},
+                {"Nom": "G3","Depart": "1", "Horaires":"oui", "HeureDepart": "2019/07/08T09:01", "Ecart": "2", "Categories": ["W18"]},
+                {"Nom": "H1","Depart": "1", "Horaires":"oui", "HeureDepart": "2019/07/08T09:00", "Ecart": "2", "Categories": ["M55"]},
+                {"Nom": "H2","Depart": "1", "Horaires":"oui", "HeureDepart": "2019/07/08T09:01", "Ecart": "2", "Categories": ["W40"]},
+                {"Nom": "H3","Depart": "1", "Horaires":"oui", "HeureDepart": "2019/07/08T09:01", "Ecart": "2", "Categories": ["W45"]},
+                {"Nom": "I1","Depart": "2", "Horaires":"oui", "HeureDepart": "2019/07/08T09:01", "Ecart": "2", "Categories": ["W50"]},
+                {"Nom": "I2","Depart": "2", "Horaires":"oui", "HeureDepart": "2019/07/08T09:01", "Ecart": "2", "Categories": ["W55"]},
+                {"Nom": "I3","Depart": "2", "Horaires":"boi", "HeureDepart": "2019/07/08T09:00", "Ecart": "2", "Categories": ["Open violet B"]},
+                {"Nom": "J1","Depart": "2", "Horaires":"oui", "HeureDepart": "2019/07/08T09:00", "Ecart": "2", "Categories": ["M60"]},
+                {"Nom": "J2","Depart": "2", "Horaires":"oui", "HeureDepart": "2019/07/08T09:00", "Ecart": "2", "Categories": ["M65"]},
+                {"Nom": "K", "Depart": "2", "Horaires":"oui", "HeureDepart": "2019/07/08T09:01", "Ecart": "2", "Categories": ["W60", "W65"]},
+                {"Nom": "L", "Depart": "2", "Horaires":"oui", "HeureDepart": "2019/07/08T09:00", "Ecart": "2", "Categories": ["M70", "M75"]},
+                {"Nom": "M", "Depart": "2", "Horaires":"oui", "HeureDepart": "2019/07/08T09:01", "Ecart": "2", "Categories": ["W70", "W75", "M80", "W80"]},
+                {"Nom": "N1","Depart": "1", "Horaires":"oui", "HeureDepart": "2019/07/08T09:00", "Ecart": "2", "Categories": ["M16"]},
+                {"Nom": "N2","Depart": "1", "Horaires":"boi", "HeureDepart": "2019/07/08T09:00", "Ecart": "2", "Categories": ["Open Orange C"]},
+                {"Nom": "O", "Depart": "1", "Horaires":"oui", "HeureDepart": "2019/07/08T09:01", "Ecart": "2", "Categories": ["W16"]},
+                {"Nom": "P1","Depart": "2", "Horaires":"non", "HeureDepart": "2019/07/08T09:00", "Ecart": "2", "Categories": ["Loisir Jaune Long", "LOISIRS"]},
+                {"Nom": "P1","Depart": "2", "Horaires":"boi", "HeureDepart": "2019/07/08T09:00", "Ecart": "2", "Categories": ["Open Jaune D"]},
+                {"Nom": "P2","Depart": "2", "Horaires":"oui", "HeureDepart": "2019/07/08T09:00", "Ecart": "2", "Categories": ["M14"]},
+                {"Nom": "Q1","Depart": "2", "Horaires":"oui", "HeureDepart": "2019/07/08T09:01", "Ecart": "2", "Categories": ["W14"]},
+                {"Nom": "Q2","Depart": "2", "Horaires":"non", "HeureDepart": "2019/07/08T09:00", "Ecart": "2", "Categories": ["Loisir Jaune Court"]},
+                {"Nom": "R1","Depart": "2", "Horaires":"oui", "HeureDepart": "2019/07/08T09:01", "Ecart": "2", "Categories": ["W12"]},
+                {"Nom": "R2","Depart": "2", "Horaires":"oui", "HeureDepart": "2019/07/08T09:00", "Ecart": "2", "Categories": ["M12"]},
+                {"Nom": "R3","Depart": "2", "Horaires":"non", "HeureDepart": "2019/07/08T09:00", "Ecart": "2", "Categories": ["Loisir Bleu"]},
+                {"Nom": "S", "Depart": "2", "Horaires":"oui", "HeureDepart": "2019/07/08T09:01", "Ecart": "2", "Categories": ["W10", "M10"]},
+                {"Nom": "T", "Depart": "2", "Horaires":"non", "HeureDepart": "2019/07/08T09:00", "Ecart": "2", "Categories": ["Loisir Vert"]},
+                {"Nom": "T", "Depart": "2", "Horaires":"boi", "HeureDepart": "2019/07/08T09:00", "Ecart": "2", "Categories": ["W10-M10 Shadowed (accompagné)"]}
+            ]
+        },
+
+        {
+            "Nom": "Etape 3 : LD Vars",
+            "Lieu": "Vars les Claux",
+            "ZeroDate": "2019/07/09T8:00",
+            "Information": "LD – Vars les Claux",
+            "Format":"PedestreMDLD",
+            "Circuits":[
+                {"Nom": "A", "Depart": "1", "Horaires":"oui", "HeureDepart": "2019/07/09T09:00", "Ecart": "3", "Categories": ["M21E"]},
+                {"Nom": "B", "Depart": "1", "Horaires":"oui", "HeureDepart": "2019/07/09T09:00", "Ecart": "2", "Categories": ["M20","M21A"]},
+                {"Nom": "C1","Depart": "1", "Horaires":"oui", "HeureDepart": "2019/07/09T09:00", "Ecart": "2", "Categories": ["M35"]},
+                {"Nom": "C2","Depart": "1", "Horaires":"oui", "HeureDepart": "2019/07/09T09:00", "Ecart": "3", "Categories": ["W21E"]},
+                {"Nom": "D1","Depart": "1", "Horaires":"oui", "HeureDepart": "2019/07/09T09:01", "Ecart": "2", "Categories": ["W20"]},
+                {"Nom": "D2","Depart": "1", "Horaires":"oui", "HeureDepart": "2019/07/09T09:00", "Ecart": "2", "Categories": ["M45"]},
+                {"Nom": "E1","Depart": "1", "Horaires":"oui", "HeureDepart": "2019/07/09T09:00", "Ecart": "2", "Categories": ["M18"]},
+                {"Nom": "E2","Depart": "1", "Horaires":"oui", "HeureDepart": "2019/07/09T09:00", "Ecart": "2", "Categories": ["M40"]},
+                {"Nom": "F", "Depart": "1", "Horaires":"oui", "HeureDepart": "2019/07/09T09:01", "Ecart": "2", "Categories": ["W21A", "W35"]},
+                {"Nom": "G1","Depart": "1", "Horaires":"oui", "HeureDepart": "2019/07/09T09:00", "Ecart": "2", "Categories": ["M50"]},
+                {"Nom": "G2","Depart": "1", "Horaires":"boi", "HeureDepart": "2019/07/09T09:00", "Ecart": "2", "Categories": ["Open Violet A"]},
+                {"Nom": "G3","Depart": "1", "Horaires":"oui", "HeureDepart": "2019/07/09T09:01", "Ecart": "2", "Categories": ["W18"]},
+                {"Nom": "H1","Depart": "1", "Horaires":"oui", "HeureDepart": "2019/07/09T09:00", "Ecart": "2", "Categories": ["M55"]},
+                {"Nom": "H2","Depart": "1", "Horaires":"oui", "HeureDepart": "2019/07/09T09:01", "Ecart": "2", "Categories": ["W40"]},
+                {"Nom": "H3","Depart": "1", "Horaires":"oui", "HeureDepart": "2019/07/09T09:01", "Ecart": "2", "Categories": ["W45"]},
+                {"Nom": "I1","Depart": "2", "Horaires":"oui", "HeureDepart": "2019/07/09T09:01", "Ecart": "2", "Categories": ["W50"]},
+                {"Nom": "I2","Depart": "2", "Horaires":"oui", "HeureDepart": "2019/07/09T09:01", "Ecart": "2", "Categories": ["W55"]},
+                {"Nom": "I3","Depart": "2", "Horaires":"boi", "HeureDepart": "2019/07/09T09:00", "Ecart": "2", "Categories": ["Open violet B"]},
+                {"Nom": "J1","Depart": "2", "Horaires":"oui", "HeureDepart": "2019/07/09T09:00", "Ecart": "2", "Categories": ["M60"]},
+                {"Nom": "J2","Depart": "2", "Horaires":"oui", "HeureDepart": "2019/07/09T09:00", "Ecart": "2", "Categories": ["M65"]},
+                {"Nom": "K", "Depart": "2", "Horaires":"oui", "HeureDepart": "2019/07/09T09:01", "Ecart": "2", "Categories": ["W60", "W65"]},
+                {"Nom": "L", "Depart": "2", "Horaires":"oui", "HeureDepart": "2019/07/09T09:00", "Ecart": "2", "Categories": ["M70", "M75"]},
+                {"Nom": "M", "Depart": "2", "Horaires":"oui", "HeureDepart": "2019/07/09T09:01", "Ecart": "2", "Categories": ["W70", "W75", "M80", "W80"]},
+                {"Nom": "N1","Depart": "1", "Horaires":"oui", "HeureDepart": "2019/07/09T09:00", "Ecart": "2", "Categories": ["M16"]},
+                {"Nom": "N2","Depart": "1", "Horaires":"boi", "HeureDepart": "2019/07/09T09:00", "Ecart": "2", "Categories": ["Open Orange C"]},
+                {"Nom": "O", "Depart": "1", "Horaires":"oui", "HeureDepart": "2019/07/09T09:01", "Ecart": "2", "Categories": ["W16"]},
+                {"Nom": "P1","Depart": "2", "Horaires":"non", "HeureDepart": "2019/07/09T09:00", "Ecart": "2", "Categories": ["Loisir Jaune Long", "LOISIRS"]},
+                {"Nom": "P1","Depart": "2", "Horaires":"boi", "HeureDepart": "2019/07/09T09:00", "Ecart": "2", "Categories": ["Open Jaune D"]},
+                {"Nom": "P2","Depart": "2", "Horaires":"oui", "HeureDepart": "2019/07/09T09:00", "Ecart": "2", "Categories": ["M14"]},
+                {"Nom": "Q1","Depart": "2", "Horaires":"oui", "HeureDepart": "2019/07/09T09:01", "Ecart": "2", "Categories": ["W14"]},
+                {"Nom": "Q2","Depart": "2", "Horaires":"non", "HeureDepart": "2019/07/09T09:00", "Ecart": "2", "Categories": ["Loisir Jaune Court"]},
+                {"Nom": "R1","Depart": "2", "Horaires":"oui", "HeureDepart": "2019/07/09T09:01", "Ecart": "2", "Categories": ["W12"]},
+                {"Nom": "R2","Depart": "2", "Horaires":"oui", "HeureDepart": "2019/07/09T09:00", "Ecart": "2", "Categories": ["M12"]},
+                {"Nom": "R3","Depart": "2", "Horaires":"non", "HeureDepart": "2019/07/09T09:00", "Ecart": "2", "Categories": ["Loisir Bleu"]},
+                {"Nom": "S", "Depart": "2", "Horaires":"oui", "HeureDepart": "2019/07/09T09:01", "Ecart": "2", "Categories": ["W10", "M10"]},
+                {"Nom": "T", "Depart": "2", "Horaires":"non", "HeureDepart": "2019/07/09T09:00", "Ecart": "2", "Categories": ["Loisir Vert"]},
+                {"Nom": "T", "Depart": "2", "Horaires":"boi", "HeureDepart": "2019/07/09T09:00", "Ecart": "2", "Categories": ["W10-M10 Shadowed (accompagné)"]}
+            ]
+        },
+
+        {
+            "Nom": "Etape 4 : MD Risoul",
+            "Lieu": "Risoul station",
+            "ZeroDate": "2019/07/11T8:00",
+            "Information": "MD – Risoul station",
+            "Format":"PedestreMDLD",
+            "Circuits":[
+                {"Nom": "A", "Depart": "1", "Horaires":"oui", "HeureDepart": "2019/07/11T09:00", "Ecart": "3", "Categories": ["M21E"]},
+                {"Nom": "B", "Depart": "1", "Horaires":"oui", "HeureDepart": "2019/07/11T09:00", "Ecart": "2", "Categories": ["M20","M21A"]},
+                {"Nom": "C1","Depart": "1", "Horaires":"oui", "HeureDepart": "2019/07/11T09:00", "Ecart": "2", "Categories": ["M35"]},
+                {"Nom": "C2","Depart": "1", "Horaires":"oui", "HeureDepart": "2019/07/11T09:00", "Ecart": "3", "Categories": ["W21E"]},
+                {"Nom": "D1","Depart": "1", "Horaires":"oui", "HeureDepart": "2019/07/11T09:01", "Ecart": "2", "Categories": ["W20"]},
+                {"Nom": "D2","Depart": "1", "Horaires":"oui", "HeureDepart": "2019/07/11T09:00", "Ecart": "2", "Categories": ["M45"]},
+                {"Nom": "E1","Depart": "1", "Horaires":"oui", "HeureDepart": "2019/07/11T09:00", "Ecart": "2", "Categories": ["M18"]},
+                {"Nom": "E2","Depart": "1", "Horaires":"oui", "HeureDepart": "2019/07/11T09:00", "Ecart": "2", "Categories": ["M40"]},
+                {"Nom": "F", "Depart": "1", "Horaires":"oui", "HeureDepart": "2019/07/11T09:01", "Ecart": "2", "Categories": ["W21A", "W35"]},
+                {"Nom": "G1","Depart": "1", "Horaires":"oui", "HeureDepart": "2019/07/11T09:00", "Ecart": "2", "Categories": ["M50"]},
+                {"Nom": "G2","Depart": "1", "Horaires":"boi", "HeureDepart": "2019/07/11T09:00", "Ecart": "2", "Categories": ["Open Violet A"]},
+                {"Nom": "G3","Depart": "1", "Horaires":"oui", "HeureDepart": "2019/07/11T09:01", "Ecart": "2", "Categories": ["W18"]},
+                {"Nom": "H1","Depart": "1", "Horaires":"oui", "HeureDepart": "2019/07/11T09:00", "Ecart": "2", "Categories": ["M55"]},
+                {"Nom": "H2","Depart": "1", "Horaires":"oui", "HeureDepart": "2019/07/11T09:01", "Ecart": "2", "Categories": ["W40"]},
+                {"Nom": "H3","Depart": "1", "Horaires":"oui", "HeureDepart": "2019/07/11T09:01", "Ecart": "2", "Categories": ["W45"]},
+                {"Nom": "I1","Depart": "2", "Horaires":"oui", "HeureDepart": "2019/07/11T09:01", "Ecart": "2", "Categories": ["W50"]},
+                {"Nom": "I2","Depart": "2", "Horaires":"oui", "HeureDepart": "2019/07/11T09:01", "Ecart": "2", "Categories": ["W55"]},
+                {"Nom": "I3","Depart": "2", "Horaires":"boi", "HeureDepart": "2019/07/11T09:00", "Ecart": "2", "Categories": ["Open violet B"]},
+                {"Nom": "J1","Depart": "2", "Horaires":"oui", "HeureDepart": "2019/07/11T09:00", "Ecart": "2", "Categories": ["M60"]},
+                {"Nom": "J2","Depart": "2", "Horaires":"oui", "HeureDepart": "2019/07/11T09:00", "Ecart": "2", "Categories": ["M65"]},
+                {"Nom": "K", "Depart": "2", "Horaires":"oui", "HeureDepart": "2019/07/11T09:01", "Ecart": "2", "Categories": ["W60", "W65"]},
+                {"Nom": "L", "Depart": "2", "Horaires":"oui", "HeureDepart": "2019/07/11T09:00", "Ecart": "2", "Categories": ["M70", "M75"]},
+                {"Nom": "M", "Depart": "2", "Horaires":"oui", "HeureDepart": "2019/07/11T09:01", "Ecart": "2", "Categories": ["W70", "W75", "M80", "W80"]},
+                {"Nom": "N1","Depart": "1", "Horaires":"oui", "HeureDepart": "2019/07/11T09:00", "Ecart": "2", "Categories": ["M16"]},
+                {"Nom": "N2","Depart": "1", "Horaires":"boi", "HeureDepart": "2019/07/11T09:00", "Ecart": "2", "Categories": ["Open Orange C"]},
+                {"Nom": "O", "Depart": "1", "Horaires":"oui", "HeureDepart": "2019/07/11T09:01", "Ecart": "2", "Categories": ["W16"]},
+                {"Nom": "P1","Depart": "2", "Horaires":"non", "HeureDepart": "2019/07/11T09:00", "Ecart": "2", "Categories": ["Loisir Jaune Long", "LOISIRS"]},
+                {"Nom": "P1","Depart": "2", "Horaires":"boi", "HeureDepart": "2019/07/11T09:00", "Ecart": "2", "Categories": ["Open Jaune D"]},
+                {"Nom": "P2","Depart": "2", "Horaires":"oui", "HeureDepart": "2019/07/11T09:00", "Ecart": "2", "Categories": ["M14"]},
+                {"Nom": "Q1","Depart": "2", "Horaires":"oui", "HeureDepart": "2019/07/11T09:01", "Ecart": "2", "Categories": ["W14"]},
+                {"Nom": "Q2","Depart": "2", "Horaires":"non", "HeureDepart": "2019/07/11T09:00", "Ecart": "2", "Categories": ["Loisir Jaune Court"]},
+                {"Nom": "R1","Depart": "2", "Horaires":"oui", "HeureDepart": "2019/07/11T09:01", "Ecart": "2", "Categories": ["W12"]},
+                {"Nom": "R2","Depart": "2", "Horaires":"oui", "HeureDepart": "2019/07/11T09:00", "Ecart": "2", "Categories": ["M12"]},
+                {"Nom": "R3","Depart": "2", "Horaires":"non", "HeureDepart": "2019/07/11T09:00", "Ecart": "2", "Categories": ["Loisir Bleu"]},
+                {"Nom": "S", "Depart": "2", "Horaires":"oui", "HeureDepart": "2019/07/11T09:01", "Ecart": "2", "Categories": ["W10", "M10"]},
+                {"Nom": "T", "Depart": "2", "Horaires":"non", "HeureDepart": "2019/07/11T09:00", "Ecart": "2", "Categories": ["Loisir Vert"]},
+                {"Nom": "T", "Depart": "2", "Horaires":"boi", "HeureDepart": "2019/07/11T09:00", "Ecart": "2", "Categories": ["W10-M10 Shadowed (accompagné)"]}
+            ]
+        },
+
+        {
+            "Nom": "Etape 5 : MD Risoul",
+            "Lieu": "Risoul station",
+            "ZeroDate": "2019/07/12T8:00",
+            "Information": "LD avec départ en chasse",
+            "Format":"PedestreMDLD",
+            "Circuits":[
+                {"Nom": "A", "Depart": "1", "Horaires":"non", "HeureDepart": "2019/07/11T09:00", "Ecart": "3", "Categories": ["M21E"]},
+                {"Nom": "B", "Depart": "1", "Horaires":"non", "HeureDepart": "2019/07/11T09:00", "Ecart": "2", "Categories": ["M20","M21A"]},
+                {"Nom": "C1","Depart": "1", "Horaires":"non", "HeureDepart": "2019/07/11T09:00", "Ecart": "2", "Categories": ["M35"]},
+                {"Nom": "C2","Depart": "1", "Horaires":"non", "HeureDepart": "2019/07/11T09:00", "Ecart": "3", "Categories": ["W21E"]},
+                {"Nom": "D1","Depart": "1", "Horaires":"non", "HeureDepart": "2019/07/11T09:01", "Ecart": "2", "Categories": ["W20"]},
+                {"Nom": "D2","Depart": "1", "Horaires":"non", "HeureDepart": "2019/07/11T09:00", "Ecart": "2", "Categories": ["M45"]},
+                {"Nom": "E1","Depart": "1", "Horaires":"non", "HeureDepart": "2019/07/11T09:00", "Ecart": "2", "Categories": ["M18"]},
+                {"Nom": "E2","Depart": "1", "Horaires":"non", "HeureDepart": "2019/07/11T09:00", "Ecart": "2", "Categories": ["M40"]},
+                {"Nom": "F", "Depart": "1", "Horaires":"non", "HeureDepart": "2019/07/11T09:01", "Ecart": "2", "Categories": ["W21A", "W35"]},
+                {"Nom": "G1","Depart": "1", "Horaires":"non", "HeureDepart": "2019/07/11T09:00", "Ecart": "2", "Categories": ["M50"]},
+                {"Nom": "G2","Depart": "1", "Horaires":"non", "HeureDepart": "2019/07/11T09:00", "Ecart": "2", "Categories": ["Open Violet A"]},
+                {"Nom": "G3","Depart": "1", "Horaires":"non", "HeureDepart": "2019/07/11T09:01", "Ecart": "2", "Categories": ["W18"]},
+                {"Nom": "H1","Depart": "1", "Horaires":"non", "HeureDepart": "2019/07/11T09:00", "Ecart": "2", "Categories": ["M55"]},
+                {"Nom": "H2","Depart": "1", "Horaires":"non", "HeureDepart": "2019/07/11T09:01", "Ecart": "2", "Categories": ["W40"]},
+                {"Nom": "H3","Depart": "1", "Horaires":"non", "HeureDepart": "2019/07/11T09:01", "Ecart": "2", "Categories": ["W45"]},
+                {"Nom": "I1","Depart": "2", "Horaires":"non", "HeureDepart": "2019/07/11T09:01", "Ecart": "2", "Categories": ["W50"]},
+                {"Nom": "I2","Depart": "2", "Horaires":"non", "HeureDepart": "2019/07/11T09:01", "Ecart": "2", "Categories": ["W55"]},
+                {"Nom": "I3","Depart": "2", "Horaires":"non", "HeureDepart": "2019/07/11T09:00", "Ecart": "2", "Categories": ["Open violet B"]},
+                {"Nom": "J1","Depart": "2", "Horaires":"non", "HeureDepart": "2019/07/11T09:00", "Ecart": "2", "Categories": ["M60"]},
+                {"Nom": "J2","Depart": "2", "Horaires":"non", "HeureDepart": "2019/07/11T09:00", "Ecart": "2", "Categories": ["M65"]},
+                {"Nom": "K", "Depart": "2", "Horaires":"non", "HeureDepart": "2019/07/11T09:01", "Ecart": "2", "Categories": ["W60", "W65"]},
+                {"Nom": "L", "Depart": "2", "Horaires":"non", "HeureDepart": "2019/07/11T09:00", "Ecart": "2", "Categories": ["M70", "M75"]},
+                {"Nom": "M", "Depart": "2", "Horaires":"non", "HeureDepart": "2019/07/11T09:01", "Ecart": "2", "Categories": ["W70", "W75", "M80", "W80"]},
+                {"Nom": "N1","Depart": "1", "Horaires":"non", "HeureDepart": "2019/07/11T09:00", "Ecart": "2", "Categories": ["M16"]},
+                {"Nom": "N2","Depart": "1", "Horaires":"non", "HeureDepart": "2019/07/11T09:00", "Ecart": "2", "Categories": ["Open Orange C"]},
+                {"Nom": "O", "Depart": "1", "Horaires":"non", "HeureDepart": "2019/07/11T09:01", "Ecart": "2", "Categories": ["W16"]},
+                {"Nom": "P1","Depart": "2", "Horaires":"non", "HeureDepart": "2019/07/11T09:00", "Ecart": "2", "Categories": ["Loisir Jaune Long", "LOISIRS"]},
+                {"Nom": "P1","Depart": "2", "Horaires":"non", "HeureDepart": "2019/07/11T09:00", "Ecart": "2", "Categories": ["Open Jaune D"]},
+                {"Nom": "P2","Depart": "2", "Horaires":"non", "HeureDepart": "2019/07/11T09:00", "Ecart": "2", "Categories": ["M14"]},
+                {"Nom": "Q1","Depart": "2", "Horaires":"non", "HeureDepart": "2019/07/11T09:01", "Ecart": "2", "Categories": ["W14"]},
+                {"Nom": "Q2","Depart": "2", "Horaires":"non", "HeureDepart": "2019/07/11T09:00", "Ecart": "2", "Categories": ["Loisir Jaune Court"]},
+                {"Nom": "R1","Depart": "2", "Horaires":"non", "HeureDepart": "2019/07/11T09:01", "Ecart": "2", "Categories": ["W12"]},
+                {"Nom": "R2","Depart": "2", "Horaires":"non", "HeureDepart": "2019/07/11T09:00", "Ecart": "2", "Categories": ["M12"]},
+                {"Nom": "R3","Depart": "2", "Horaires":"non", "HeureDepart": "2019/07/11T09:00", "Ecart": "2", "Categories": ["Loisir Bleu"]},
+                {"Nom": "S", "Depart": "2", "Horaires":"non", "HeureDepart": "2019/07/11T09:01", "Ecart": "2", "Categories": ["W10", "M10"]},
+                {"Nom": "T", "Depart": "2", "Horaires":"non", "HeureDepart": "2019/07/11T09:00", "Ecart": "2", "Categories": ["Loisir Vert"]},
+                {"Nom": "T", "Depart": "2", "Horaires":"non", "HeureDepart": "2019/07/11T09:00", "Ecart": "2", "Categories": ["W10-M10 Shadowed (accompagné)"]}
+            ]
+        }
+    ]
+}
