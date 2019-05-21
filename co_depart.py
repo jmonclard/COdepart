@@ -183,17 +183,17 @@ class CODepart(object):
         monsexe = sexe.strip()
         for x in self.epreuve['AliasSexes']:
             if sexe.strip() in x:
-                monsexe = x[sexe].strip()
+                monsexe = x[sexe.strip()].strip()
 
         monclub = club.strip()
         for x in self.epreuve['AliasClubs']:
             if club.strip() in x:
-                monclub = x[club].strip()
+                monclub = x[club.strip()].strip()
 
         monprenom = prenom.strip().title()
         for x in self.epreuve['AliasPrenoms']:
             if monprenom in x:
-                monprenom = x[monprenom].title().strip()
+                monprenom = x[monprenom.strip()].title().strip()
 
         mescircuits = [None] * self.epreuve['NbEtapes']
         mesdeparts = [None] * self.epreuve['NbEtapes']
@@ -251,9 +251,13 @@ class CODepart(object):
     def importFromCSVData(self):
         filename = self.epreuve['Inscriptions']['FichierCSV']
         self.log.info('Ouverture de ' + filename)
+        lig = 0
         with open(filename, 'r', encoding='utf8') as f:
             for line in f.readlines():
-                if not line.strip().startswith(self.epreuve['Inscriptions']['DebutTitre']):  # suppression de la ligne de titre
+                lig += 1
+                if ((lig > self.epreuve['Inscriptions']['LignesDeTitre']) and
+                        (not line.strip().startswith(self.epreuve['Inscriptions']['DebutTitre']))):  # suppression de la ligne de titre
+
                     row = line.strip().split(self.epreuve['Inscriptions']['SeparateurColonnesCSV'])
 
                     nom = row[self.epreuve['Inscriptions']['Colonnes']['Nom'] - 1]
@@ -432,7 +436,7 @@ class CODepart(object):
                         'Tel.', 'Fax', 'E-mail', 'Id/Club', 'Louée', 'Engagement', 'Paye'
                     ]
                 )
-            else:  # format pour d'autres logiciel de GEC à écrire ici
+            else:  # format pour d'autres logiciels de GEC à écrire ici
                 pass
 
             file.write(out_str + '\n')

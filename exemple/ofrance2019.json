@@ -47,8 +47,9 @@
 
     "Inscriptions":
     {
-        "FichierCSV":"ofrance-test2-richard_2019_05_13.csv",
+        "FichierCSV":"ofrance-test2-richard_2019_05_21.csv",
         "SeparateurColonnesCSV": ";",
+        "LignesDeTitre":1,
         "DebutTitre":"Id;",
         "Colonnes":
         {
@@ -69,8 +70,9 @@
         "ParticipantsASupprimer": [
             {"Nom":"LIMPACH", "Prenom":"Jessica", "Club":"ASUB ORIENTATION ASBL"},
             {"Nom":"PAUL","Prenom":"Christel","Club":"ENS"},
-            {"Nom":"MAIRE","Prenom":"Sandrine","Club":"T.A. FAMECK"},
-            {"Nom":"ALEXANDRE", "Prenom":"Baconnet", "Club":"CS PERTUIS"}
+            {"Nom":"ARNO","Prenom":"Lucie","Club":"HOC"},
+            {"Nom":"BOUCHET","Prenom":"Charlotte","Club":"COCS"},
+            {"Nom":"MAIRE","Prenom":"Sandrine","Club":"T.A. FAMECK"}
         ],
         "ParticipantsSupplementaires": [
             {"Nom":"LIMPACH", "Prenom":"Jessica", "Sexe":"F", "Annee":"1988", "Pays":"BEL",  "NumeroClub":"", "ReferenceClub":"", "NomClub":"ASUB ORIENTATION ASBL",
@@ -81,12 +83,17 @@
                 "NumeroLicenceFFCO":"25962", "IOFid":"", "Etapes":"1", "Categorie":"F50", "NumeroPuceSI":"2082274"},
             {"Nom":"PAUL", "Prenom":"Christel", "Sexe":"F", "Annee":"1966", "Pays":"FRA", "NumeroClub":"5101", "ReferenceClub":"5101GE", "NomClub":"ENS",
                 "NumeroLicenceFFCO":"25962", "IOFid":"", "Etapes":"2,4", "Categorie":"OPEN C", "NumeroPuceSI":"2082274"},
+                {"Nom":"ARNO", "Prenom":"Lucie", "Sexe":"F", "Annee":"1999", "Pays":"BEL",  "NumeroClub":"", "ReferenceClub":"", "NomClub":"HOC",
+                "NumeroLicenceFFCO":"", "IOFid":"33074", "Etapes":"1,2", "Categorie":"F21E", "NumeroPuceSI":"7001938"}, {"Nom":"ARNO", "Prenom":"Lucie", "Sexe":"F", "Annee":"1999", "Pays":"BEL",  "NumeroClub":"", "ReferenceClub":"", "NomClub":"HOC",
+                "NumeroLicenceFFCO":"", "IOFid":"33074", "Etapes":"3,4,5", "Categorie":"F20", "NumeroPuceSI":"7001938"},
+                {"Nom":"BOUCHET", "Prenom":"Charlotte", "Sexe":"F", "Annee":"1986", "Pays":"FRA",  "NumeroClub":"7309", "ReferenceClub":"7309AR", "NomClub":"COCS",
+                "NumeroLicenceFFCO":"19587", "IOFid":"", "Etapes":"1,2,4", "Categorie":"F21E", "NumeroPuceSI":"860600"}, 
+                {"Nom":"BOUCHET", "Prenom":"Charlotte", "Sexe":"F", "Annee":"1986", "Pays":"FRA",  "NumeroClub":"7309", "ReferenceClub":"7309AR", "NomClub":"COCS",
+                "NumeroLicenceFFCO":"19587", "IOFid":"", "Etapes":"3,5", "Categorie":"F21A", "NumeroPuceSI":"860600"},
             {"Nom":"MAIRE", "Prenom":"Sandrine", "Sexe":"F", "Annee":"1972", "Pays":"FRA", "NumeroClub":"5703", "ReferenceClub":"5703GE", "NomClub":"T.A. FAMECK",
                 "NumeroLicenceFFCO":"31012", "IOFid":"", "Etapes":"1", "Categorie":"F45", "NumeroPuceSI":"1570306"},
             {"Nom":"MAIRE", "Prenom":"Sandrine", "Sexe":"F", "Annee":"1972", "Pays":"FRA", "NumeroClub":"5703", "ReferenceClub":"5703GE", "NomClub":"T.A. FAMECK",
-                "NumeroLicenceFFCO":"31012", "IOFid":"", "Etapes":"2,3,4,5", "Categorie":"OPEN C", "NumeroPuceSI":"1570306"},
-            {"Nom":"BACONNET", "Prenom":"Alexandre", "Sexe":"H", "Annee":"2003", "Pays":"FRA", "NumeroClub":"8405", "ReferenceClub":"8405PZ", "NomClub":"CS PERTUIS",
-                "NumeroLicenceFFCO":"25503", "IOFid":"", "Etapes":"5 ETAPES", "Categorie":"H16", "NumeroPuceSI":"8002088"}
+                "NumeroLicenceFFCO":"31012", "IOFid":"", "Etapes":"2,3,4,5", "Categorie":"OPEN C", "NumeroPuceSI":"1570306"}
         ]
     },
 
@@ -117,6 +124,7 @@
     },
 
     "AliasCategories" :     [
+        
         { "input" : "H10",  "output" : "M10", "id":1},
         { "input" : "H12",  "output" : "M12" , "id":2},
         { "input" : "H14",  "output" : "M14" , "id":3},
@@ -171,19 +179,37 @@
     ],
 
     "AliasClubs": [
-        {"ASUB ORIENTATION":"ASUB ORIENTATION ASBL"},
-        {"COLIEGE":"CO LIEGE"},
-        {"FOSSUM":"FOSSUM IF"},
-        {"HAM OK":"HAMOK"},
-        {"HARLEQUINS":"HARLEQUINS (HOC)"},
-        {"KONGSBERG OL":"KONGSBERG O LAG"},
-        {"KONGSBERG ORIENTERINGSLA":"KONGSBERG O LAG"},
-        {"O\\'JURA":"O'JURA"},
-        {"VAREGG":"VAREGG FLERIDRETT"},
-        {"VAREGGFLERIDRETT":"VAREGG FLERIDRETT"},
-        {"GOTEBORG MAJORNA":"GOTEBORG MAJORNA OK"},
-        {"GOTEBORG MAJORNA ORIENTE":"GOTEBORG MAJORNA OK"},
-        {"GOTEBORG-MAJORNA OK":"GOTEBORG MAJORNA OK"}
+        {"ASUB ORIENTATION" : "ASUB ORIENTATION ASBL"},
+        {"ECHO73" : "ECHO 73"},
+        {"COLIEGE" : "CO LIEGE"},
+        {"FOSSUM" : "FOSSUM IF"},
+        {"FOSSUM ORIENTERING" : "FOSSUM IF"},
+        {"FRIEIDG" : "FREIDIG"},
+        {"GOTEBORG MAJORNA ORIENTE" : "GOTEBORG-MAJORNA OK"},
+        {"GOTEBORG MAJORNA" : "GOTEBORG-MAJORNA OK"},
+        {"GOTEBORG MAJORNA OK" : "GOTEBORG-MAJORNA OK"},
+        {"HAM OK" : "HAMOK"},
+        {"HARLEQUINS (HOC)" : "HARLEQUINS"},
+        {"HERMATHENAE ORIENTATION" : "HERMATHENAE SPA"},
+        {"KONGSBERG OL" : "KONGSBERG O LAG"},
+        {"KONGSBERG ORIENTERINGSLA" : "KONGSBERG O LAG"},
+        {"CHAT\\'O" : "CHAT'O"},
+	{"O\\'JURA" : "O'JURA"},
+	{"LES DES\\'O 31" : "LES DES'O 31"},
+	{"RO\\'PARIS" : "RO'PARIS"},
+	{"BOL D\\'AIR" : "BOL D'AIR"},
+	{"O\\'BUGEY" : "O'BUGEY"},
+	{"DAUPHINE\\'O" : "DAUPHINE'O"},
+	{"VIK\\'AZIM" : "VIK'AZIM"},
+	{"O\\'ZONE 88" : "O'ZONE 88"},
+	{"RAIDLINKS\\'07" : "RAIDLINKS'07"},
+        {"OLG LAUFENTAL-THIERSTEIN" : "OLG LAUFENTAL THIERSTEIN"},
+        {"VAREGG" : "VAREGG FLERIDRETT"},
+        {"VAREGGFLERIDRETT" : "VAREGG FLERIDRETT"},
+        {"XTTR 63" : "XTTRAID63"},
+        {"XTTR63" : "XTTRAID63"},
+        {"KSOL" : "KONGSBERG O LAG"},
+        {"ROCKY MOUNTAIN OC (RMOC)" : "ROCKY MOUNTAIN OC"}
     ],
 
     "AliasPrenoms":[
@@ -191,6 +217,11 @@
         {"Joel":"Joël"},
         {"Frederique":"Frédérique"},
         {"Gerard":"Gérard"},
+        {"Lea":"Léa"},
+        {"Chloe":"Chloé"},
+        {"Raphael":"Raphaël"},
+        {"Celine":"Céline"},
+        {"Regine":"Régine"},
         {"Francois":"François"}
     ],
 
@@ -205,6 +236,7 @@
         {"nom" :"CARLE", "prenom":"Odin", "club":"ADOCHENOVE", "autreclub":"OE42", "etapes" : [1,2,3,4,5]},
         {"nom" :"CARLE", "prenom":"Titouan", "club":"ADOCHENOVE", "autreclub":"OE42", "etapes" : [1,2,3,4,5]},
         {"nom" :"VIS", "prenom":"Iwan", "club":"SUD O LUX", "autreclub":"HOC",  "etapes":[1,2,3,4,5]},
+        {"nom" :"CHICHERY", "prenom":"Severine", "club":"MORTAIN", "autreclub":"ALBI RESSORT", "etapes" : [1,2,3,4,5]},
         {"nom" :"LORRE", "prenom":"Annie", "club":"VSAO", "autreclub":"TOULON SNATURE",  "etapes":[2,3,4,5]},
         {"nom" :"SZNAIDER", "prenom":"Patrick", "club":"VSAO", "autreclub":"TOULON SNATURE",  "etapes":[2,3,4,5]}
     ],
@@ -224,6 +256,7 @@
 
     "ParticipantsTranchesHorairesIdentiques":[
         {"nom1" :"LECLAND", "prenom1":"David", "club1":"ACBEAUCHAMP", "nom2" :"LECLAND", "prenom2":"Gwendoline", "club2":"NOYON CO", "etapes":[1,2,3,4,5] },
+        {"nom1" :"SALANCON", "prenom1":"Patrick", "club1":"INDIVIDUEL", "nom2" :"FREY", "prenom2":"Cathy", "club2":"SUSSARGUES EVASION", "etapes":[1,2,3,4,5] },
         {"nom1" :"GARROS", "prenom1":"Olivier", "club1":"ASCOPA", "nom2" :"HAMON", "prenom2":"Patrick", "club2":"BALISE 77", "etapes":[1,2,3,4,5]},
         {"nom1" :"SILLIEN", "prenom1":"Nicolas", "club1":"OTB", "nom2" :"TIMMERMANS", "prenom2":"Julie", "club2":"HOC", "etapes":[1,2,3,4,5]},
         {"nom1" :"SION", "prenom1":"Germain", "club1":"OUTDOOR", "nom2" :"GRENOUILLAT", "prenom2":"Annick", "club2":"T.A.D.",  "etapes":[1,2,3,4,5]}
