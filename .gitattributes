@@ -15,3 +15,9 @@
 *.PDF	 diff=astextplain
 *.rtf	 diff=astextplain
 *.RTF	 diff=astextplain
+
+# Afin d'éviter une mauvaise détection du langage
+*.tex linguist-generated=true
+*.TEX linguist-generated=true
+exemple/* linguist-documentation
+Exemple/* linguist-documentation
