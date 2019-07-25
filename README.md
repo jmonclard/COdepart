@@ -171,50 +171,50 @@ Bien que l'ordre des sections dans un fichier JSON n'ait aucune importance, les 
 ## En-tête
 | Clef | Type valeur | Détails |
 |----------------------------|:--------:|-------------------------------------------|
-|"Nom"                       | *chaine* | Nom de l'évènement. N'est utilisé que dans les rapports.
-|
-|"Information"               | *chaine* | Commentaire présent dans le JSON et utile lors de sa consultation mais non utilisé par le script.
-|
-|"Verbosite"                 | *nombre* | Défini le niveau de verbosité du script lors de son exécution. Actuellement non géré. Utilisez l'otion -v en ligne de commande ou éditez la valeur par défaut de l'option -v en ligne 69 du programme python.
-|
-|"FlagsSubdirectory"         | *chaine* | Sous-répertoire contenant les images des drapeaux. Ceux-ci doivent être des fichiers png dont le nom contient les deux lettres identifiant le pays dans la norme ISO.
-|
-|"GraineGenerateurAleatoire" | *chaine* | Peut contenir soit "None" soit une chaîne de caractères contenant un nombre. Dans le premier cas, chaque exécution conduira à des résultats différents, même avec les mêmes données d'entrée; si un nombre est fourni, il servira de valeur initiale pour le générateur de nombre aléatoire. Dans ce cas chaque exécution - si les données d'entrées sont inchangées - conduiront au même résultat.
+|"Nom"                       | *chaine* | Nom de l'évènement. N'est utilisé que dans les rapports.|
+|  |  |  |
+|"Information"               | *chaine* | Commentaire présent dans le JSON et utile lors de sa consultation mais non utilisé par le script.|
+|  |  |  |
+|"Verbosite"                 | *nombre* | Défini le niveau de verbosité du script lors de son exécution. Actuellement non géré. Utilisez l'otion -v en ligne de commande ou éditez la valeur par défaut de l'option -v en ligne 69 du programme python.|
+|  |  |  |
+|"FlagsSubdirectory"         | *chaine* | Sous-répertoire contenant les images des drapeaux. Ceux-ci doivent être des fichiers png dont le nom contient les deux lettres identifiant le pays dans la norme ISO.|
+|  |  |  |
+|"GraineGenerateurAleatoire" | *chaine* | Peut contenir soit "None" soit une chaîne de caractères contenant un nombre. Dans le premier cas, chaque exécution conduira à des résultats différents, même avec les mêmes données d'entrée; si un nombre est fourni, il servira de valeur initiale pour le générateur de nombre aléatoire. Dans ce cas chaque exécution - si les données d'entrées sont inchangées - conduiront au même résultat.|
 
 ### Ranking FFCO
 | Clef | Type valeur | Détails |
 |------------|:--------:|-----------------------------|
-|"RankingFFCO"| *element complexe* | Défini la façon d'accéder et de traiter les données issues du classement national de la FFCO.
-|
-|"RankingFFCO" "FichierCSV" | *chaine* | Nom du fichier CSV contenant les données du classement
-|
-|"RankingFFCO" "Encodage" | *chaine* | Encodage utilisé pour le fichier CSV. Typiquement "ansi" ou "utf8"
-|
-|"RankingFFCO" "SeparateurColonnesCSV" | *chaine* | Séparateur de colonnes du fichier CSV. Typiquement une virgule ou un point-virgule
-|
-|"RankingFFCO" "DebutTitre" | *chaine* | Début de la ligne de titre devant être ignorée. Toute ligne commençant par la chaine indiquée sera ignorée. Si des doubles quotes sont présentes dans le fichier CSV, il est nécessaire de les faire précéder par une barre oblique inverse (backslash). Exemple *"\\"Place\\";"*
-|
-|"RankingFFCO" "Colonnes" | *element complexe* | Colonnes du fichier CSV (one based) contenant les différents champs utiles
-|
-|"RankingFFCO" "Colonnes" "Prenom" | *nombre* | Numéro de la colonne, en comptant à partir de 1, contenant le prénom du licencié (actuellement non utilisé par le script)
-|
-|"RankingFFCO" "Colonnes" "Nom | *nombre* | Numéro de la colonne, en comptant à partir de 1, contenant le nom du licencié (actuellement non utilisé par le script)
-|
-|"RankingFFCO" "Colonnes" "Ranking" | *nombre* | Numéro de la colonne, en comptant à partir de 1, contenant le classement du licencié (actuellement non utilisé par le script)
-|
-|"RankingFFCO" "Colonnes" "CN"| *nombre* | Numéro de la colonne, en comptant à partir de 1, contenant le nombre de points du licencié
-|
-|"RankingFFCO" "Colonnes" "NumeroLicenceFFCO"| *nombre* | Numéro de la colonne, en comptant à partir de 1, contenant le numéro de licence FFCO du licencié
-|
-|"RankingFFCO" "AjoutIdentifiant" | *liste d'éléments complexes* | Cette section permet d'ajouter des numéros de licence FFCO à des participants
-|
-|"RankingFFCO" "AjoutIdentifiant"[*] "Nom" | *chaine* | Nom du participant pour lequel on veut ajouter un numéro de licence FFCO
-|
-|"RankingFFCO" "AjoutIdentifiant"[*] "Prenom" | *chaine* | Prénom du participant pour lequel on veut ajouter un numéro de licence FFCO
-|
-|"RankingFFCO" "AjoutIdentifiant"[*] "Club" | *chaine* | Club du participant pour lequel on veut ajouter un numéro de licence FFCO
-|
-|"RankingFFCO" "AjoutIdentifiant"[*] "LicenceFFCO" | *nombre entier* | Numéro de licence FFCO du participant pour lequel on veut ajouter un un numéro de licence FFCO
+|"RankingFFCO"| *element complexe* | Défini la façon d'accéder et de traiter les données issues du classement national de la FFCO. |
+|  |  |  |
+|"RankingFFCO" "FichierCSV" | *chaine* | Nom du fichier CSV contenant les données du classement|
+|  |  |  |
+|"RankingFFCO" "Encodage" | *chaine* | Encodage utilisé pour le fichier CSV. Typiquement "ansi" ou "utf8"|
+|  |  |  |
+|"RankingFFCO" "SeparateurColonnesCSV" | *chaine* | Séparateur de colonnes du fichier CSV. Typiquement une virgule ou un point-virgule|
+|  |  |  |
+|"RankingFFCO" "DebutTitre" | *chaine* | Début de la ligne de titre devant être ignorée. Toute ligne commençant par la chaine indiquée sera ignorée. Si des doubles quotes sont présentes dans le fichier CSV, il est nécessaire de les faire précéder par une barre oblique inverse (backslash). Exemple *"\\"Place\\";"*|
+|  |  |  |
+|"RankingFFCO" "Colonnes" | *element complexe* | Colonnes du fichier CSV (one based) contenant les différents champs utiles|
+|  |  |  |
+|"RankingFFCO" "Colonnes" "Prenom" | *nombre* | Numéro de la colonne, en comptant à partir de 1, contenant le prénom du licencié (actuellement non utilisé par le script)|
+|  |  |  |
+|"RankingFFCO" "Colonnes" "Nom | *nombre* | Numéro de la colonne, en comptant à partir de 1, contenant le nom du licencié (actuellement non utilisé par le script)|
+|  |  |  |
+|"RankingFFCO" "Colonnes" "Ranking" | *nombre* | Numéro de la colonne, en comptant à partir de 1, contenant le classement du licencié (actuellement non utilisé par le script)|
+|  |  |  |
+|"RankingFFCO" "Colonnes" "CN"| *nombre* | Numéro de la colonne, en comptant à partir de 1, contenant le nombre de points du licencié|
+|  |  |  |
+|"RankingFFCO" "Colonnes" "NumeroLicenceFFCO"| *nombre* | Numéro de la colonne, en comptant à partir de 1, contenant le numéro de licence FFCO du licencié|
+|  |  |  |
+|"RankingFFCO" "AjoutIdentifiant" | *liste d'éléments complexes* | Cette section permet d'ajouter des numéros de licence FFCO à des participants|
+|  |  |  |
+|"RankingFFCO" "AjoutIdentifiant"[*] "Nom" | *chaine* | Nom du participant pour lequel on veut ajouter un numéro de licence FFCO|
+|  |  |  |
+|"RankingFFCO" "AjoutIdentifiant"[*] "Prenom" | *chaine* | Prénom du participant pour lequel on veut ajouter un numéro de licence FFCO|
+|  |  |  |
+|"RankingFFCO" "AjoutIdentifiant"[*] "Club" | *chaine* | Club du participant pour lequel on veut ajouter un numéro de licence FFCO|
+|  |  |  |
+|"RankingFFCO" "AjoutIdentifiant"[*] "LicenceFFCO" | *nombre entier* | Numéro de licence FFCO du participant pour lequel on veut ajouter un un numéro de licence FFCO|
 
 __*Remarques*__
 - Cette section n'est nécessaire que si un départ au ranking d'au moins un circuit est envisagé
@@ -223,55 +223,55 @@ __*Remarques*__
 ### Ranking IOF
 | Clef | Type valeur | Détails |
 |------------|:--------:|-----------------------------|
-|"RankingIOF" | *element complexe* | Défini la façon d'accéder et de traiter les données issues des divers classements de l'IOF.
-|
-|"RankingIOF" "FichierCSV" | *element complexe* | Section contenant les noms des fichiers CSV des classements IOF
-|
-|"RankingIOF" "FichierCSV" "Men" | *element complexe* | Section contenant les noms des fichiers CSV des classements IOF pour les hommes
-|
-|"RankingIOF" "FichierCSV" "Men" "PedestreSprint" | *chaine* | Nom du fichier CSV contenant le classement IOF des hommes en sprint pédestre
-|
-|"RankingIOF" "FichierCSV" "Men" "PedestreMDLD" | *chaine* | Nom du fichier CSV contenant le classement IOF des hommes en MD et LD pédestre
-|
-|"RankingIOF" "FichierCSV" "Men" "MTBO" | *chaine* | Nom du fichier CSV contenant le classement IOF des hommes VTT'O
-|
-|"RankingIOF" "FichierCSV" "Men" "SkiO" | *chaine* | Nom du fichier CSV contenant le classement IOF des hommes en Ski'O
-|
-|"RankingIOF" "FichierCSV" "Men" "TrailO" | *chaine* | Nom du fichier CSV contenant le classement IOF des hommes en Trail'O
-|
-|"RankingIOF" "FichierCSV" "Women" | *element complexe* | Section contenant les noms des fichiers CSV des classements IOF pour les femmes
-|
-|"RankingIOF" "FichierCSV" "Women" "PedestreSprint" | *chaine* | Nom du fichier CSV contenant le classement IOF des femmes en sprint pédestre
-|
-|"RankingIOF" "FichierCSV" "Women" "PedestreMDLD" | *chaine* | Nom du fichier CSV contenant le classement IOF des femmes en MD et LD pédestre
-|
-|"RankingIOF" "FichierCSV" "Women" "MTBO" | *chaine* | Nom du fichier CSV contenant le classement IOF des femmes VTT'O
-|
-|"RankingIOF" "FichierCSV" "Women" "SkiO" | *chaine* | Nom du fichier CSV contenant le classement IOF des femmes en Ski'O
-|
-|"RankingIOF" "FichierCSV" "Women" "TrailO" | *chaine* | Nom du fichier CSV contenant le classement IOF des femmes en Trail'O
-|
-|"RankingIOF" "Encodage" | *chaine* | Encodage utilisé pour le fichier CSV. Typiquement "ansi" ou "utf8"
-|
-|"RankingIOF" "SeparateurColonnesCSV" | *chaine* | Séparateur de colonnes du fichier CSV. Typiquement une virgule ou un point-virgule.
-|
-|"RankingIOF" "DebutTitre" | *chaine* | Début de la ligne de titre devant être ignorée. Toute ligne commençant par la chaine indiquée sera ignorée.
-|
-|"RankingIOF" "Colonnes" | *element complexe* | Cette section définies dans quelles colonnes du fichier CSV se trouvent les ,informations debvant être utilisées
-|
-|"RankingIOF" "Colonnes" "Id" | *nombre* | Numéro de la colonne, en comptant à partir de 1, contenant l'identifiant IOF du concurrent
-|
-|"RankingIOF" "Colonnes" "Points" | *nombre* | Numéro de la colonne, en comptant à partir de 1, contenant le nombre de poinst du concurrent au classement IOF
-|
-|"RankingIOF" "AjoutIdentifiant" | *liste d'éléments complexes* | Cette section permet d'ajouter des identifiants IOF à des participants
-|
-|"RankingIOF" "AjoutIdentifiant"[*] "Nom" | *chaine* | Nom du participant pour lequel on veut ajouter un identifiant IOF
-|
-|"RankingIOF" "AjoutIdentifiant"[*] "Prenom" | *chaine* | Prénom du participant pour lequel on veut ajouter un identifiant IOF
-|
-|"RankingIOF" "AjoutIdentifiant"[*] "Club" | *chaine* | Club du participant pour lequel on veut ajouter un identifiant IOF
-|
-|"RankingIOF" "AjoutIdentifiant"[*] "IdIof" | *nombre entier* | Identifiant IOF du participant pour lequel on veut ajouter un identifiant IOF
+|"RankingIOF" | *element complexe* | Défini la façon d'accéder et de traiter les données issues des divers classements de l'IOF.|
+|  |  |  |
+|"RankingIOF" "FichierCSV" | *element complexe* | Section contenant les noms des fichiers CSV des classements IOF|
+|  |  |  |
+|"RankingIOF" "FichierCSV" "Men" | *element complexe* | Section contenant les noms des fichiers CSV des classements IOF pour les hommes|
+|  |  |  |
+|"RankingIOF" "FichierCSV" "Men" "PedestreSprint" | *chaine* | Nom du fichier CSV contenant le classement IOF des hommes en sprint pédestre|
+|  |  |  |
+|"RankingIOF" "FichierCSV" "Men" "PedestreMDLD" | *chaine* | Nom du fichier CSV contenant le classement IOF des hommes en MD et LD pédestre|
+|  |  |  |
+|"RankingIOF" "FichierCSV" "Men" "MTBO" | *chaine* | Nom du fichier CSV contenant le classement IOF des hommes VTT'O|
+|  |  |  |
+|"RankingIOF" "FichierCSV" "Men" "SkiO" | *chaine* | Nom du fichier CSV contenant le classement IOF des hommes en Ski'O|
+|  |  |  |
+|"RankingIOF" "FichierCSV" "Men" "TrailO" | *chaine* | Nom du fichier CSV contenant le classement IOF des hommes en Trail'O|
+|  |  |  |
+|"RankingIOF" "FichierCSV" "Women" | *element complexe* | Section contenant les noms des fichiers CSV des classements IOF pour les femmes|
+|  |  |  |
+|"RankingIOF" "FichierCSV" "Women" "PedestreSprint" | *chaine* | Nom du fichier CSV contenant le classement IOF des femmes en sprint pédestre|
+|  |  |  |
+|"RankingIOF" "FichierCSV" "Women" "PedestreMDLD" | *chaine* | Nom du fichier CSV contenant le classement IOF des femmes en MD et LD pédestre|
+|  |  |  |
+|"RankingIOF" "FichierCSV" "Women" "MTBO" | *chaine* | Nom du fichier CSV contenant le classement IOF des femmes VTT'O|
+|  |  |  |
+|"RankingIOF" "FichierCSV" "Women" "SkiO" | *chaine* | Nom du fichier CSV contenant le classement IOF des femmes en Ski'O|
+|  |  |  |
+|"RankingIOF" "FichierCSV" "Women" "TrailO" | *chaine* | Nom du fichier CSV contenant le classement IOF des femmes en Trail'O|
+|  |  |  |
+|"RankingIOF" "Encodage" | *chaine* | Encodage utilisé pour le fichier CSV. Typiquement "ansi" ou "utf8"|
+|  |  |  |
+|"RankingIOF" "SeparateurColonnesCSV" | *chaine* | Séparateur de colonnes du fichier CSV. Typiquement une virgule ou un point-virgule.|
+|  |  |  |
+|"RankingIOF" "DebutTitre" | *chaine* | Début de la ligne de titre devant être ignorée. Toute ligne commençant par la chaine indiquée sera ignorée.|
+|  |  |  |
+|"RankingIOF" "Colonnes" | *element complexe* | Cette section définies dans quelles colonnes du fichier CSV se trouvent les ,informations debvant être utilisées|
+|  |  |  |
+|"RankingIOF" "Colonnes" "Id" | *nombre* | Numéro de la colonne, en comptant à partir de 1, contenant l'identifiant IOF du concurrent|
+|  |  |  |
+|"RankingIOF" "Colonnes" "Points" | *nombre* | Numéro de la colonne, en comptant à partir de 1, contenant le nombre de poinst du concurrent au classement IOF|
+|  |  |  |
+|"RankingIOF" "AjoutIdentifiant" | *liste d'éléments complexes* | Cette section permet d'ajouter des identifiants IOF à des participants|
+|  |  |  |
+|"RankingIOF" "AjoutIdentifiant"[*] "Nom" | *chaine* | Nom du participant pour lequel on veut ajouter un identifiant IOF|
+|  |  |  |
+|"RankingIOF" "AjoutIdentifiant"[*] "Prenom" | *chaine* | Prénom du participant pour lequel on veut ajouter un identifiant IOF|
+|  |  |  |
+|"RankingIOF" "AjoutIdentifiant"[*] "Club" | *chaine* | Club du participant pour lequel on veut ajouter un identifiant IOF|
+|  |  |  |
+|"RankingIOF" "AjoutIdentifiant"[*] "IdIof" | *nombre entier* | Identifiant IOF du participant pour lequel on veut ajouter un identifiant IOF|
 
 __*Remarques*__
 - Cette section n'est nécessaire que si un départ au ranking d'au moins un circuit est envisagé
