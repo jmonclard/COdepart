@@ -7,41 +7,52 @@ from operator import itemgetter
 import coloredlogs
 import logging
 import datetime
+import csv
 
+__updated__ = '2019-07-25 17:36:01'
 
 # ======================================================
-# Qui Quoi Quand      Plus
-# PP  0    25/04/2019 Version initiale
-# JM  1    15/05/2019 Refonte et ajout fonctionnalités
+# Qui Quand      Quoi
+# PP  25/04/2019 Version initiale
+# JM  15/05/2019 Refonte et ajout fonctionnalités
+# JM  05/06/2019 Rajout option circuit sur dossards
+# JM  11/06/2019 Génération des étiquettes et listes par club pour enveloppes
+# JM  13/06/2019 Meilleure gestion du CSV d'inscription
+# JM  18/06/2019 Gestion T-shirts
+# JM  21/06/2019 Possibilité d'ajouter dans le JSON des identifiants IOF
+# JM  24/06/2019 Correction bug en cas d'absence de solution pour un concurrent
+# JM  28/06/2019 Correction bug génération étapes en l'absence d'horaires de type auto ou ranking
+# JM  30/06/2019 Ajout possibilité d'affecter le numéro de licence FFCO et le pays d'un club dansle JSON
+# JM  25/07/2019 Correction problème membres d'un "petit" pays dans un "petit" club si différent du pays du club
 # ======================================================
 # PP : ppardo@metraware.com
 # JM : jmonclard@metraware.com
 # ======================================================
 
-# TODO Vérifications
-# TODO saut de lignes de titre dans les CSV par nombre de lignes plutôt que la reconnaissance du début
-
 
 DEFAULT_JSON_CONFIG = "ofrance2019.json"
+DEFAULT_JSON_CODES_PAYS = "codespays.json"
+MAX_TENTATIVES = 100
 
 
 class LogTool(object):
 
-    def __init__(self, level, usefile=False, logfile="./co_depart.log"):
+    def __init__(self, level, usefile=True, logfile="./co_depart.log"):
         self.log = logging.getLogger("CODepartLogger")
         # error correspond ici au niveau minimum (on voit donc toujours les error et critical)
         level = logging.ERROR - 10 * level
         if level < logging.NOTSET:
             level = logging.NOTSET
         # niceformat = '%(asctime)s.%(msecs)03d %(levelname)-8s %(funcName)-20s %(filename)17s %(lineno)5d %(message)s'
-        niceformat = '%(message)s'
+        niceformat = '%(levelname)-8s %(message)s'
+        # niceformat = '%(message)s'
         coloredlogs.install(fmt=niceformat, datefmt='%H:%M:%S', level=level)
         self.log.debug("Log started")
 
         if usefile:
             self.log.debug("Enable log file at " + str(logfile))
             fh = logging.FileHandler(str(logfile),
-                                     mode='a+')  # le fichier de log est append, mais on ne stocke QUE les grosses erreurs
+                                     mode='w')  # le fichier de log est append, mais on ne stocke QUE les grosses erreurs
             fh.setLevel(level)  # logging.WARNING
             fmt = logging.Formatter(fmt=niceformat, datefmt='%H:%M:%S')
             fh.setFormatter(fmt)
@@ -66,19 +77,27 @@ class CODepart(object):
         parser.add_argument('-v',
                             dest="verbose",
                             action="count",
-                            default=2,
+                            default=5,
                             help="Increase verbosity level (can be used many times)")
         parser.add_argument('-c',
                             dest="config",
                             default=DEFAULT_JSON_CONFIG,
                             help="Course (defaut=" + DEFAULT_JSON_CONFIG + ")")
+        parser.add_argument('-p',
+                            dest="codespays",
+                            default=DEFAULT_JSON_CODES_PAYS,
+                            help="Fichier des codes pays (defaut=" + DEFAULT_JSON_CODES_PAYS + ")")
 
         self.args = parser.parse_args(argv)
 
         self.log = LogTool(self.args.verbose).getlogger()
 
+        if not os.path.exists(self.args.codespays):
+            raise Exception("Fichier " + self.args.codespays + " introuvable.")
+        self.codespays = self.getCodesPays(self.args.codespays)['CodesPays']
+
         if not os.path.exists(self.args.config):
-            raise Exception("Dont find file " + self.args.config)
+            raise Exception("Fichier " + self.args.config + " introuvable.")
 
         self.epreuve = self.getConfiguration(self.args.config)
         self.epreuve['NbEtapes'] = len(self.epreuve['Etapes'])
@@ -89,6 +108,19 @@ class CODepart(object):
         # id;prenom;nom;sexe;an;flag;num_club;ref_club;club;num_lic;etapes;circuit;puce_si;remarques
         self.cn = []  # base ffco du cn
         self.iof = {}  # base ranking iof clef=idiof, value=dictionnaire des rankings
+        self.clubs = {}  # {Nom_du_club,{Effectif, groupe}}
+
+    def getCodesPays(self, f):
+        contenu = None
+        with open(f, encoding='utf8') as json_data:
+            contenu = json.load(json_data)
+        return contenu
+
+    def Code3ToCode2(self, code3):
+        f = [v.get('Code2') for v in self.codespays if v['Code3'] == code3]
+        if len(f) == 0:
+            raise Exception("Code pays " + code3 + " inconnu")
+        return f[0]
 
     # Lecture du fichier JSON de configuration
 
@@ -105,6 +137,11 @@ class CODepart(object):
         found = [r['output'] for r in self.epreuve['AliasCategories'] if r['input'] == cat]
 
         if len(found) != 1:
+            print(found)
+            print(cat)
+            print("-------------------------")
+            print(self.epreuve['AliasCategories'])
+            print("-------------------------")
             print("Catégorie " + str(cat) + " inconnue !")
             raise Exception("Cannot find " + str(cat) + " in AliasCategories.")
 
@@ -113,7 +150,7 @@ class CODepart(object):
     def getCategoryId(self, cat):
         found = [r['id'] for r in self.epreuve['AliasCategories'] if r['output'] == cat]
 
-        if len(found) != 1:
+        if len(found) < 1:
             raise Exception("Cannot find " + str(cat) + " in AliasCategories.")
 
         return found[0]
@@ -150,7 +187,8 @@ class CODepart(object):
             etapes_str = "1,2,3,4,5"
         return etapes_str
 
-    def ajoutCompetiteur(self, nom, prenom, sexe, club, numclub, refclub, annee, flag, categorie, licenceffco, puce_si, etapes, iofid):
+    def ajoutCompetiteur(self, nom, prenom, sexe, club, numclub, refclub, annee, flag, categorie, licenceffco, puce_si,
+                         modeletshirt, tailletshirt, etapes, iofid):
         # Recherche des points IOF
         mespointsiofsprint = 0
         mespointsiofmdld = 0
@@ -172,9 +210,10 @@ class CODepart(object):
 
         # Rechercher des points CN
         mespointscn = 0
-        pts = [p['pointscn'] for p in self.cn if p['num_lic'] == licenceffco.strip()]
-        if len(pts) == 1:
-            mespointscn = int(pts[0])
+        if self.epreuve['RankingFFCO']['UtiliserRankingFFCO'] == 'oui':
+            pts = [p['pointscn'] for p in self.cn if p['num_lic'] == licenceffco.strip()]
+            if len(pts) == 1:
+                mespointscn = int(pts[0])
 
         macategorie = self.convertToGoodCategory(categorie.strip())
         mesetapes_one_based = list(map(int, self.remplacement5Etapes(etapes).split(",")))
@@ -221,6 +260,8 @@ class CODepart(object):
                 'etapes': mesetapes,
                 'categorie': macategorie,
                 'puce_si': puce_si.strip(),
+                'modele_tshirt': modeletshirt.strip(),
+                'taille_tshirt': tailletshirt.strip(),
                 'iofid': iofid.strip(),
                 'dossard': None,
                 'heure_dep': mesheuresdedepart,
@@ -237,6 +278,60 @@ class CODepart(object):
             }
         )
 
+    def ajoutLicenceFFO(self, nom, prenom, club, licenceffco):
+        licenceffco = str(licenceffco)
+        ip = None
+        for i, m in enumerate(self.competiteurs):
+            if (m['nom'] == nom) and (m['prenom'] == prenom) and (m['club'] == club):
+                ip = i
+        if ip is not None:
+            self.competiteurs[ip]['num_lic'] = licenceffco
+            # Recherche des points CN
+            mespointscn = 0
+
+            pts = [p['pointscn'] for p in self.cn if p['num_lic'] == licenceffco.strip()]
+            if len(pts) == 1:
+                mespointscn = int(pts[0])
+
+                self.competiteurs[ip]['pointscn'] = mespointscn
+        else:
+            self.log.warning("Impossible d'affecter le numéro de licence FFCO au compétiteur : " + nom + ' ' + prenom + ' du club : ' + club)
+
+    def ajoutIdIof(self, nom, prenom, club, iofid):
+        iofid = str(iofid)
+        ip = None
+        for i, m in enumerate(self.competiteurs):
+            if (m['nom'] == nom) and (m['prenom'] == prenom) and (m['club'] == club):
+                ip = i
+        if ip is not None:
+            self.competiteurs[ip]['iofid'] = iofid
+            # Recherche des points IOF
+            mespointsiofsprint = 0
+            mespointsiofmdld = 0
+            mespointsiofmtbo = 0
+            mespointsiofskio = 0
+            mespointsioftrailo = 0
+
+            if iofid in self.iof:
+                if 'PedestreSprint' in self.iof[iofid]:
+                    mespointsiofsprint = int(self.iof[iofid]['PedestreSprint'])
+                if 'PedestreMDLD' in self.iof[iofid]:
+                    mespointsiofmdld = int(self.iof[iofid]['PedestreMDLD'])
+                if 'MTBO' in self.iof[iofid]:
+                    mespointsiofmtbo = int(self.iof[iofid]['MTBO'])
+                if 'SkiO' in self.iof[iofid]:
+                    mespointsiofskio = int(self.iof[iofid]['SkiO'])
+                if 'TrailO' in self.iof[iofid]:
+                    mespointsioftrailo = int(self.iof[iofid]['TrailO'])
+
+                self.competiteurs[ip]['pointsiofsprint'] = mespointsiofsprint
+                self.competiteurs[ip]['pointsiofmdld'] = mespointsiofmdld
+                self.competiteurs[ip]['pointsiofmtbo'] = mespointsiofmtbo
+                self.competiteurs[ip]['pointsiofskio'] = mespointsiofskio
+                self.competiteurs[ip]['pointsioftrailo'] = mespointsioftrailo
+        else:
+            self.log.warning("Impossible d'affecter l'Id IOF au compétiteur : " + nom + ' ' + prenom + ' du club : ' + club)
+
     def suppressionCompetiteur(self, nom, prenom, club):
         ip = None
         for i, m in enumerate(self.competiteurs):
@@ -252,14 +347,12 @@ class CODepart(object):
         filename = self.epreuve['Inscriptions']['FichierCSV']
         self.log.info('Ouverture de ' + filename)
         lig = 0
-        with open(filename, 'r', encoding='utf8') as f:
-            for line in f.readlines():
+
+        with open(filename, 'r', encoding=self.epreuve['Inscriptions']['Encodage']) as f:
+            reader = csv.reader(f, delimiter=self.epreuve['Inscriptions']['SeparateurColonnesCSV'])
+            for row in reader:
                 lig += 1
-                if ((lig > self.epreuve['Inscriptions']['LignesDeTitre']) and
-                        (not line.strip().startswith(self.epreuve['Inscriptions']['DebutTitre']))):  # suppression de la ligne de titre
-
-                    row = line.strip().split(self.epreuve['Inscriptions']['SeparateurColonnesCSV'])
-
+                if lig > self.epreuve['Inscriptions']['LignesDeTitre']:  # suppression des lignes de titre
                     nom = row[self.epreuve['Inscriptions']['Colonnes']['Nom'] - 1]
                     prenom = row[self.epreuve['Inscriptions']['Colonnes']['Prenom'] - 1]
                     sexe = row[self.epreuve['Inscriptions']['Colonnes']['Sexe'] - 1]
@@ -273,10 +366,21 @@ class CODepart(object):
                     puce_si = row[self.epreuve['Inscriptions']['Colonnes']['NumeroPuceSI'] - 1]
                     etapes = row[self.epreuve['Inscriptions']['Colonnes']['Etapes'] - 1]
                     iofid = row[self.epreuve['Inscriptions']['Colonnes']['IOFid'] - 1]
+                    modeletshirt = row[self.epreuve['Inscriptions']['Colonnes']['ModeleTshirt'] - 1]
+                    tailletshirt = row[self.epreuve['Inscriptions']['Colonnes']['TailleTshirt'] - 1]
 
-                    self.ajoutCompetiteur(nom, prenom, sexe, club, numclub, refclub, annee, flag, categorie, licenceffco, puce_si, etapes, iofid)
+                    self.ajoutCompetiteur(nom, prenom, sexe, club, numclub, refclub, annee, flag, categorie, licenceffco, puce_si,
+                                          modeletshirt, tailletshirt, etapes, iofid)
             # enfor line
         # with open
+
+        # ---- Ajout des Id IOF
+        for p in self.epreuve['RankingIOF']['AjoutIdentifiant']:
+            self.ajoutIdIof(p['Nom'].strip(), p['Prenom'].strip(), p['Club'].strip(), p['IdIof'])
+
+        # ---- Ajout des numéros de licence FFCO
+        for p in self.epreuve['RankingFFCO']['AjoutIdentifiant']:
+            self.ajoutLicenceFFO(p['Nom'].strip(), p['Prenom'].strip(), p['Club'].strip(), p['LicenceFFCO'])
 
         # ---- Suppression des inscrits à supprimer
         for p in self.epreuve['Inscriptions']['ParticipantsASupprimer']:
@@ -286,7 +390,8 @@ class CODepart(object):
         # ---- Ajout des inscriptions supplémentaires
         for p in self.epreuve['Inscriptions']['ParticipantsSupplementaires']:
             self.ajoutCompetiteur(p['Nom'], p['Prenom'], p['Sexe'], p['NomClub'], p['NumeroClub'], p['ReferenceClub'],
-                                  p['Annee'], p['Pays'], p['Categorie'], p['NumeroLicenceFFCO'], p['NumeroPuceSI'], p['Etapes'], p['IOFid'])
+                                  p['Annee'], p['Pays'], p['Categorie'], p['NumeroLicenceFFCO'], p['NumeroPuceSI'],
+                                  p['ModeleTshirt'], p['TailleTshirt'], p['Etapes'], p['IOFid'])
             self.log.info('Ajout du compétiteur : ' + p['Nom'] + ' ' + p['Prenom'] + ' du club : ' + p['NomClub'])
 
     # Lecture du fichier CSV du ranking IOF
@@ -297,7 +402,7 @@ class CODepart(object):
                 filename = self.epreuve['RankingIOF']['FichierCSV'][s][r]
                 if os.path.isfile(filename):
                     self.log.info('Ouverture de ' + filename)
-                    with open(filename, 'r', encoding='utf8') as f:
+                    with open(filename, 'r', encoding=self.epreuve['RankingIOF']['Encodage']) as f:
                         for line in f.readlines():
                             if not line.strip().startswith(self.epreuve['RankingIOF']['DebutTitre']):  # suppression de la ligne de titre
                                 row = line.strip().split(self.epreuve['RankingIOF']['SeparateurColonnesCSV'])
@@ -313,7 +418,7 @@ class CODepart(object):
         filename = self.epreuve['RankingFFCO']['FichierCSV']
         if os.path.isfile(filename):
             self.log.info('Ouverture de ' + filename)
-            with open(filename, 'r', encoding='ansi') as f:
+            with open(filename, 'r', encoding=self.epreuve['RankingFFCO']['Encodage']) as f:
                 for line in f.readlines():
                     if not line.strip().startswith(self.epreuve['RankingFFCO']['DebutTitre']):  # suppression de la ligne de titre
                         row = line.strip().split(self.epreuve['RankingFFCO']['SeparateurColonnesCSV'])
@@ -357,30 +462,184 @@ class CODepart(object):
                            str(depart) + " dans la liste " + str(lst_circuits))
         return known
 
-    def pgcd(self, a, b):
-        while a % b != 0:
-            a, b = b, a % b
-        return b
+    def genereListeParClub(self):
+        with open(self.epreuve['Enveloppes']['NomFichierLaTeX'] + ".tex", "w", encoding='utf-8') as file:
+            file.write("\\documentclass{report}\n")
+            file.write("\\usepackage[a4paper, " +
+                       " left=" + str(self.epreuve['Enveloppes']['MargeGauche_mm']) + "mm," +
+                       " right=" + str(self.epreuve['Enveloppes']['MargeDroite_mm']) + "mm," +
+                       " top=" + str(self.epreuve['Enveloppes']['MargeSuperieure_mm']) + "mm," +
+                       " bottom=" + str(self.epreuve['Enveloppes']['MargeInferieure_mm']) + "mm," +
+                       "]{geometry}\n")
+            file.write("\\usepackage{graphicx}\n")
+            file.write("\\usepackage{longtable}\n")
+            file.write("\\usepackage{lmodern}\n")
+            file.write("\\begin{document}\n")
+            file.write("  \\setlength\\tabcolsep{2pt}\n")
+            file.write("  \\pagenumbering{gobble}\n")
+            file.write("  \\sffamily\n")
 
-    def pgcds(self, nums):
-        if len(nums) == 2:
-            return self.pgcd(nums[0], nums[1])
-        else:
-            return self.pgcd(nums[0], self.pgcds(nums[1:]))
+            for club, v in sorted(self.clubs.items()):
+                nomclub = club.replace("\\", "\\\\")
+                nomclub = nomclub.replace("&", "\\&")
+                flagfilename = self.epreuve['FlagsSubdirectory'] + "/" + self.Code3ToCode2(v['flag']).lower() + ".png"
+
+                file.write("  \\Huge \\centering \\bfseries " + nomclub + " " + str(v['refclub']) + " " + v['flag'] +
+                           "\\normalfont \\footnotesize \\sffamily \\hfill \\includegraphics[height=" +
+                           str(self.epreuve['Enveloppes']['HauteurDrapeau_mm']) + "mm]{" + flagfilename + "} \\newline \n")
+
+                if self.epreuve['Enveloppes']['CircuitsSurListe'] == 'oui':
+                    file.write("  \\begin{longtable}{|c|l|r|c|c|*{" + str(self.epreuve['NbEtapes']) + "}{ccc|}}\n")
+                    file.write("    Dossard & Nom  & Puce    & Catégorie & T-shirt & \\multicolumn{" +
+                               str(3 * self.epreuve['NbEtapes']) +
+                               "}{c|}{Circuits, nom du départ et heures de départ} | \\\\\n")
+                    file.write("    \\itshape Bib     & \\itshape  Name & \\itshape SI card & \\itshape  Class  & \\itshape  T-shirt   & \\multicolumn{" +
+                               str(3 * self.epreuve['NbEtapes']) +
+                               "}{c|}{\\itshape Courses, start names and start times} | \\\\\n")
+                    file.write("    \\hline\n")
+                    ch = ''
+                    for etape in range(self.epreuve['NbEtapes']):
+                        ch += " & \\multicolumn{3}{c|}{Étape " + str(etape + 1) + "}"
+                    file.write("    & & & &" + ch + " \\\\\n")
+                    ch = ''
+                    for etape in range(self.epreuve['NbEtapes']):
+                        ch += " & \\multicolumn{3}{c|}{\\itshape Stage " + str(etape + 1) + "}"
+                    file.write("    & & & &" + ch + " \\\\\n")
+                else:
+                    file.write("  \\begin{longtable}{|c|l|r|c|c|*{" + str(self.epreuve['NbEtapes']) + "}{cc|}}\n")
+                    file.write("    Dossard & Nom  & Puce    & Catégorie & T-shirt & \\multicolumn{" +
+                               str(2 * self.epreuve['NbEtapes']) +
+                               "}{c|}{Nom du départ et heures de départ} \\\\\n")
+                    file.write("    \\itshape Bib     & \\itshape Name & \\itshape SI card & \\itshape Class  & \\itshape  T-shirt  & \\multicolumn{" +
+                               str(2 * self.epreuve['NbEtapes']) +
+                               "}{c|}{\\itshape Start names and start times} \\\\\n")
+                    file.write("    \\hline\n")
+                    ch = ''
+                    for etape in range(self.epreuve['NbEtapes']):
+                        ch += " & \\multicolumn{2}{c|}{Étape " + str(etape + 1) + "}"
+                    file.write("    & & & &" + ch + " \\\\\n")
+                    ch = ''
+                    for etape in range(self.epreuve['NbEtapes']):
+                        ch += " & \\multicolumn{2}{c|}{\\itshape Stage " + str(etape + 1) + "}"
+                    file.write("    & & & &" + ch + " \\\\\n")
+                file.write("    \\hline\n")
+                coureurs_du_club = [x for x in self.competiteurs if x['club'] == club]
+                for comp in sorted(coureurs_du_club, key=lambda k: k['nom'] + " " + k['prenom']):
+                    etapes_str = ""
+                    for etape in range(self.epreuve['NbEtapes']):
+                        etapes_str += " & "
+                        if etape in comp['etapes']:
+                            if comp['heure_dep'][etape] is None:
+                                h_str = ' '
+                            else:
+                                h_str = comp['heure_dep'][etape].strftime("%H:%M")
+                            if self.epreuve['Enveloppes']['CircuitsSurListe'] == 'oui':
+                                etapes_str += str(comp['circuits'][etape]) + " & " + str(comp['posdepart'][etape]) + " & " + h_str
+                            else:
+                                etapes_str += str(comp['posdepart'][etape]) + " & " + h_str
+                        else:
+                            if self.epreuve['Enveloppes']['CircuitsSurListe'] == 'oui':
+                                etapes_str += "-  & - &  -"
+                            else:
+                                etapes_str += "- &  -"
+                    # endfor
+                    if comp['modele_tshirt'] == "":
+                        tshirt = " "
+                    else:
+                        tshirt = comp['modele_tshirt'] + "/" + comp['sexe'] + "/" + comp['taille_tshirt']
+                    file.write("    " + str(comp['dossard']) + " & " +
+                               comp['nom'] + " " + comp['prenom'] + " & " +
+                               str(comp['puce_si']) + " & " +
+                               comp['categorie'][:14] + " & " +
+                               tshirt +
+                               etapes_str + "\\\\\n")
+                file.write("  \\end{longtable}\n")
+                file.write("\\newpage\n")
+
+            file.write("\\end{document}\n")
+
+    def genereEtiquettes(self):
+        with open(self.epreuve['Etiquettes']['NomFichierLaTeX'] + ".tex", "w", encoding='utf-8') as file:
+            file.write("\\documentclass{report}\n")
+            file.write("\\usepackage[a4paper, left=" + str(self.epreuve['Etiquettes']['MargeGauche_mm']) +
+                       "mm, right=0mm, top=" + str(self.epreuve['Etiquettes']['MargeSuperieure_mm']) +
+                       "mm, bottom=0mm]{geometry}\n")
+            file.write("\\usepackage[most]{tcolorbox}\n")
+            file.write("\\usepackage{lmodern}\n")
+            file.write("\\begin{document}\n")
+            file.write("  \\newcommand{\\txt}[5]{\n")
+            file.write("    \\tcboxfit{%\n")
+            file.write("        \\sffamily \\Huge \\bfseries ~ #1 ~\\par%\n")
+            file.write("        \\large #2\\par%\n")
+            file.write("        \\vspace{3mm}%\n")
+            file.write("        #3\\hfill \\includegraphics[height=" + str(self.epreuve['Etiquettes']['HauteurDrapeau_mm']) + "mm]{#5}\\hfill #4%\n")
+            file.write("      }%\n")
+            file.write("    }\n")
+
+            file.write("  \\tcbset{\n")
+            file.write("    colframe=" + str(self.epreuve['Etiquettes']['CouleurCadre']) + ",\n")
+            file.write("    colback=white,\n")
+            file.write("    size=tight,\n")
+            file.write("    nobeforeafter,\n")
+            file.write("    valign=center,\n")
+            file.write("    fit fontsize macros,\n")
+            file.write("    fit algorithm=fontsize,\n")
+            file.write("    boxsep=" + str(self.epreuve['Etiquettes']['MargeEntreColonnes_mm']) + "mm,\n")
+            file.write("    width=" + str(self.epreuve['Etiquettes']['LargeurEtiquette_mm']) + "mm,\n")
+            file.write("    height=" + str(self.epreuve['Etiquettes']['HauteurEtiquette_mm']) + "mm,\n")
+            file.write("    halign=flush center\n")
+            file.write("  }\n")
+            file.write("\n")
+            file.write("  \\setlength\\parindent{0pt}\n")
+            file.write("\n")
+
+            col = 0
+            lig = 0
+            for c, v in sorted(self.clubs.items()):
+                flagfilename = self.epreuve['FlagsSubdirectory'] + "/" + self.Code3ToCode2(v['flag']).lower() + ".png"
+                nomclub = c.replace("\\", "\\\\")
+                nomclub = nomclub.replace("&", "\\&")
+                file.write("  \\txt{" + nomclub + "}{" + str(v['refclub']) + "}{" + str(v['dossardmin']) + "}{" + str(v['dossardultramax']) +
+                           "}{" + flagfilename + "}")
+                if (lig == self.epreuve['Etiquettes']['NombreDeLignes'] - 1) and (col == self.epreuve['Etiquettes']['NombreDeColonnes'] - 1):
+                    file.write("\\newpage\n")
+                    col = 0
+                    lig = 0
+                elif col == self.epreuve['Etiquettes']['NombreDeColonnes'] - 1:
+                    file.write("\\vspace{" + str(self.epreuve['Etiquettes']['MargeEntreLignes_mm']) + "mm} \\newline\n")
+                    col = 0
+                    lig += 1
+                else:
+                    file.write("\n")
+                    col += 1
+
+            file.write("\\end{document}\n")
 
     def genereFichierDossards(self):
         sep = self.epreuve['Dossards']['SeparateurColonnesCSV']
         with open(self.epreuve['Dossards']['NomFichierCSVDossards'] + ".csv", "w", encoding='ansi') as file:
-            out_str = sep.join(
-                [
-                    'Dossard', 'Puce', 'Nom', 'Prenom', 'cat.', 'Nom Club', 'Nat',
-                    'Circuit1', 'Depart1', 'H Depart1',
-                    'Circuit2', 'Depart2', 'H Depart2',
-                    'Circuit3', 'Depart3', 'H Depart3',
-                    'Circuit4', 'Depart4', 'H Depart4',
-                    'Circuit5', 'Depart5', 'H Depart5'
-                ]
-            )
+            if self.epreuve['Dossards']['CircuitsSurDossards'] == 'oui':
+                out_str = sep.join(
+                    [
+                        'Dossard', 'Puce', 'Nom', 'Prenom', 'cat.', 'Nom Club', 'Nat', 'T-shirt',
+                        'Circuit1', 'Depart1', 'H Depart1',
+                        'Circuit2', 'Depart2', 'H Depart2',
+                        'Circuit3', 'Depart3', 'H Depart3',
+                        'Circuit4', 'Depart4', 'H Depart4',
+                        'Circuit5', 'Depart5', 'H Depart5'
+                    ]
+                )
+            else:
+                out_str = sep.join(
+                    [
+                        'Dossard', 'Puce', 'Nom', 'Prenom', 'cat.', 'Nom Club', 'Nat', 'T-shirt',
+                        'Depart1', 'H Depart1',
+                        'Depart2', 'H Depart2',
+                        'Depart3', 'H Depart3',
+                        'Depart4', 'H Depart4',
+                        'Depart5', 'H Depart5'
+                    ]
+                )
 
             max_dossard = 0
 
@@ -390,9 +649,14 @@ class CODepart(object):
                 if p['flag'] != 'Vacant':
                     if p['dossard'] > max_dossard:
                         max_dossard = p['dossard']
+                    if p['modele_tshirt'] == "":
+                        tshirt = " "
+                    else:
+                        tshirt = p['modele_tshirt'] + "/" + p['sexe'] + "/" + p['taille_tshirt']
+
                     out_str = sep.join(
                         [
-                            str(p['dossard']), str(p['puce_si']), str(p['nom']), str(p['prenom']), str(p['categorie']), str(p['club']), str(p['flag'])
+                            str(p['dossard']), str(p['puce_si']), str(p['nom']), str(p['prenom']), str(p['categorie']), str(p['club']), str(p['flag']), tshirt
                         ]
                     )
                     etapes_str = ''
@@ -403,10 +667,15 @@ class CODepart(object):
                                 h_str = ' '
                             else:
                                 h_str = p['heure_dep'][etape].strftime("%H:%M")
-
-                            etapes_str += sep.join([str(p['circuits'][etape]), str(p['posdepart'][etape]), h_str])
+                            if self.epreuve['Dossards']['CircuitsSurDossards'] == 'oui':
+                                etapes_str += sep.join([str(p['circuits'][etape]), str(p['posdepart'][etape]), h_str])
+                            else:
+                                etapes_str += sep.join([str(p['posdepart'][etape]), h_str])
                         else:
-                            etapes_str += sep.join(['**', '*', '*****'])
+                            if self.epreuve['Dossards']['CircuitsSurDossards'] == 'oui':
+                                etapes_str += sep.join(['**', '*', '*****'])
+                            else:
+                                etapes_str += sep.join(['*', '*****'])
                     # endfor
                     file.write(out_str + etapes_str + '\n')
                 # endif
@@ -415,11 +684,14 @@ class CODepart(object):
             # dossards supplemetaires
             for _ in range(int(self.epreuve['Dossards']['DossardsSupplementaires'])):
                 max_dossard += 1
-                out_str = sep.join([str(max_dossard), ' ', ' ', ' ', ' ', ' ', ' '])
+                out_str = sep.join([str(max_dossard), ' ', ' ', ' ', ' ', ' ', ' ', ' '])
                 etapes_str = ''
                 for etape in range(self.epreuve['NbEtapes']):
                     etapes_str += ','
-                    etapes_str += sep.join([' ', ' ', ' '])
+                    if self.epreuve['Dossards']['CircuitsSurDossards'] == 'oui':
+                        etapes_str += sep.join([' ', ' ', ' '])
+                    else:
+                        etapes_str += sep.join([' ', ' '])
                 file.write(out_str + etapes_str + '\n')
 
     def genereCSV(self, etape, contenu):
@@ -442,10 +714,11 @@ class CODepart(object):
             file.write(out_str + '\n')
             file.write(contenu)
 
-    def genereLigneCSV(self, p, heure):
+    def genereLigneCSV(self, p, etape, heure):
         out_str = ''
         sep = self.epreuve['FichiersGeneres']['SeparateurColonnesCSV']
         num_categorie = self.getCategoryId(p['categorie'])
+        pts_iof = self.pointsIofDeLEtape(p, etape)
         if self.epreuve['FichiersGeneres']['GEC'] == 'MeOS':
             out_str = sep.join(
                 [
@@ -454,7 +727,7 @@ class CODepart(object):
                     '', '', '0', str(p['num_club']), str(p['ref_club']),
                     str(p['club']), str(p['flag']), str(num_categorie), str(p['categorie']), '',
                     '', '', '', str(p['dossard']),
-                    '', '', '', '', '', '', '', '', '', '', '', '', '', str(p['iofid'])
+                    '', '', '', '', '', '', '', '', '', '', '', '', str(pts_iof), str(p['iofid'])
                 ]
             )
         else:  # format pour d'autres logiciel de GEC à écrire ici
@@ -508,10 +781,10 @@ class CODepart(object):
         return mespointsiof
 
     def traitementEtape(self, etape, fileOutputMD):
-        self.log.info("Traitement de l'étape " + str(etape + 1))
+        self.log.info("====== Traitement de l'étape " + str(etape + 1) + "======")
         self.calculHeuresMinMaxTranches(etape, fileOutputMD)
-        if self.epreuve['Etapes'][etape]['FinTranches'][0] is not None:
-            self.repartitionParticipants(etape, fileOutputMD)
+        # if self.epreuve['Etapes'][etape]['FinTranches'][0] is not None:
+        self.repartitionParticipants(etape, fileOutputMD)
 
     def calculHeureDebutDuCircuitDansLaTranche(self, heure_debut_circuit, intervalle, heure_debut_tranche):
         heure_debut = None
@@ -594,12 +867,10 @@ class CODepart(object):
                 circuits_intr[r['circuits'][etape]] = 1
             else:
                 circuits_intr[r['circuits'][etape]] += 1
-
             if r['club'] not in clubs_intr:
                 clubs_intr[r['club']] = 1
             else:
                 clubs_intr[r['club']] += 1
-
             if r['flag'] not in flags_intr:
                 flags_intr[r['flag']] = 1
             else:
@@ -630,6 +901,7 @@ class CODepart(object):
                                            p['circuits'][etape] == circ['Nom'] and p['pointscn'] == 0
                                            and self.pointsIofDeLEtape(p, etape) == 0]
             random.shuffle(presents_sans_ranking_ni_cn)  # ordre aléatoire si pas de ranking
+
             for ip in presents_sans_ranking_ni_cn:
                 participants[ip]['heure_dep'][etape] = heure_courante
                 participants[ip]['posdepart'][etape] = circ['Depart']
@@ -687,7 +959,7 @@ class CODepart(object):
             #        ,1130311,29334       ,Patrick ,AGOSTINELLI ,1961 ,M ,       ,0   ,09:00:00,         ,       ,0           ,1303     ,1303PZ   ,1303PZ MARCO,
             # France,1        ,H55    ,      ,      ,      ,      ,100       ,,,,,,,,,,,,,,
             for copart in sorted(deps, key=lambda k: k['categorie']):
-                out_str = self.genereLigneCSV(copart, heure=str(copart['heure_dep'][etape] - zeroDate))
+                out_str = self.genereLigneCSV(copart, etape, heure=str(copart['heure_dep'][etape] - zeroDate))
                 csv_out_str += out_str + '\n'
                 circ = self.circuitDeLaCategorie(etape, copart['categorie'])
                 if circ in noms_circuits_ranking:
@@ -701,7 +973,7 @@ class CODepart(object):
             fileOutputMD.write('| - | - | - | - | - |\n')
             for mp in liste_participants_manuel:
                 for p in mp:
-                    out_str = self.genereLigneCSV(p, heure='')
+                    out_str = self.genereLigneCSV(p, etape, heure='')
                     csv_out_str += out_str + '\n'
                     self.genereLigneMarkdown(fileOutputMD, p, etape)
 
@@ -711,7 +983,7 @@ class CODepart(object):
             fileOutputMD.write('| - | - | - | - | - |\n')
             for mp in liste_participants_depart_boitier:
                 for p in mp:
-                    out_str = self.genereLigneCSV(p, heure='')
+                    out_str = self.genereLigneCSV(p, etape, heure='')
                     csv_out_str += out_str + '\n'
                     self.genereLigneMarkdown(fileOutputMD, p, etape)
 
@@ -956,6 +1228,7 @@ class CODepart(object):
         participants = [p for p in self.competiteurs if etape in p['etapes']]
 
         self.log.debug("Répartition participants pour l'étape " + str(etape + 1))
+        self.log.debug("Nombre de participants " + str(len(participants)))
 
         zeroDate_str = self.epreuve['Etapes'][etape]['ZeroDate']
         zeroDate = datetime.datetime.strptime(zeroDate_str, "%Y/%m/%dT%H:%M")
@@ -980,6 +1253,7 @@ class CODepart(object):
         local_info_departs = {d['Depart'] for d in circuits_de_l_etape}
         for depart in sorted(local_info_departs):
             fileOutputMD.write("\n---\n\n### Départ " + str(depart) + "\n\n")
+            self.log.debug("------ Départ " + str(depart) + "------")
 
             liste_circuits_manuels = []
             liste_circuits_ranking = []
@@ -1050,22 +1324,25 @@ class CODepart(object):
                     index = self.getIndexDuCircuitDeLaCategorie(circuits_de_l_etape, categ[0])
                     circuits_de_l_etape[index]['NbParticipants'] = categ[1]
 
-                # Détermination des horaires disponibles
-                for index_circuit in range(len(circuits_de_l_etape)):
-                    dep = self.calculHeureDebutDuCircuitDansLaTranche(
-                        heures_debut_circuits[index_circuit],
-                        intervalles[index_circuit],
-                        self.epreuve['Etapes'][etape]['DebutTranches'][t]
-                    )
-                    circuits_de_l_etape[index_circuit]['HeuresDispo'] = []
-                    if (dep is not None and self.epreuve['Etapes'][etape]['FinTranches'][t] is not None):
-                        while dep <= self.epreuve['Etapes'][etape]['FinTranches'][t]:
-                            circuits_de_l_etape[index_circuit]['HeuresDispo'].append(dep)
-                            dep += datetime.timedelta(minutes=intervalles[index_circuit])
-
                 # Création de bins communs, ensuite on sortira les cas spéciaux
+                tentative = 0
                 bins_are_good = False
-                while not bins_are_good:
+                while (tentative < MAX_TENTATIVES) and (not bins_are_good):
+                    tentative += 1
+                    self.log.debug("Tentative " + str(tentative) + "... ")
+
+                    # Détermination des horaires disponibles
+                    for index_circuit in range(len(circuits_de_l_etape)):
+                        dep = self.calculHeureDebutDuCircuitDansLaTranche(
+                            heures_debut_circuits[index_circuit],
+                            intervalles[index_circuit],
+                            self.epreuve['Etapes'][etape]['DebutTranches'][t]
+                        )
+                        circuits_de_l_etape[index_circuit]['HeuresDispo'] = []
+                        if (dep is not None and self.epreuve['Etapes'][etape]['FinTranches'][t] is not None):
+                            while dep <= self.epreuve['Etapes'][etape]['FinTranches'][t]:
+                                circuits_de_l_etape[index_circuit]['HeuresDispo'].append(dep)
+                                dep += datetime.timedelta(minutes=intervalles[index_circuit])
 
                     bins = dict()
 
@@ -1096,8 +1373,12 @@ class CODepart(object):
                                     start_index += 1
 
                                 if not foundPlace:
-                                    self.log.warning("(Répartition) Impossible de trouver une place dans le circuit" + str(c) + " pour " + str(p))
+                                    self.log.debug("(Répartition) Impossible de trouver une place dans le circuit" + str(c) + " pour " + str(p))
                                     bins_are_good = False
+                if tentative >= MAX_TENTATIVES:
+                    self.log.error("(Répartition) Impossible de trouver une place pour un concurent !")
+                else:
+                    self.log.debug("Tous les concurrents ont un horaire pour cette tranche.")
 
                 bincounts = [len(bins[bin]) for bin in bins]
                 if len(bincounts) > 0:
@@ -1143,21 +1424,21 @@ class CODepart(object):
                     fileOutputMD.write('- Premiers départs de la tranche horaire ' + str(t + 1) + ' : ' + hmin_str + '\n')
                     fileOutputMD.write('- Derniers départs de la tranche horaire ' + str(t + 1) + ' : ' + hmax_str + '\n')
 
-                    # affectation des départs participants manuels
-                    if len(presentManuel_parts) > 0:
-                        for part in presentManuel_parts:
-                            part['posdepart'][etape] = depart
-                        liste_participants_manuel.append(presentManuel_parts)
-                    # affectation des départs des participants non gérés
-                    if len(presentLibre_parts) > 0:
-                        for part in presentLibre_parts:
-                            part['posdepart'][etape] = depart
-                        liste_participants_libre.append(presentLibre_parts)
-                    # affectation des départs des participants au boîtier
-                    if len(presentBoitier_parts) > 0:
-                        for part in presentBoitier_parts:
-                            part['posdepart'][etape] = depart
-                        liste_participants_depart_boitier.append(presentBoitier_parts)
+                # affectation des départs participants manuels
+                if len(presentManuel_parts) > 0:
+                    for part in presentManuel_parts:
+                        part['posdepart'][etape] = depart
+                    liste_participants_manuel.append(presentManuel_parts)
+                # affectation des départs des participants non gérés
+                if len(presentLibre_parts) > 0:
+                    for part in presentLibre_parts:
+                        part['posdepart'][etape] = depart
+                    liste_participants_libre.append(presentLibre_parts)
+                # affectation des départs des participants au boîtier
+                if len(presentBoitier_parts) > 0:
+                    for part in presentBoitier_parts:
+                        part['posdepart'][etape] = depart
+                    liste_participants_depart_boitier.append(presentBoitier_parts)
             # endfor tranche
         # endfor depart
 
@@ -1178,7 +1459,7 @@ class CODepart(object):
         fileOutputMD.write("\n")
         self.log.info("Fin de traitement de l'étape " + str(etape + 1))
 
-    # end traitement étape
+    # end repartitionParticipants
 
     # ==========================================================================================================================================
 
@@ -1288,97 +1569,115 @@ class CODepart(object):
     # Affectation des groupes horaires aux clubs et des tranches horaires aux participants
 
     def affectationTranches(self, fileOutputMD):
-        clubs = dict()
         flags = dict()
-        dic_groupes = dict()
+        effectifGroupes = self.epreuve['TranchesHoraires']['NbTranches'] * [0]
+
         for r in self.competiteurs:
-            if r['club'] not in clubs:
-                clubs[r['club']] = 1
+            nomclub = r['club']
+            if nomclub not in self.clubs:
+                pays = r['flag']
+
+                # Recherche si le club a un code de pays forcé
+                for c in self.epreuve['NationaliteClubs']:
+                    if nomclub in c:
+                        pays = c[nomclub.strip()].strip()
+
+                # Ajout du club à la liste des clubs
+                self.clubs[nomclub] = {'nomcomplet': nomclub + ' ' + str(r['ref_club']),
+                                       'refclub': str(r['ref_club']),
+                                       'effectif': None,
+                                       'groupe': None,
+                                       'flag': pays,
+                                       'dossardmin': None,
+                                       'dossardmax': None,
+                                       'dossardultramax': None}
+                self.clubs[nomclub]['effectif'] = 1
             else:
-                clubs[r['club']] += 1
+                self.clubs[nomclub]['effectif'] += 1
+
             if r['flag'] not in flags:
                 flags[r['flag']] = 1
             else:
                 flags[r['flag']] += 1
 
-        effectifGroupes = self.epreuve['TranchesHoraires']['NbTranches'] * [0]
-
-        clubsby_required_members = sorted(clubs.items(), key=lambda k: k[1], reverse=True)
-
         # affectation des clubs ayant un groupe forcé
-        for c in clubsby_required_members:
-            groupe = self.groupeHoraireForceDuClub(c[0])
+        for c in self.clubs:
+            groupe = self.groupeHoraireForceDuClub(c)
             if groupe >= 0:
+                self.clubs[c]['groupe'] = groupe
                 av = effectifGroupes[groupe]
                 # affectation
                 for m in self.competiteurs:
-                    if m['tranches'][0] is None and m['club'] == c[0]:
+                    if m['tranches'][0] is None and m['club'] == c:
                         for i in range(self.epreuve['NbEtapes']):
                             m['tranches'][i] = (i + groupe) % self.epreuve['TranchesHoraires']['NbTranches']
                         effectifGroupes[groupe] += 1
                 ap = effectifGroupes[groupe]
                 if av != ap:
-                    self.log.debug("CLUB " + str(c[0]) + " dans le groupe " + str(groupe + 1) + "  ... " + str(av) + "=>" + str(ap))
-                dic_groupes[c[0]] = groupe
+                    self.log.debug("CLUB " + str(c) + " dans le groupe " + str(groupe + 1) + "  ... " + str(av) + "=>" + str(ap))
 
         # affectation des gros clubs
-        for c in clubsby_required_members:
-            if c[1] >= int(self.epreuve['TranchesHoraires']['SeuilClub']):
+        for c, v in self.clubs.items():
+            if v['effectif'] >= int(self.epreuve['TranchesHoraires']['SeuilClub']):
                 # c'est un grand club, trouvons le groupe ayant l'effectif minimal
                 groupe = effectifGroupes.index(min(effectifGroupes))
+                v['groupe'] = groupe
                 av = effectifGroupes[groupe]
                 # affectation
                 for m in self.competiteurs:
-                    if m['tranches'][0] is None and m['club'] == c[0]:
+                    if m['tranches'][0] is None and m['club'] == c:
                         for i in range(self.epreuve['NbEtapes']):
                             m['tranches'][i] = (i + groupe - 1) % self.epreuve['TranchesHoraires']['NbTranches']
                         effectifGroupes[groupe] += 1
                 ap = effectifGroupes[groupe]
                 if av != ap:
-                    self.log.debug("CLUB " + str(c[0]) + " dans le groupe " + str(groupe + 1) + "  ... " + str(av) + "=>" + str(ap))
-                dic_groupes[c[0]] = groupe
+                    self.log.debug("CLUB " + str(c) + " dans le groupe " + str(groupe + 1) + "  ... " + str(av) + "=>" + str(ap))
 
-        # affectation des concurrents des petits pays
-        clubsby_required_country = sorted(flags.items(), key=lambda k: k[1], reverse=True)
-        for c in clubsby_required_country:
-            if c[1] <= int(self.epreuve['TranchesHoraires']['SeuilPays']):
+        # affectation dans un même groupe horaire des concurrents des clubs des pays peu représentés, quel que soit leur club
+        for pays in sorted(flags.items(), key=lambda k: k[1], reverse=True):
+            if pays[1] <= int(self.epreuve['TranchesHoraires']['SeuilPays']):
                 groupe = effectifGroupes.index(min(effectifGroupes))
                 av = effectifGroupes[groupe]
-                # affectation
-                for m in self.competiteurs:
-                    if m['tranches'][0] is None and m['flag'] == c[0]:
-                        for i in range(self.epreuve['NbEtapes']):
-                            m['tranches'][i] = (i + groupe - 1) % self.epreuve['TranchesHoraires']['NbTranches']
-                        effectifGroupes[groupe] += 1
-                        dic_groupes[m['club']] = groupe
+                for c, v in self.clubs.items():
+                    if v['flag'] == pays[0]:
+                        # affectation
+                        for m in self.competiteurs:
+                            if m['tranches'][0] is None and m['club'] == c:
+                                for i in range(self.epreuve['NbEtapes']):
+                                    m['tranches'][i] = (i + groupe - 1) % self.epreuve['TranchesHoraires']['NbTranches']
+                                effectifGroupes[groupe] += 1
+                                self.clubs[m['club']]['groupe'] = groupe
+                                # dic_groupes[m['club']] = groupe
                 ap = effectifGroupes[groupe]
                 if av != ap:
-                    self.log.debug("PAYS " + str(c[0]) + " dans le groupe " + str(groupe + 1) + "  ... " + str(av) + "=>" + str(ap))
+                    self.log.debug("PAYS " + str(pays[0]) + " dans le groupe " + str(groupe + 1) + "  ... " + str(av) + "=>" + str(ap))
 
-        # affectation par des petits clubs
-        for c in clubsby_required_members:
+        # affectation des membres des petits clubs
+        for c in self.clubs:
             # Recherche du groupe ayant l'effectif minimal
             groupe = effectifGroupes.index(min(effectifGroupes))
             av = effectifGroupes[groupe]
             # affectation
             for m in self.competiteurs:
-                if m['tranches'][0] is None and m['club'] == c[0]:
+                if m['tranches'][0] is None and m['club'] == c:
                     for i in range(self.epreuve['NbEtapes']):
                         m['tranches'][i] = (i + groupe - 1) % self.epreuve['TranchesHoraires']['NbTranches']
-                        dic_groupes[c[0]] = groupe
+                        self.clubs[c]['groupe'] = groupe
                     effectifGroupes[groupe] += 1
             ap = effectifGroupes[groupe]
             if av != ap:
-                self.log.debug("CLUB " + str(c[0]) + " dans le groupe " + str(groupe + 1) + "  ... " + str(av) + "=>" + str(ap))
+                self.log.debug("CLUB " + str(c) + " dans le groupe " + str(groupe + 1) + "  ... " + str(av) + "=>" + str(ap))
 
         # affectation de ce qui reste la ou on trouve (dans le min)
         for m in self.competiteurs:
             if m['tranches'][0] is None:
+                texte_err = "Compétiteur n'ayant pas de groupe hoeraire affecté : " + str(m)
+                self.log.error(texte_err)
                 groupe = effectifGroupes.index(min(effectifGroupes))
                 for i in range(self.epreuve['NbEtapes']):
                     m['tranches'][i] = (i + groupe - 1) % self.epreuve['TranchesHoraires']['NbTranches']
                 effectifGroupes[groupe] += 1
-                dic_groupes[m['club']] = groupe
+                self.clubs[m['club']]['groupe'] = groupe
 
         # Participant à tranche horaire correspondant à un autre club
         # {"nom" :"CARLE", "prenom":"Odin", "club":"ADOCHENOVE", "autreclub":"OE42", "etapes" : [1,2,3,4,5]}
@@ -1390,8 +1689,10 @@ class CODepart(object):
                 if m['nom'] == p['nom'] and m['prenom'] == p['prenom'] and m['club'] == p['club']:
                     trouve = True
                     ip = i
-                    if p['autreclub'] in dic_groupes:
-                        grp = dic_groupes[p['autreclub']]
+#                    if p['autreclub'] in dic_groupes:
+#                        grp = dic_groupes[p['autreclub']]
+                    if p['autreclub'] in self.clubs:
+                        grp = self.clubs[p['autreclub']]['groupe']
                         for i in range(self.epreuve['NbEtapes']):
                             if i + 1 in p['etapes']:
                                 self.competiteurs[ip]['tranches'][i] = (i + grp) % self.epreuve['TranchesHoraires']['NbTranches']
@@ -1462,17 +1763,17 @@ class CODepart(object):
         if nbre_presents > 0:
             nbvacant = int(self.epreuve['TranchesHoraires']['ReserveVacantsOffset']) +\
                 int(nbre_presents * int(self.epreuve['TranchesHoraires']['ReserveVacantsPourcent']) / 100)
-            lescircuits = [None] * self.epreuve['NbEtapes']
-            lescircuits[etape] = self.circuitDeLaCategorie(etape, categorie)
-            lesdeparts = [None] * self.epreuve['NbEtapes']
-            lesdeparts[etape] = self.departDeLaCategorie(etape, categorie)
-            leshoraires = [None] * self.epreuve['NbEtapes']
-            leshoraires[etape] = self.horaireDeLaCategorie(etape, categorie)
-            lestranches = [None] * self.epreuve['NbEtapes']
-            lestranches[etape] = tranche
-            lesetapes = [etape]
-            lesheuresdedepart = [None] * self.epreuve['NbEtapes']
             for n in range(nbvacant):
+                lescircuits = [None] * self.epreuve['NbEtapes']
+                lescircuits[etape] = self.circuitDeLaCategorie(etape, categorie)
+                lesdeparts = [None] * self.epreuve['NbEtapes']
+                lesdeparts[etape] = self.departDeLaCategorie(etape, categorie)
+                leshoraires = [None] * self.epreuve['NbEtapes']
+                leshoraires[etape] = self.horaireDeLaCategorie(etape, categorie)
+                lestranches = [None] * self.epreuve['NbEtapes']
+                lestranches[etape] = tranche
+                lesetapes = [etape]
+                lesheuresdedepart = [None] * self.epreuve['NbEtapes']
                 self.competiteurs.append(
                     {
                         'prenom': 'e' + str(etape + 1) + 'c' + categorie + 't' + str(tranche + 1) + 'n' + str(n + 1),
@@ -1525,6 +1826,7 @@ class CODepart(object):
     # Affectation des dossards
 
     def affectationDossards(self, fileOutputMD):
+
         chrono = int(self.epreuve['Dossards']['PremierDossard'])
 
         fileOutputMD.write('\n## Affectation des dossards\n\n')
@@ -1534,33 +1836,33 @@ class CODepart(object):
         # dossards par club
         cbyclub = sorted(self.competiteurs, key=lambda k: k['club'])
 
-        clubs = []
         in_club = 0
         prev_club = ''
-        prev_chrono = 0
-        prev_flag = ''
-        prev_tranche = ''
 
         for r in cbyclub:
-            if r['club'] not in clubs:
+            if self.clubs[r['club']]['dossardmin'] is None:
+                # On débute un nouveau club
                 if in_club > 0:
-                    fileOutputMD.write(' | ' + str(prev_chrono) + ' ... ' + str(prev_chrono + in_club - 1) +
-                                       ' (' + str(in_club) + ') | ' + prev_club + ' | ' + prev_flag + ' | ' + str(prev_tranche) + '|\n')
-                prev_chrono = chrono
-                prev_club = str(r['ref_club'] + ' ' + r['club']).strip()
-                prev_flag = r['flag']
-                for t in r['tranches']:
-                    prev_tranche = str(1 + int(t)) + " "
+                    self.clubs[prev_club]['dossardmax'] = self.clubs[prev_club]['dossardmin'] + in_club - 1
+                    self.clubs[prev_club]['dossardultramax'] = ((chrono + 12) // 10) * 10 - 1
+                    fileOutputMD.write(' | ' + str(self.clubs[prev_club]['dossardmin']) + ' ... ' + str(self.clubs[prev_club]['dossardmax']) +
+                                       ' (' + str(self.clubs[prev_club]['effectif']) + ') | ' + self.clubs[prev_club]['nomcomplet'] + ' | ' +
+                                       self.clubs[prev_club]['flag'] + ' | ' + str(self.clubs[prev_club]['groupe'] + 1) + '|\n')
+                    chrono = ((chrono + 12) // 10) * 10
+                prev_club = r['club']
                 in_club = 0
-                clubs.append(r['club'])
+                self.clubs[r['club']]['dossardmin'] = chrono
 
             r['dossard'] = chrono
             chrono += 1
             in_club += 1
 
         if in_club > 0:
-            fileOutputMD.write(' | ' + str(prev_chrono) + ' ... ' + str(chrono) + ' (' + str(in_club) +
-                               ') | ' + prev_club + ' | ' + prev_flag + ' | ' + str(prev_tranche) + '|\n')
+            self.clubs[prev_club]['dossardmax'] = self.clubs[prev_club]['dossardmin'] + in_club - 1
+            self.clubs[prev_club]['dossardultramax'] = ((chrono + 12) // 10) * 10 - 1
+            fileOutputMD.write(' | ' + str(self.clubs[prev_club]['dossardmin']) + ' ... ' + str(self.clubs[prev_club]['dossardmax']) +
+                               ' (' + str(self.clubs[prev_club]['effectif']) + ') | ' + self.clubs[prev_club]['nomcomplet'] + ' | ' +
+                               self.clubs[prev_club]['flag'] + ' | ' + str(self.clubs[prev_club]['groupe'] + 1) + '|\n')
 
         fileOutputMD.write('\n')
 
@@ -1568,6 +1870,11 @@ class CODepart(object):
         """ Le traitement total des données
         """
         self.log.info("Traitement de " + str(len(self.competiteurs)) + " enregistrements")
+
+        if self.epreuve['GraineGenerateurAleatoire'] == "None":
+            random.seed(None)
+        else:
+            random.seed(int(self.epreuve['GraineGenerateurAleatoire']))
 
         # Regroupement et traitement
         with open(self.epreuve['FichiersGeneres']['NomFichierMD'] + ".md", "w", encoding='utf8') as fileOutputMD:
@@ -1593,12 +1900,14 @@ class CODepart(object):
 
     def run(self):
         # try:
-        self.log.info('Début')
+        self.log.info('co_depart dernier enregiostrement : ' + __updated__)
         self.importFromIofCSV()
         self.importFromFfcoCSV()
         self.importFromCSVData()
         self.dataCrunch()
         self.genereFichierDossards()
+        self.genereListeParClub()
+        self.genereEtiquettes()
         self.log.info('Fin.')
         # except Exception as e:
         #    self.log.critical(str(e))

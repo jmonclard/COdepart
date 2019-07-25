@@ -1,0 +1,904 @@
+INFO     co_depart dernier enregiostrement : 2019-07-25 16:44:41
+INFO     Ouverture de export(30).csv
+INFO     Suppression du compétiteur : LIMPACH Jessica du club : ASUB ORIENTATION ASBL
+INFO     Suppression du compétiteur : PAUL Christel du club : ENS
+INFO     Suppression du compétiteur : ARNO Lucie du club : HOC
+INFO     Suppression du compétiteur : BOUCHET Charlotte du club : COCS
+INFO     Suppression du compétiteur : COOKE JONES Claire du club : BANG OK
+INFO     Suppression du compétiteur : JONES Robert du club : BANG OK
+INFO     Suppression du compétiteur : BRACQUEMART Vincent du club : ASO
+INFO     Suppression du compétiteur : BASSET Anouk du club : ASUL SPORTS NAT
+INFO     Suppression du compétiteur : BASSET Martin du club : ASUL SPORTS NAT
+INFO     Suppression du compétiteur : TISSANDIER Yoann du club : COBS
+INFO     Suppression du compétiteur : TISSANDIER Manon du club : COBS
+INFO     Suppression du compétiteur : CHABBERT Fanny du club : AOC
+INFO     Suppression du compétiteur : JEVANORD Magnus du club : FOSSUM IF
+INFO     Suppression du compétiteur : STANTON Talyn du club : AUCKLAND ORIENTEERS
+INFO     Suppression du compétiteur : VERGNAUD Alexandre du club : BRIVECORREZECO
+WARNING  Impossible de supprimer le compétiteur : TAKAHASHI  Hideo du club : UTOKYOOLK
+INFO     Suppression du compétiteur : TAKAHASHI  Hideo du club : UTOKYOOLK
+WARNING  Impossible de supprimer le compétiteur : ERIKSSON  Johan du club : HAGABY GOIF
+INFO     Suppression du compétiteur : ERIKSSON  Johan du club : HAGABY GOIF
+WARNING  Impossible de supprimer le compétiteur : LECONTE  Steve du club : XTTRAID63
+INFO     Suppression du compétiteur : LECONTE  Steve du club : XTTRAID63
+INFO     Suppression du compétiteur : HANSELMANN Daniel du club : OLV BASELLAND / BUUS
+INFO     Suppression du compétiteur : MAIRE Sandrine du club : T.A. FAMECK
+INFO     Ajout du compétiteur : LIMPACH Jessica du club : ASUB ORIENTATION ASBL
+INFO     Ajout du compétiteur : LIMPACH Jessica du club : ASUB ORIENTATION ASBL
+INFO     Ajout du compétiteur : PAUL Christel du club : ENS
+INFO     Ajout du compétiteur : PAUL Christel du club : ENS
+INFO     Ajout du compétiteur : ARNO Lucie du club : HOC
+INFO     Ajout du compétiteur : ARNO Lucie du club : HOC
+INFO     Ajout du compétiteur : BOUCHET Charlotte du club : COCS
+INFO     Ajout du compétiteur : BOUCHET Charlotte du club : COCS
+INFO     Ajout du compétiteur : VERGNAUD Alexandre du club : BRIVECORREZECO
+INFO     Ajout du compétiteur : TAKAHASHI  Hideo du club : UTOKYOOLK
+INFO     Ajout du compétiteur : ERIKSSON  Johan du club : HAGABY GOIF
+INFO     Ajout du compétiteur : LECONTE  Steve du club : XTTRAID63
+INFO     Ajout du compétiteur : JEVANORD Magnus du club : FOSSUM IF
+INFO     Ajout du compétiteur : COOKE JONES Claire du club : BANG OK
+INFO     Ajout du compétiteur : COOKE JONES Claire du club : BANG OK
+INFO     Ajout du compétiteur : JONES Robert du club : BANG OK
+INFO     Ajout du compétiteur : POISOT Frédéric du club : 
+INFO     Ajout du compétiteur : TISSANDIER Manon du club : COBS
+INFO     Ajout du compétiteur : JONES Robert du club : BANG OK
+INFO     Ajout du compétiteur : BRACQUEMART Vincent du club : ASO
+INFO     Ajout du compétiteur : BRACQUEMART Vincent du club : ASO
+INFO     Ajout du compétiteur : MOSSET Éric du club : SOS GO
+INFO     Ajout du compétiteur : KIRILOV Aurélie du club : VALMO
+INFO     Ajout du compétiteur : JEANBLANC Pascal  du club : VALMO
+INFO     Ajout du compétiteur : GIRALDE-MOSSET Valérie du club : SOS GO
+INFO     Ajout du compétiteur : HANSELMANN Daniel du club : OLV BASELLAND / BUUS
+INFO     Ajout du compétiteur : BASSET Anouk du club : ASUL SPORTS NAT
+INFO     Ajout du compétiteur : BASSET Martin du club : ASUL SPORTS NAT
+INFO     Ajout du compétiteur : TCHERKACHINE Zoé du club : ASUL SPORTS NAT
+INFO     Ajout du compétiteur : COMMARET Alain du club : CARTO
+INFO     Ajout du compétiteur : SPACCA Cesare du club : ORICUNEO
+INFO     Ajout du compétiteur : MAIRE Sandrine du club : T.A. FAMECK
+INFO     Ajout du compétiteur : MAIRE Sandrine du club : T.A. FAMECK
+INFO     Traitement de 2239 enregistrements
+DEBUG    CLUB SAGC CESTAS dans le groupe 4  ... 0=>25
+DEBUG    CLUB O. CAENNAISE dans le groupe 4  ... 25=>35
+DEBUG    CLUB T.A. FAMECK dans le groupe 4  ... 35=>86
+DEBUG    CLUB OLV BASELLAND / BUUS dans le groupe 1  ... 0=>1
+DEBUG    CLUB VSAO dans le groupe 2  ... 0=>32
+DEBUG    CLUB LOUP dans le groupe 3  ... 0=>17
+DEBUG    CLUB ACA AIX EN PROV dans le groupe 1  ... 1=>37
+DEBUG    CLUB FOSSUM IF dans le groupe 3  ... 17=>82
+DEBUG    CLUB MARCO dans le groupe 2  ... 32=>74
+DEBUG    CLUB VO dans le groupe 1  ... 37=>59
+DEBUG    CLUB SMOG dans le groupe 1  ... 59=>71
+DEBUG    CLUB SO LUNEVILLE dans le groupe 1  ... 71=>93
+DEBUG    CLUB BOUSSOLE EN F. dans le groupe 2  ... 74=>86
+DEBUG    CLUB CMO dans le groupe 3  ... 82=>111
+DEBUG    CLUB OPA MONTIGNY dans le groupe 2  ... 86=>110
+DEBUG    CLUB GO78 dans le groupe 4  ... 86=>110
+DEBUG    CLUB SUNDSVALLS OK dans le groupe 1  ... 93=>109
+DEBUG    CLUB ACBEAUCHAMP dans le groupe 1  ... 109=>127
+DEBUG    CLUB BALISE 77 dans le groupe 2  ... 110=>123
+DEBUG    CLUB CO AMBERIEU dans le groupe 4  ... 110=>123
+DEBUG    CLUB HAMOK dans le groupe 3  ... 111=>124
+DEBUG    CLUB ECHO 73 dans le groupe 2  ... 123=>146
+DEBUG    CLUB BALISE 63 dans le groupe 4  ... 123=>135
+DEBUG    CLUB VAREGG FLERIDRETT dans le groupe 3  ... 124=>158
+DEBUG    CLUB BOA ALBI dans le groupe 1  ... 127=>160
+DEBUG    CLUB SCAPA NANCY dans le groupe 4  ... 135=>158
+DEBUG    CLUB GOTEBORG-MAJORNA OK dans le groupe 2  ... 146=>158
+DEBUG    CLUB A.S.QUETIGNY dans le groupe 2  ... 158=>174
+DEBUG    CLUB COMULHOUSE dans le groupe 3  ... 158=>180
+DEBUG    CLUB FREIDIG dans le groupe 4  ... 158=>211
+DEBUG    CLUB INDIVIDUEL dans le groupe 1  ... 160=>201
+DEBUG    CLUB HOC dans le groupe 2  ... 174=>205
+DEBUG    CLUB KONGSBERG O LAG dans le groupe 3  ... 180=>225
+DEBUG    CLUB OPA dans le groupe 1  ... 201=>229
+DEBUG    CLUB ASUL SPORTS NAT dans le groupe 2  ... 205=>243
+DEBUG    CLUB ASO SILLERY dans le groupe 4  ... 211=>223
+DEBUG    CLUB O'JURA dans le groupe 4  ... 223=>241
+DEBUG    CLUB POP dans le groupe 3  ... 225=>237
+DEBUG    CLUB ORIENTALP dans le groupe 1  ... 229=>245
+DEBUG    CLUB CROCO dans le groupe 3  ... 237=>249
+DEBUG    CLUB COBS dans le groupe 4  ... 241=>276
+DEBUG    CLUB ASO dans le groupe 2  ... 243=>263
+DEBUG    CLUB ASCO ORLEANS dans le groupe 1  ... 245=>257
+DEBUG    CLUB COCOLMAR dans le groupe 3  ... 249=>269
+DEBUG    CLUB VSO dans le groupe 1  ... 257=>279
+DEBUG    CLUB V.H.S.O. dans le groupe 2  ... 263=>278
+DEBUG    CLUB VALMO dans le groupe 3  ... 269=>289
+DEBUG    CLUB TOAC ORIENTATION dans le groupe 4  ... 276=>292
+DEBUG    CLUB AMSO34 dans le groupe 2  ... 278=>297
+DEBUG    CLUB COSE dans le groupe 1  ... 279=>294
+DEBUG    CLUB BRIVECORREZECO dans le groupe 3  ... 289=>314
+DEBUG    CLUB O'BUGEY dans le groupe 4  ... 292=>304
+DEBUG    CLUB NOSE dans le groupe 1  ... 294=>311
+DEBUG    CLUB L.O.V. dans le groupe 2  ... 297=>319
+DEBUG    CLUB OUTDOOR07 dans le groupe 4  ... 304=>325
+DEBUG    CLUB OE42 dans le groupe 1  ... 311=>333
+DEBUG    CLUB COORE MJC dans le groupe 3  ... 314=>326
+DEBUG    CLUB ASUB ORIENTATION ASBL dans le groupe 2  ... 319=>359
+DEBUG    CLUB SK ZABOVRESKY BRNO dans le groupe 4  ... 325=>338
+DEBUG    CLUB OK LANDEHOF dans le groupe 3  ... 326=>344
+DEBUG    CLUB PACARAID dans le groupe 1  ... 333=>347
+DEBUG    PAYS AUT dans le groupe 4  ... 338=>348
+DEBUG    PAYS ESP dans le groupe 3  ... 344=>349
+DEBUG    PAYS PRT dans le groupe 1  ... 347=>353
+DEBUG    PAYS LVA dans le groupe 4  ... 348=>352
+DEBUG    PAYS JPN dans le groupe 3  ... 349=>355
+DEBUG    PAYS POL dans le groupe 4  ... 352=>355
+DEBUG    PAYS HKG dans le groupe 1  ... 353=>356
+DEBUG    PAYS DNK dans le groupe 3  ... 355=>357
+DEBUG    PAYS NLD dans le groupe 4  ... 355=>357
+DEBUG    PAYS ECU dans le groupe 1  ... 356=>358
+DEBUG    PAYS IRL dans le groupe 3  ... 357=>359
+DEBUG    PAYS ISR dans le groupe 4  ... 357=>359
+DEBUG    PAYS NCL dans le groupe 1  ... 358=>361
+DEBUG    PAYS EST dans le groupe 2  ... 359=>360
+DEBUG    CLUB BIG FOOT ORIENTEERS dans le groupe 3  ... 359=>364
+DEBUG    CLUB LMA 72 dans le groupe 4  ... 359=>363
+DEBUG    CLUB MOUGINSO dans le groupe 2  ... 360=>364
+DEBUG    CLUB SCOM MENDRISIO dans le groupe 1  ... 361=>363
+DEBUG    CLUB CVO12 dans le groupe 1  ... 363=>366
+DEBUG    CLUB OSC HAMBURG dans le groupe 4  ... 363=>364
+DEBUG    CLUB OLG LAUFENTAL THIERSTEIN dans le groupe 2  ... 364=>366
+DEBUG    CLUB TOULON SNATURE dans le groupe 3  ... 364=>371
+DEBUG    CLUB ROCKY MOUNTAIN OC dans le groupe 4  ... 364=>366
+DEBUG    CLUB COLE dans le groupe 1  ... 366=>373
+DEBUG    CLUB COOL dans le groupe 2  ... 366=>370
+DEBUG    CLUB YALANGA dans le groupe 4  ... 366=>368
+DEBUG    CLUB GCO GRUYERE dans le groupe 4  ... 368=>373
+DEBUG    CLUB CSAG METZ dans le groupe 2  ... 370=>378
+DEBUG    CLUB AZIMUT PROVENCE dans le groupe 3  ... 371=>372
+DEBUG    CLUB XTTRAID63 dans le groupe 3  ... 372=>383
+DEBUG    CLUB HAO dans le groupe 1  ... 373=>384
+DEBUG    CLUB ALBEORIENTATION dans le groupe 4  ... 373=>375
+DEBUG    CLUB CO LIEGE dans le groupe 4  ... 375=>383
+DEBUG    CLUB ASCOPA dans le groupe 2  ... 378=>379
+DEBUG    CLUB SUD O LUX dans le groupe 2  ... 379=>381
+DEBUG    CLUB COPS 91 dans le groupe 2  ... 381=>383
+DEBUG    CLUB HERMATHENAE SPA dans le groupe 2  ... 383=>394
+DEBUG    CLUB AS IGN dans le groupe 3  ... 383=>394
+DEBUG    CLUB BADGER ORIENTEERING CLUB dans le groupe 4  ... 383=>384
+DEBUG    CLUB YCONE-SENS dans le groupe 1  ... 384=>388
+DEBUG    CLUB OSCM dans le groupe 4  ... 384=>388
+DEBUG    CLUB TALANT SO dans le groupe 1  ... 388=>399
+DEBUG    CLUB TUME dans le groupe 4  ... 388=>389
+DEBUG    CLUB QOC dans le groupe 4  ... 389=>394
+DEBUG    CLUB HARNOSANDS OK dans le groupe 2  ... 394=>404
+DEBUG    CLUB OMEGA dans le groupe 3  ... 394=>404
+DEBUG    CLUB OL REGIO OLTEN dans le groupe 4  ... 394=>396
+DEBUG    CLUB CARTO 32 dans le groupe 4  ... 396=>404
+DEBUG    CLUB ORIENTATION 87 dans le groupe 1  ... 399=>407
+DEBUG    CLUB SCOR dans le groupe 2  ... 404=>408
+DEBUG    CLUB HAGABY GOIF dans le groupe 3  ... 404=>410
+DEBUG    CLUB ADOCHENOVE dans le groupe 4  ... 404=>412
+DEBUG    CLUB ESPOON SUUNTA dans le groupe 1  ... 407=>410
+DEBUG    CLUB PAMPUMBA dans le groupe 2  ... 408=>409
+DEBUG    CLUB SODERTALJE-NYKVARN dans le groupe 2  ... 409=>411
+DEBUG    CLUB IFK GOTEBORG dans le groupe 1  ... 410=>412
+DEBUG    CLUB AMOK dans le groupe 3  ... 410=>412
+DEBUG    CLUB DVO dans le groupe 2  ... 411=>413
+DEBUG    CLUB ALPINA dans le groupe 1  ... 412=>415
+DEBUG    CLUB SV ROBOTRON DRESDEN dans le groupe 3  ... 412=>414
+DEBUG    CLUB COCS dans le groupe 4  ... 412=>421
+DEBUG    CLUB BALISE 25 dans le groupe 2  ... 413=>424
+DEBUG    CLUB NORD dans le groupe 3  ... 414=>421
+DEBUG    CLUB CS PERTUIS dans le groupe 1  ... 415=>422
+DEBUG    CLUB COBUHL.FLORIVAL dans le groupe 3  ... 421=>431
+DEBUG    CLUB MOLO dans le groupe 4  ... 421=>423
+DEBUG    CLUB LINKOPINGS OK dans le groupe 1  ... 422=>425
+DEBUG    CLUB HVO dans le groupe 4  ... 423=>430
+DEBUG    CLUB ASMB CO dans le groupe 2  ... 424=>426
+DEBUG    CLUB CASCADE ORIENTEERING CLUB dans le groupe 1  ... 425=>427
+DEBUG    CLUB BAY AREA ORIENTEERING CL dans le groupe 2  ... 426=>427
+DEBUG    CLUB BELGIAN BIG FAT GUYS dans le groupe 1  ... 427=>432
+DEBUG    CLUB QUIMPER 29 dans le groupe 2  ... 427=>434
+DEBUG    CLUB ALTAIR dans le groupe 4  ... 430=>437
+DEBUG    CLUB LES DES'O 31 dans le groupe 3  ... 431=>434
+DEBUG    CLUB CARTO dans le groupe 1  ... 432=>435
+DEBUG    CLUB OLG WELSIKON dans le groupe 2  ... 434=>436
+DEBUG    CLUB NTNUI dans le groupe 3  ... 434=>437
+DEBUG    CLUB ERCO dans le groupe 1  ... 435=>441
+DEBUG    CLUB GARDE REP. dans le groupe 2  ... 436=>437
+DEBUG    CLUB RO'PARIS dans le groupe 2  ... 437=>442
+DEBUG    CLUB C.O.T.E. 66 dans le groupe 3  ... 437=>439
+DEBUG    CLUB DSX dans le groupe 4  ... 437=>439
+DEBUG    CLUB NOYON CO dans le groupe 3  ... 439=>444
+DEBUG    CLUB SUSSARGUES EVASION dans le groupe 4  ... 439=>440
+DEBUG    CLUB USM/CO dans le groupe 4  ... 440=>443
+DEBUG    CLUB SCBARR dans le groupe 1  ... 441=>444
+DEBUG    CLUB T.A.D. dans le groupe 2  ... 442=>453
+DEBUG    CLUB BOL D'AIR dans le groupe 4  ... 443=>449
+DEBUG    CLUB AOC dans le groupe 1  ... 444=>454
+DEBUG    CLUB CRCO dans le groupe 3  ... 444=>450
+DEBUG    CLUB SONA OC dans le groupe 4  ... 449=>453
+DEBUG    CLUB BALISE 04 dans le groupe 3  ... 450=>453
+DEBUG    CLUB ORIENTAMONDO IVREA dans le groupe 2  ... 453=>454
+DEBUG    CLUB POITIERS CO dans le groupe 3  ... 453=>457
+DEBUG    CLUB OK LINNE dans le groupe 4  ... 453=>457
+DEBUG    CLUB FINO46 dans le groupe 1  ... 454=>462
+DEBUG    CLUB OSTERSUNDS OK dans le groupe 2  ... 454=>458
+DEBUG    CLUB HAINAUT OC dans le groupe 3  ... 457=>461
+DEBUG    CLUB RAID O'CAZELLES dans le groupe 4  ... 457=>458
+DEBUG    CLUB TOM MEAUX dans le groupe 2  ... 458=>459
+DEBUG    CLUB MUC ORIENTATION dans le groupe 4  ... 458=>460
+DEBUG    CLUB CLUB PEGASE dans le groupe 2  ... 459=>460
+DEBUG    CLUB OLK ARGUS dans le groupe 2  ... 460=>464
+DEBUG    CLUB VA 07 dans le groupe 4  ... 460=>463
+DEBUG    CLUB AUSTRALOPERS TASMANIA dans le groupe 3  ... 461=>463
+DEBUG    CLUB ALCO dans le groupe 1  ... 462=>471
+DEBUG    CLUB CONVERGENCE dans le groupe 3  ... 463=>465
+DEBUG    CLUB DAUPHINE'O dans le groupe 4  ... 463=>468
+DEBUG    CLUB CA ROSE dans le groupe 2  ... 464=>474
+DEBUG    CLUB WCOC dans le groupe 3  ... 465=>467
+DEBUG    CLUB COPV dans le groupe 3  ... 467=>468
+DEBUG    CLUB PEGASE dans le groupe 3  ... 468=>470
+DEBUG    CLUB A.B.C.O. DIJON dans le groupe 4  ... 468=>473
+DEBUG    CLUB JSO dans le groupe 3  ... 470=>478
+DEBUG    CLUB OL REGIO WIL dans le groupe 1  ... 471=>473
+DEBUG    CLUB FET O LAG dans le groupe 1  ... 473=>474
+DEBUG    CLUB ABOMINABLE O MEN dans le groupe 4  ... 473=>475
+DEBUG    CLUB MEDVEDIK OK dans le groupe 1  ... 474=>478
+DEBUG    CLUB ASM CO dans le groupe 2  ... 474=>482
+DEBUG    CLUB CO MAUVEZIN dans le groupe 4  ... 475=>477
+DEBUG    CLUB TULA dans le groupe 4  ... 477=>480
+DEBUG    CLUB ENS dans le groupe 1  ... 478=>481
+DEBUG    CLUB OK GRIP dans le groupe 3  ... 478=>481
+DEBUG    CLUB DERWENT VALLEY ORIENTEER dans le groupe 4  ... 480=>482
+DEBUG    CLUB BNCO dans le groupe 1  ... 481=>483
+DEBUG    CLUB GUC CO dans le groupe 3  ... 481=>490
+DEBUG    CLUB ROC dans le groupe 2  ... 482=>484
+DEBUG    CLUB CHAT'O dans le groupe 4  ... 482=>487
+DEBUG    CLUB POLES dans le groupe 1  ... 483=>487
+DEBUG    CLUB CO LAUSANNE JORAT dans le groupe 2  ... 484=>494
+DEBUG    CLUB HYVINKAAN RASTI dans le groupe 1  ... 487=>488
+DEBUG    CLUB SAV VERDUNOIS dans le groupe 4  ... 487=>488
+DEBUG    CLUB LO SANCHEY dans le groupe 1  ... 488=>492
+DEBUG    CLUB N.O.R.D. dans le groupe 4  ... 488=>494
+DEBUG    CLUB ORICUNEO dans le groupe 3  ... 490=>501
+DEBUG    CLUB FORTH VALLEY ORIENTEERS dans le groupe 1  ... 492=>496
+DEBUG    CLUB VALLEE OUCHE OR dans le groupe 2  ... 494=>498
+DEBUG    CLUB IF FEMMAN dans le groupe 4  ... 494=>497
+DEBUG    CLUB GIVRY SO dans le groupe 1  ... 496=>497
+DEBUG    CLUB PELLON PONSI dans le groupe 1  ... 497=>498
+DEBUG    CLUB VIK'AZIM dans le groupe 4  ... 497=>499
+DEBUG    CLUB MO 48 dans le groupe 1  ... 498=>499
+DEBUG    CLUB O'ZONE 88 dans le groupe 2  ... 498=>502
+DEBUG    CLUB OK 99 HRADEC KRALOVE dans le groupe 1  ... 499=>500
+DEBUG    CLUB NORD WEST dans le groupe 4  ... 499=>503
+DEBUG    CLUB SBOC dans le groupe 1  ... 500=>502
+DEBUG    CLUB COLJ dans le groupe 3  ... 501=>503
+DEBUG    CLUB OTB dans le groupe 1  ... 502=>508
+DEBUG    CLUB OLGTURGOIRENTAPFAFFIKON dans le groupe 2  ... 502=>506
+DEBUG    CLUB OLG BERNE dans le groupe 3  ... 503=>505
+DEBUG    CLUB OLC OMSTROM SENSE dans le groupe 4  ... 503=>505
+DEBUG    CLUB SC HELSA dans le groupe 3  ... 505=>506
+DEBUG    CLUB OL.BIEL.SEELAND dans le groupe 4  ... 505=>507
+DEBUG    CLUB RDPA dans le groupe 2  ... 506=>507
+DEBUG    CLUB RANAS OK dans le groupe 3  ... 506=>512
+DEBUG    CLUB USSE CO dans le groupe 2  ... 507=>518
+DEBUG    CLUB CRAPAHUT dans le groupe 4  ... 507=>511
+DEBUG    CLUB ESK VALLEY ORIENTEERING dans le groupe 1  ... 508=>509
+DEBUG    CLUB SYO dans le groupe 1  ... 509=>511
+DEBUG    CLUB KOL dans le groupe 1  ... 511=>513
+DEBUG    CLUB COMM dans le groupe 4  ... 511=>513
+DEBUG    CLUB NAO dans le groupe 3  ... 512=>517
+DEBUG    CLUB AIRIENTEERS dans le groupe 1  ... 513=>514
+DEBUG    CLUB AIRE dans le groupe 4  ... 513=>515
+DEBUG    CLUB OPPSAL ORIENTERING dans le groupe 1  ... 514=>519
+DEBUG    CLUB CCIO dans le groupe 4  ... 515=>517
+DEBUG    CLUB SAVEDALENS AIK dans le groupe 3  ... 517=>523
+DEBUG    CLUB WIMBORNE ORIENTEERS dans le groupe 4  ... 517=>518
+DEBUG    CLUB TV OBERKIRCH dans le groupe 2  ... 518=>519
+DEBUG    CLUB DSA dans le groupe 4  ... 518=>519
+DEBUG    CLUB ROCHESTER dans le groupe 1  ... 519=>522
+DEBUG    CLUB NYDALEN SK dans le groupe 2  ... 519=>520
+DEBUG    CLUB IGNFI dans le groupe 4  ... 519=>521
+DEBUG    CLUB RAIDLINKS'07 dans le groupe 2  ... 520=>522
+DEBUG    CLUB MS PARMA dans le groupe 4  ... 521=>522
+DEBUG    CLUB HARLEQUINS dans le groupe 1  ... 522=>525
+DEBUG    CLUB SLOW BERN dans le groupe 2  ... 522=>524
+DEBUG    CLUB OLG GALGENEN dans le groupe 4  ... 522=>523
+DEBUG    CLUB VANG OL dans le groupe 3  ... 523=>526
+DEBUG    CLUB MANCHESTER ORIENTEERS dans le groupe 4  ... 523=>525
+DEBUG    CLUB OLG THUN dans le groupe 2  ... 524=>528
+DEBUG    CLUB KOLBOTN & SKIMT OL dans le groupe 1  ... 525=>526
+DEBUG    CLUB SAINT BRIEUC OR dans le groupe 4  ... 525=>527
+DEBUG    CLUB SOUTHERN NAVIGATORS dans le groupe 1  ... 526=>527
+DEBUG    CLUB BOK dans le groupe 3  ... 526=>528
+DEBUG    CLUB OK ROXEN dans le groupe 1  ... 527=>532
+DEBUG    CLUB OL NORSKA+ dans le groupe 4  ... 527=>532
+DEBUG    CLUB OK RAVINEN dans le groupe 2  ... 528=>535
+DEBUG    CLUB OLG MURTEN dans le groupe 3  ... 528=>529
+DEBUG    CLUB MORTAIN dans le groupe 3  ... 529=>530
+DEBUG    CLUB INDRE OSTFOLD OK dans le groupe 3  ... 530=>537
+DEBUG    CLUB FREDRIKSTAD SK dans le groupe 1  ... 532=>533
+DEBUG    CLUB CENTRAL COAST dans le groupe 4  ... 532=>534
+DEBUG    CLUB ASKER SK dans le groupe 1  ... 533=>537
+DEBUG    CLUB O53 dans le groupe 4  ... 534=>535
+DEBUG    CLUB SOS GO dans le groupe 2  ... 535=>543
+DEBUG    CLUB OLG ORTENAU dans le groupe 4  ... 535=>536
+DEBUG    CLUB CUS TORINO CCR dans le groupe 4  ... 536=>538
+DEBUG    CLUB OLK PIZ HASI dans le groupe 1  ... 537=>538
+DEBUG    CLUB LYNX dans le groupe 3  ... 537=>542
+DEBUG    CLUB BO dans le groupe 1  ... 538=>542
+DEBUG    CLUB INTERLOPERS dans le groupe 4  ... 538=>542
+DEBUG    CLUB SOUTHDOWNS ORIENTEERS dans le groupe 1  ... 542=>544
+DEBUG    CLUB RIVOLI O dans le groupe 3  ... 542=>544
+DEBUG    CLUB OPK MIRAFLORES dans le groupe 4  ... 542=>543
+DEBUG    CLUB CHANTELLE SN dans le groupe 2  ... 543=>544
+DEBUG    CLUB IF RIGOR dans le groupe 4  ... 543=>544
+DEBUG    CLUB HALDEN SK dans le groupe 1  ... 544=>547
+DEBUG    CLUB TITAN dans le groupe 2  ... 544=>546
+DEBUG    CLUB OK ORION dans le groupe 3  ... 544=>545
+DEBUG    CLUB CRO2 dans le groupe 4  ... 544=>545
+DEBUG    CLUB NYBRO OK dans le groupe 3  ... 545=>548
+DEBUG    CLUB B.A dans le groupe 4  ... 545=>547
+DEBUG    CLUB TV 1901 BEAUMARAIS dans le groupe 2  ... 546=>553
+DEBUG    CLUB ALBI RESSORT dans le groupe 1  ... 547=>551
+DEBUG    CLUB UDDEVALLA OK dans le groupe 4  ... 547=>549
+DEBUG    CLUB BANG OK dans le groupe 3  ... 548=>555
+DEBUG    CLUB DVOA dans le groupe 4  ... 549=>553
+DEBUG    CLUB TUMIZA ORIENTEERING dans le groupe 1  ... 551=>553
+DEBUG    CLUB OK TOR dans le groupe 1  ... 553=>560
+DEBUG    CLUB OOB KOTLARKA PRAHA dans le groupe 2  ... 553=>554
+DEBUG    CLUB BARR SC dans le groupe 4  ... 553=>555
+DEBUG    CLUB BALISE 10 dans le groupe 2  ... 554=>555
+DEBUG    CLUB VASTERAS SOK dans le groupe 2  ... 555=>558
+DEBUG    CLUB IFK UMEA dans le groupe 3  ... 555=>557
+DEBUG    CLUB KOOVEE dans le groupe 4  ... 555=>556
+DEBUG    CLUB MORAVIAN ORIENTEERS dans le groupe 4  ... 556=>558
+DEBUG    CLUB ANTEY dans le groupe 3  ... 557=>558
+DEBUG    CLUB JARLA IF OK dans le groupe 2  ... 558=>560
+DEBUG    CLUB OUTDOOR dans le groupe 3  ... 558=>559
+DEBUG    CLUB WARRIOR OC dans le groupe 4  ... 558=>559
+DEBUG    CLUB NL dans le groupe 3  ... 559=>560
+INFO     Affectation de la tranche 1 à CARLE Odin du club ADOCHENOVE correspondant au groupe 1 du club OE42
+INFO     Affectation de la tranche 2 à CARLE Odin du club ADOCHENOVE correspondant au groupe 1 du club OE42
+INFO     Affectation de la tranche 3 à CARLE Odin du club ADOCHENOVE correspondant au groupe 1 du club OE42
+INFO     Affectation de la tranche 4 à CARLE Odin du club ADOCHENOVE correspondant au groupe 1 du club OE42
+INFO     Affectation de la tranche 1 à CARLE Odin du club ADOCHENOVE correspondant au groupe 1 du club OE42
+INFO     Affectation de la tranche 1 à CARLE Titouan du club ADOCHENOVE correspondant au groupe 1 du club OE42
+INFO     Affectation de la tranche 2 à CARLE Titouan du club ADOCHENOVE correspondant au groupe 1 du club OE42
+INFO     Affectation de la tranche 3 à CARLE Titouan du club ADOCHENOVE correspondant au groupe 1 du club OE42
+INFO     Affectation de la tranche 4 à CARLE Titouan du club ADOCHENOVE correspondant au groupe 1 du club OE42
+INFO     Affectation de la tranche 1 à CARLE Titouan du club ADOCHENOVE correspondant au groupe 1 du club OE42
+INFO     Affectation de la tranche 2 à VIS Iwan du club SUD O LUX correspondant au groupe 2 du club HOC
+INFO     Affectation de la tranche 3 à VIS Iwan du club SUD O LUX correspondant au groupe 2 du club HOC
+INFO     Affectation de la tranche 4 à VIS Iwan du club SUD O LUX correspondant au groupe 2 du club HOC
+INFO     Affectation de la tranche 1 à VIS Iwan du club SUD O LUX correspondant au groupe 2 du club HOC
+INFO     Affectation de la tranche 2 à VIS Iwan du club SUD O LUX correspondant au groupe 2 du club HOC
+INFO     Affectation de la tranche 1 à CHICHERY Severine du club MORTAIN correspondant au groupe 1 du club ALBI RESSORT
+INFO     Affectation de la tranche 2 à CHICHERY Severine du club MORTAIN correspondant au groupe 1 du club ALBI RESSORT
+INFO     Affectation de la tranche 3 à CHICHERY Severine du club MORTAIN correspondant au groupe 1 du club ALBI RESSORT
+INFO     Affectation de la tranche 4 à CHICHERY Severine du club MORTAIN correspondant au groupe 1 du club ALBI RESSORT
+INFO     Affectation de la tranche 1 à CHICHERY Severine du club MORTAIN correspondant au groupe 1 du club ALBI RESSORT
+INFO     Affectation de la tranche 4 à LORRE Annie du club VSAO correspondant au groupe 3 du club TOULON SNATURE
+INFO     Affectation de la tranche 1 à LORRE Annie du club VSAO correspondant au groupe 3 du club TOULON SNATURE
+INFO     Affectation de la tranche 2 à LORRE Annie du club VSAO correspondant au groupe 3 du club TOULON SNATURE
+INFO     Affectation de la tranche 3 à LORRE Annie du club VSAO correspondant au groupe 3 du club TOULON SNATURE
+INFO     Affectation de la tranche 4 à SZNAIDER Patrick du club VSAO correspondant au groupe 3 du club TOULON SNATURE
+INFO     Affectation de la tranche 1 à SZNAIDER Patrick du club VSAO correspondant au groupe 3 du club TOULON SNATURE
+INFO     Affectation de la tranche 2 à SZNAIDER Patrick du club VSAO correspondant au groupe 3 du club TOULON SNATURE
+INFO     Affectation de la tranche 3 à SZNAIDER Patrick du club VSAO correspondant au groupe 3 du club TOULON SNATURE
+INFO     Affectation de la tranche 1 à PASQUASY Anna du club HOC correspondant au groupe 1 du club OTB
+INFO     Affectation de la tranche 2 à PASQUASY Anna du club HOC correspondant au groupe 1 du club OTB
+INFO     Affectation de la tranche 3 à PASQUASY Anna du club HOC correspondant au groupe 1 du club OTB
+INFO     Affectation de la tranche 4 à PASQUASY Anna du club HOC correspondant au groupe 1 du club OTB
+INFO     Affectation de la tranche 1 à PASQUASY Anna du club HOC correspondant au groupe 1 du club OTB
+INFO     Affectation de la tranche 1 à DESTREE Marie du club HOC correspondant au groupe 1 du club OTB
+INFO     Affectation de la tranche 2 à DESTREE Marie du club HOC correspondant au groupe 1 du club OTB
+INFO     Affectation de la tranche 3 à DESTREE Marie du club HOC correspondant au groupe 1 du club OTB
+INFO     Affectation de la tranche 4 à DESTREE Marie du club HOC correspondant au groupe 1 du club OTB
+INFO     Affectation de la tranche 1 à DESTREE Marie du club HOC correspondant au groupe 1 du club OTB
+INFO     Effectif des groupes de tranches horaires:[560, 560, 560, 559]
+INFO     ====== Traitement de l'étape 1======
+DEBUG    Etape 1 tranche 1 : début=2019-07-07 10:00:00 fin=2019-07-07 10:31:00
+DEBUG    Etape 1 tranche 2 : début=2019-07-07 10:32:00 fin=2019-07-07 11:19:00
+DEBUG    Etape 1 tranche 3 : début=2019-07-07 11:20:00 fin=2019-07-07 11:54:00
+DEBUG    Etape 1 tranche 4 : début=2019-07-07 11:55:00 fin=2019-07-07 12:30:00
+DEBUG    Répartition participants pour l'étape 1
+DEBUG    Nombre de participants 2106
+DEBUG    ------ Départ Red------
+DEBUG    TRANCHE 1
+DEBUG    Traitement de :
+ auto=480
+ libre=0
+ boitier=38
+ ranking=98
+ manuel=0
+participants dans la tranche 1 de l'étape 1
+DEBUG    Tentative 1... 
+DEBUG    Tous les concurrents ont un horaire pour cette tranche.
+DEBUG    Répartition par heure de départ (avant étalement) [13, 20, 16, 15, 15, 18, 15, 15, 15, 14, 12, 19, 14, 15, 16, 16, 16, 16, 13, 19, 14, 14, 18, 16, 12, 15, 13, 18, 9, 10, 16, 13], Ecart max=11
+DEBUG    Traitement de l'étalement
+DEBUG    Répartition par heure de départ (apres traitement) [15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15], Ecart max=0
+DEBUG    TRANCHE 2
+DEBUG    Traitement de :
+ auto=432
+ libre=0
+ boitier=60
+ ranking=0
+ manuel=0
+participants dans la tranche 2 de l'étape 1
+DEBUG    Tentative 1... 
+DEBUG    Tous les concurrents ont un horaire pour cette tranche.
+DEBUG    Répartition par heure de départ (avant étalement) [10, 9, 12, 8, 8, 9, 11, 11, 12, 9, 9, 7, 10, 9, 8, 11, 8, 5, 10, 11, 8, 9, 14, 6, 7, 5, 7, 9, 8, 10, 17, 6, 9, 8, 9, 9, 10, 8, 9, 7, 9, 9, 12, 9, 8, 8, 6, 9], Ecart max=12
+DEBUG    Traitement de l'étalement
+DEBUG    Répartition par heure de départ (apres traitement) [9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9, 9], Ecart max=0
+DEBUG    TRANCHE 3
+DEBUG    Traitement de :
+ auto=369
+ libre=0
+ boitier=34
+ ranking=0
+ manuel=0
+participants dans la tranche 3 de l'étape 1
+DEBUG    Tentative 1... 
+DEBUG    Tous les concurrents ont un horaire pour cette tranche.
+DEBUG    Répartition par heure de départ (avant étalement) [11, 13, 11, 12, 9, 7, 15, 10, 10, 11, 9, 10, 9, 11, 11, 13, 9, 12, 9, 12, 9, 8, 12, 6, 13, 11, 13, 14, 8, 14, 8, 14, 8, 10, 7], Ecart max=9
+DEBUG    Traitement de l'étalement
+DEBUG    Répartition par heure de départ (apres traitement) [10, 10, 10, 10, 10, 10, 10, 10, 10, 11, 10, 11, 11, 11, 11, 11, 10, 11, 11, 11, 11, 10, 11, 10, 11, 11, 11, 11, 10, 11, 11, 11, 10, 11, 10], Ecart max=1
+DEBUG    TRANCHE 4
+DEBUG    Traitement de :
+ auto=515
+ libre=1
+ boitier=79
+ ranking=0
+ manuel=0
+participants dans la tranche 4 de l'étape 1
+DEBUG    Tentative 1... 
+DEBUG    Tous les concurrents ont un horaire pour cette tranche.
+DEBUG    Répartition par heure de départ (avant étalement) [13, 16, 13, 12, 14, 14, 15, 15, 18, 10, 20, 13, 14, 17, 19, 13, 15, 14, 13, 12, 16, 14, 18, 16, 13, 13, 16, 12, 15, 16, 15, 14, 9, 15, 12, 11], Ecart max=11
+DEBUG    Traitement de l'étalement
+DEBUG    Répartition par heure de départ (apres traitement) [14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 14, 15, 15, 15, 15, 15, 14, 14, 15, 14, 15, 15, 15, 15, 14, 15, 14, 14], Ecart max=1
+DEBUG    Génération des départs suivant le ranking
+DEBUG    Génération des fichiers de sortie
+DEBUG    remplissage md et CSV
+DEBUG    Génération du rapport d'erreurs
+INFO     Fin de traitement de l'étape 1
+INFO     ====== Traitement de l'étape 2======
+DEBUG    Etape 2 tranche 1 : début=2019-07-08 10:00:00 fin=2019-07-08 11:08:00
+DEBUG    Etape 2 tranche 2 : début=2019-07-08 11:09:00 fin=2019-07-08 12:08:00
+DEBUG    Etape 2 tranche 3 : début=2019-07-08 12:09:00 fin=2019-07-08 13:06:00
+DEBUG    Etape 2 tranche 4 : début=2019-07-08 13:07:00 fin=2019-07-08 13:56:00
+DEBUG    Répartition participants pour l'étape 2
+DEBUG    Nombre de participants 2138
+DEBUG    ------ Départ Blue------
+DEBUG    TRANCHE 1
+DEBUG    Traitement de :
+ auto=208
+ libre=1
+ boitier=60
+ ranking=0
+ manuel=0
+participants dans la tranche 1 de l'étape 2
+DEBUG    Tentative 1... 
+DEBUG    Tous les concurrents ont un horaire pour cette tranche.
+DEBUG    Répartition par heure de départ (avant étalement) [1, 3, 4, 4, 3, 2, 2, 5, 2, 2, 4, 3, 1, 3, 3, 2, 3, 2, 3, 3, 3, 3, 3, 4, 3, 4, 1, 3, 4, 4, 4, 5, 5, 4, 3, 6, 4, 3, 7, 3, 6, 4, 5, 2, 3, 3, 4, 4, 3, 4, 2, 3, 2, 3, 4, 1, 1, 1, 1, 1, 2, 4, 3, 2, 3, 3, 2, 1], Ecart max=6
+DEBUG    Traitement de l'étalement
+DEBUG    Répartition par heure de départ (apres traitement) [1, 3, 3, 3, 3, 2, 3, 3, 2, 2, 3, 3, 3, 3, 3, 2, 3, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 3, 4, 4, 4, 4, 3, 3, 4, 4, 4, 4, 3, 4, 3, 3, 3, 1, 1, 3, 1, 2, 3, 4, 3, 3, 4, 3, 3, 1], Ecart max=3
+DEBUG    TRANCHE 2
+DEBUG    Traitement de :
+ auto=216
+ libre=0
+ boitier=23
+ ranking=0
+ manuel=0
+participants dans la tranche 2 de l'étape 2
+DEBUG    Tentative 1... 
+DEBUG    Tous les concurrents ont un horaire pour cette tranche.
+DEBUG    Répartition par heure de départ (avant étalement) [4, 4, 4, 4, 3, 3, 3, 4, 3, 4, 3, 2, 4, 3, 3, 4, 5, 4, 4, 5, 5, 3, 4, 3, 2, 2, 3, 5, 1, 3, 5, 6, 6, 4, 2, 6, 3, 2, 3, 1, 5, 3, 1, 5, 6, 4, 6, 4, 3, 2, 5, 5, 5, 4, 2, 3, 4, 3, 4], Ecart max=5
+DEBUG    Traitement de l'étalement
+DEBUG    Répartition par heure de départ (apres traitement) [3, 3, 3, 3, 3, 4, 3, 4, 3, 4, 4, 3, 4, 4, 3, 4, 4, 4, 4, 4, 4, 3, 4, 3, 3, 3, 3, 4, 3, 3, 3, 3, 3, 4, 4, 4, 4, 3, 4, 3, 4, 4, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 3, 4, 3], Ecart max=1
+DEBUG    TRANCHE 3
+DEBUG    Traitement de :
+ auto=185
+ libre=0
+ boitier=45
+ ranking=0
+ manuel=0
+participants dans la tranche 3 de l'étape 2
+DEBUG    Tentative 1... 
+DEBUG    Tous les concurrents ont un horaire pour cette tranche.
+DEBUG    Répartition par heure de départ (avant étalement) [4, 4, 5, 5, 4, 5, 5, 3, 4, 4, 4, 4, 4, 4, 4, 4, 3, 6, 5, 7, 4, 3, 3, 1, 4, 3, 3, 4, 4, 3, 3, 3, 3, 4, 1, 3, 2, 1, 2, 2, 2, 3, 1, 3, 4, 3, 4, 2, 2, 1, 3, 4, 2, 3, 3, 1], Ecart max=6
+DEBUG    Traitement de l'étalement
+DEBUG    Répartition par heure de départ (apres traitement) [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 5, 4, 4, 3, 1, 4, 3, 3, 4, 4, 3, 3, 3, 3, 4, 1, 3, 2, 1, 2, 2, 2, 3, 1, 4, 4, 4, 4, 4, 2, 1, 3, 4, 2, 4, 4, 1], Ecart max=4
+DEBUG    TRANCHE 4
+DEBUG    Traitement de :
+ auto=173
+ libre=0
+ boitier=24
+ ranking=0
+ manuel=0
+participants dans la tranche 4 de l'étape 2
+DEBUG    Tentative 1... 
+DEBUG    Tous les concurrents ont un horaire pour cette tranche.
+DEBUG    Répartition par heure de départ (avant étalement) [5, 4, 4, 5, 3, 6, 6, 5, 4, 5, 4, 3, 5, 5, 3, 5, 6, 4, 5, 4, 5, 5, 3, 5, 2, 1, 3, 3, 4, 3, 3, 3, 2, 4, 3, 4, 5, 3, 1, 2, 2, 4, 1, 2, 2, 1, 3, 2, 1], Ecart max=5
+DEBUG    Traitement de l'étalement
+DEBUG    Répartition par heure de départ (apres traitement) [4, 4, 4, 4, 4, 4, 4, 4, 4, 5, 5, 4, 5, 5, 4, 5, 5, 4, 5, 5, 5, 5, 4, 5, 2, 1, 3, 3, 4, 3, 3, 3, 2, 4, 3, 4, 4, 3, 1, 2, 2, 4, 1, 2, 2, 2, 3, 4, 1], Ecart max=4
+DEBUG    ------ Départ Red------
+DEBUG    TRANCHE 1
+DEBUG    Traitement de :
+ auto=300
+ libre=0
+ boitier=16
+ ranking=100
+ manuel=0
+participants dans la tranche 1 de l'étape 2
+DEBUG    Tentative 1... 
+DEBUG    Tous les concurrents ont un horaire pour cette tranche.
+DEBUG    Répartition par heure de départ (avant étalement) [5, 5, 6, 3, 6, 5, 5, 3, 5, 4, 5, 4, 6, 4, 5, 5, 6, 5, 5, 4, 4, 5, 5, 4, 4, 5, 5, 6, 7, 5, 7, 5, 3, 6, 6, 2, 4, 5, 6, 4, 4, 3, 5, 3, 4, 6, 4, 2, 2, 5, 4, 4, 3, 3, 4, 3, 3, 4, 5, 5, 4, 4, 3, 3, 5, 1, 5, 3, 2], Ecart max=6
+DEBUG    Traitement de l'étalement
+DEBUG    Répartition par heure de départ (apres traitement) [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 5, 4, 5, 5, 4, 4, 4, 4, 4, 5, 5, 4, 5, 5, 5, 5, 4, 5, 5, 4, 4, 5, 5, 5, 4, 4, 5, 4, 4, 5, 5, 4, 4, 5, 5, 4, 4, 4, 4, 4, 4, 4, 5, 5, 4, 5, 4, 4, 5, 4, 5, 4, 4], Ecart max=1
+DEBUG    TRANCHE 2
+DEBUG    Traitement de :
+ auto=264
+ libre=0
+ boitier=18
+ ranking=0
+ manuel=0
+participants dans la tranche 2 de l'étape 2
+DEBUG    Tentative 1... 
+DEBUG    Tous les concurrents ont un horaire pour cette tranche.
+DEBUG    Répartition par heure de départ (avant étalement) [5, 4, 6, 6, 4, 6, 6, 5, 6, 4, 7, 7, 5, 6, 4, 4, 5, 7, 4, 6, 4, 7, 7, 7, 6, 6, 6, 4, 3, 3, 5, 3, 4, 5, 4, 5, 4, 6, 1, 3, 3, 5, 3, 2, 2, 4, 4, 3, 2, 3, 5, 4, 3, 3, 6, 3, 3, 3, 3], Ecart max=6
+DEBUG    Traitement de l'étalement
+DEBUG    Répartition par heure de départ (apres traitement) [5, 4, 5, 5, 5, 5, 5, 5, 5, 4, 5, 5, 5, 5, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 5, 4, 4, 4, 4, 4, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 3], Ecart max=2
+DEBUG    TRANCHE 3
+DEBUG    Traitement de :
+ auto=265
+ libre=0
+ boitier=20
+ ranking=0
+ manuel=0
+participants dans la tranche 3 de l'étape 2
+DEBUG    Tentative 1... 
+DEBUG    Tous les concurrents ont un horaire pour cette tranche.
+DEBUG    Répartition par heure de départ (avant étalement) [5, 4, 5, 3, 3, 5, 5, 5, 5, 4, 3, 3, 3, 4, 3, 7, 5, 6, 5, 4, 5, 6, 4, 5, 3, 6, 6, 5, 6, 4, 5, 6, 3, 6, 3, 5, 4, 6, 7, 5, 4, 3, 5, 3, 7, 6, 4, 4, 4, 4, 5, 7, 3, 5, 5, 2, 2, 5], Ecart max=5
+DEBUG    Traitement de l'étalement
+DEBUG    Répartition par heure de départ (apres traitement) [5, 4, 5, 3, 3, 5, 5, 5, 5, 4, 5, 5, 3, 4, 3, 5, 5, 5, 5, 4, 5, 5, 4, 5, 4, 5, 5, 5, 5, 4, 5, 5, 3, 5, 3, 5, 5, 5, 5, 5, 4, 3, 5, 3, 5, 6, 5, 5, 5, 5, 6, 6, 5, 5, 5, 3, 3, 5], Ecart max=3
+DEBUG    TRANCHE 4
+DEBUG    Traitement de :
+ auto=211
+ libre=0
+ boitier=9
+ ranking=0
+ manuel=0
+participants dans la tranche 4 de l'étape 2
+DEBUG    Tentative 1... 
+DEBUG    Tous les concurrents ont un horaire pour cette tranche.
+DEBUG    Répartition par heure de départ (avant étalement) [5, 5, 5, 5, 2, 6, 3, 3, 3, 7, 3, 3, 5, 4, 5, 7, 6, 6, 4, 4, 4, 5, 5, 3, 5, 4, 4, 4, 6, 3, 4, 4, 3, 3, 4, 4, 6, 4, 3, 6, 6, 4, 5, 5, 4, 3, 2, 4, 2, 1], Ecart max=6
+DEBUG    Traitement de l'étalement
+DEBUG    Répartition par heure de départ (apres traitement) [4, 4, 5, 4, 3, 5, 4, 3, 4, 5, 3, 4, 5, 5, 5, 5, 4, 5, 4, 5, 4, 4, 5, 3, 4, 4, 4, 4, 5, 3, 4, 5, 4, 4, 4, 5, 5, 5, 4, 5, 5, 5, 5, 5, 4, 4, 3, 4, 3, 2], Ecart max=3
+DEBUG    Génération des départs suivant le ranking
+DEBUG    Génération des fichiers de sortie
+DEBUG    remplissage md et CSV
+DEBUG    Génération du rapport d'erreurs
+INFO     Fin de traitement de l'étape 2
+INFO     ====== Traitement de l'étape 3======
+DEBUG    Etape 3 tranche 1 : début=2019-07-09 09:15:00 fin=2019-07-09 10:14:00
+DEBUG    Etape 3 tranche 2 : début=2019-07-09 10:15:00 fin=2019-07-09 11:21:00
+DEBUG    Etape 3 tranche 3 : début=2019-07-09 11:22:00 fin=2019-07-09 12:21:00
+DEBUG    Etape 3 tranche 4 : début=2019-07-09 12:22:00 fin=2019-07-09 13:32:00
+DEBUG    Répartition participants pour l'étape 3
+DEBUG    Nombre de participants 2112
+DEBUG    ------ Départ Blue------
+DEBUG    TRANCHE 1
+DEBUG    Traitement de :
+ auto=175
+ libre=0
+ boitier=24
+ ranking=0
+ manuel=0
+participants dans la tranche 1 de l'étape 3
+DEBUG    Tentative 1... 
+DEBUG    Tous les concurrents ont un horaire pour cette tranche.
+DEBUG    Répartition par heure de départ (avant étalement) [6, 3, 5, 7, 5, 5, 4, 3, 5, 2, 4, 4, 4, 4, 5, 5, 5, 4, 5, 4, 3, 3, 3, 4, 5, 5, 3, 3, 4, 3, 3, 2, 2, 3, 2, 4, 2, 2, 2, 2, 3, 1, 1, 1, 2, 2, 2, 3, 1, 2, 1, 1, 1, 3, 1, 1], Ecart max=6
+DEBUG    Traitement de l'étalement
+DEBUG    Répartition par heure de départ (apres traitement) [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 5, 4, 5, 4, 4, 4, 4, 5, 5, 5, 4, 4, 4, 3, 3, 2, 2, 3, 2, 4, 2, 2, 2, 2, 3, 1, 1, 1, 2, 2, 2, 3, 1, 2, 1, 1, 1, 4, 1, 1], Ecart max=4
+DEBUG    TRANCHE 2
+DEBUG    Traitement de :
+ auto=204
+ libre=1
+ boitier=59
+ ranking=0
+ manuel=0
+participants dans la tranche 2 de l'étape 3
+DEBUG    Tentative 1... 
+DEBUG    Tous les concurrents ont un horaire pour cette tranche.
+DEBUG    Répartition par heure de départ (avant étalement) [3, 3, 2, 3, 1, 1, 2, 3, 2, 2, 3, 3, 1, 2, 2, 1, 2, 2, 3, 4, 2, 2, 4, 3, 2, 6, 2, 6, 4, 5, 5, 4, 3, 6, 4, 3, 8, 4, 5, 5, 4, 5, 2, 5, 5, 2, 2, 6, 2, 2, 3, 1, 5, 4, 4, 3, 4, 1, 2, 4, 1, 3, 4, 2], Ecart max=7
+DEBUG    Traitement de l'étalement
+DEBUG    Répartition par heure de départ (apres traitement) [3, 3, 2, 3, 1, 1, 2, 3, 2, 2, 3, 3, 1, 2, 2, 1, 2, 2, 3, 4, 2, 2, 4, 3, 2, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 2, 2, 3, 1, 4, 4, 4, 4, 5, 1, 2, 4, 1, 4, 5, 4, 4], Ecart max=4
+DEBUG    TRANCHE 3
+DEBUG    Traitement de :
+ auto=213
+ libre=0
+ boitier=25
+ ranking=0
+ manuel=0
+participants dans la tranche 3 de l'étape 3
+DEBUG    Tentative 1... 
+DEBUG    Tous les concurrents ont un horaire pour cette tranche.
+DEBUG    Répartition par heure de départ (avant étalement) [3, 3, 3, 3, 2, 3, 3, 3, 3, 4, 4, 3, 4, 2, 3, 4, 4, 1, 4, 4, 2, 2, 3, 3, 3, 2, 3, 2, 2, 3, 5, 3, 4, 4, 5, 4, 6, 3, 4, 2, 4, 2, 5, 8, 5, 6, 4, 4, 4, 3, 4, 4, 4, 7, 4, 6, 2, 5, 3, 1], Ecart max=7
+DEBUG    Traitement de l'étalement
+DEBUG    Répartition par heure de départ (apres traitement) [3, 3, 3, 3, 2, 3, 3, 3, 3, 4, 4, 3, 4, 2, 3, 4, 4, 1, 4, 4, 2, 2, 3, 3, 3, 2, 3, 2, 2, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 5, 4, 4, 4, 4, 4, 5, 5, 4, 5, 4, 5, 4, 4], Ecart max=4
+DEBUG    TRANCHE 4
+DEBUG    Traitement de :
+ auto=185
+ libre=0
+ boitier=46
+ ranking=0
+ manuel=0
+participants dans la tranche 4 de l'étape 3
+DEBUG    Tentative 1... 
+DEBUG    Tous les concurrents ont un horaire pour cette tranche.
+DEBUG    Répartition par heure de départ (avant étalement) [3, 1, 4, 5, 4, 4, 4, 6, 3, 3, 4, 4, 3, 2, 2, 4, 7, 2, 3, 3, 5, 5, 3, 3, 3, 2, 1, 3, 1, 3, 1, 3, 2, 4, 1, 2, 2, 3, 2, 3, 3, 3, 1, 2, 3, 7, 4, 4, 2, 3, 4, 2, 1, 3, 1, 2, 4, 2, 2, 3, 2, 1, 1, 1, 1], Ecart max=6
+DEBUG    Traitement de l'étalement
+DEBUG    Répartition par heure de départ (apres traitement) [3, 3, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 3, 3, 3, 4, 4, 3, 3, 4, 4, 4, 3, 3, 3, 2, 1, 3, 1, 3, 1, 3, 2, 3, 1, 2, 2, 3, 2, 3, 3, 3, 1, 3, 4, 4, 4, 4, 3, 4, 4, 2, 1, 3, 1, 2, 4, 3, 3, 3, 4, 1, 1, 1, 3, 1], Ecart max=3
+DEBUG    ------ Départ Red------
+DEBUG    TRANCHE 1
+DEBUG    Traitement de :
+ auto=244
+ libre=0
+ boitier=10
+ ranking=0
+ manuel=0
+participants dans la tranche 1 de l'étape 3
+DEBUG    Tentative 1... 
+DEBUG    (Répartition) Impossible de trouver une place dans le circuit('M21E', 19) pour {'prenom': 'Ludek', 'nom': 'FINSTRLE', 'sexe': 'M', 'an': '1979', 'flag': 'CZE', 'num_club': '', 'ref_club': '', 'club': 'SK ZABOVRESKY BRNO', 'num_lic': '', 'etapes': [0, 1, 2, 3, 4], 'categorie': 'M21E', 'puce_si': '8660402', 'modele_tshirt': 'COL V', 'taille_tshirt': 'M', 'iofid': '37468', 'dossard': 4782, 'heure_dep': [datetime.datetime(2019, 7, 7, 11, 26), datetime.datetime(2019, 7, 8, 12, 9), None, None, None], 'tranches': [0, 0, 0, 1, 2], 'posdepart': ['Red', 'Red', 'Red', 'Red', 'Red'], 'pointscn': 0, 'pointsiofsprint': 0, 'pointsiofmdld': 0, 'pointsiofmtbo': 0, 'pointsiofskio': 0, 'pointsioftrailo': 0, 'circuits': ['A', 'A', 'A', 'A', 'A'], 'horaires': ['rank', 'rank', 'oui', 'oui', 'man']}
+DEBUG    Tentative 2... 
+DEBUG    Tous les concurrents ont un horaire pour cette tranche.
+DEBUG    Répartition par heure de départ (avant étalement) [3, 4, 1, 6, 6, 6, 4, 2, 2, 3, 3, 11, 4, 6, 5, 7, 2, 6, 5, 6, 4, 5, 8, 2, 7, 7, 7, 3, 5, 6, 6, 6, 3, 5, 4, 4, 3, 6, 4, 4, 4, 5, 3, 4, 6, 4, 1, 3, 4, 3, 2, 1, 3, 1, 1, 2, 1, 4, 1], Ecart max=10
+DEBUG    Traitement de l'étalement
+DEBUG    Répartition par heure de départ (apres traitement) [3, 4, 1, 5, 5, 5, 4, 2, 2, 3, 3, 5, 5, 5, 5, 5, 2, 5, 5, 5, 5, 5, 5, 2, 5, 5, 5, 3, 5, 5, 5, 5, 3, 5, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 6, 5, 5, 4, 5, 4, 3, 1, 4, 1, 2, 3, 2, 5, 2, 1], Ecart max=5
+DEBUG    TRANCHE 2
+DEBUG    Traitement de :
+ auto=321
+ libre=0
+ boitier=16
+ ranking=0
+ manuel=0
+participants dans la tranche 2 de l'étape 3
+DEBUG    Tentative 1... 
+DEBUG    Tous les concurrents ont un horaire pour cette tranche.
+DEBUG    Répartition par heure de départ (avant étalement) [6, 8, 4, 7, 6, 5, 6, 3, 5, 7, 5, 10, 3, 5, 5, 5, 7, 5, 6, 5, 8, 8, 3, 8, 6, 7, 8, 7, 5, 6, 5, 7, 2, 2, 5, 3, 4, 5, 8, 4, 4, 3, 7, 4, 5, 5, 5, 5, 4, 4, 2, 5, 3, 3, 4, 4, 3, 5, 4, 2, 2, 3, 3, 2, 5, 1], Ecart max=9
+DEBUG    Traitement de l'étalement
+DEBUG    Répartition par heure de départ (apres traitement) [5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 6, 6, 5, 5, 6, 5, 6, 5, 5, 5, 6, 6, 5, 6, 6, 6, 6, 5, 5, 6, 6, 6, 2, 2, 5, 3, 4, 5, 6, 4, 5, 3, 5, 5, 5, 5, 5, 5, 5, 5, 3, 5, 4, 4, 5, 5, 4, 5, 5, 4, 5, 4, 5, 3, 5, 2, 1], Ecart max=5
+DEBUG    TRANCHE 3
+DEBUG    Traitement de :
+ auto=270
+ libre=0
+ boitier=17
+ ranking=0
+ manuel=0
+participants dans la tranche 3 de l'étape 3
+DEBUG    Tentative 1... 
+DEBUG    Tous les concurrents ont un horaire pour cette tranche.
+DEBUG    Répartition par heure de départ (avant étalement) [8, 3, 6, 9, 7, 4, 6, 9, 4, 4, 4, 7, 4, 4, 2, 6, 2, 7, 4, 8, 5, 4, 4, 1, 5, 3, 8, 8, 6, 4, 8, 5, 5, 6, 4, 4, 5, 6, 7, 7, 6, 7, 4, 2, 3, 1, 5, 1, 2, 2, 3, 1, 2, 4, 2, 3, 2, 3, 2, 2], Ecart max=8
+DEBUG    Traitement de l'étalement
+DEBUG    Répartition par heure de départ (apres traitement) [6, 3, 5, 5, 5, 4, 5, 5, 5, 5, 5, 6, 4, 4, 2, 5, 2, 6, 4, 6, 5, 4, 4, 1, 5, 5, 6, 6, 6, 6, 6, 6, 6, 6, 6, 5, 5, 6, 6, 6, 6, 6, 5, 2, 4, 2, 5, 3, 3, 3, 4, 2, 3, 5, 3, 4, 3, 3, 3, 3], Ecart max=5
+DEBUG    TRANCHE 4
+DEBUG    Traitement de :
+ auto=286
+ libre=0
+ boitier=16
+ ranking=0
+ manuel=0
+participants dans la tranche 4 de l'étape 3
+DEBUG    Tentative 1... 
+DEBUG    Tous les concurrents ont un horaire pour cette tranche.
+DEBUG    Répartition par heure de départ (avant étalement) [2, 3, 5, 5, 6, 3, 3, 4, 5, 4, 3, 3, 3, 3, 4, 4, 8, 4, 6, 5, 4, 2, 4, 3, 5, 3, 3, 9, 6, 3, 2, 5, 3, 7, 7, 8, 6, 3, 3, 3, 4, 5, 4, 5, 7, 3, 6, 4, 3, 4, 5, 6, 4, 4, 6, 7, 4, 1, 3, 3, 2, 2, 3, 2, 2, 2, 3, 4, 3, 2, 1], Ecart max=8
+DEBUG    Traitement de l'étalement
+DEBUG    Répartition par heure de départ (apres traitement) [3, 3, 4, 4, 4, 3, 4, 4, 4, 4, 4, 3, 4, 4, 4, 4, 5, 4, 4, 4, 4, 3, 4, 3, 4, 4, 4, 4, 5, 4, 2, 5, 4, 5, 5, 5, 5, 3, 4, 3, 4, 4, 4, 4, 5, 5, 4, 5, 5, 4, 5, 5, 5, 5, 5, 5, 4, 4, 4, 4, 3, 3, 4, 3, 3, 5, 4, 4, 4, 3, 3], Ecart max=3
+DEBUG    Génération des départs suivant le ranking
+DEBUG    Génération des fichiers de sortie
+DEBUG    remplissage md et CSV
+DEBUG    Génération du rapport d'erreurs
+INFO     Fin de traitement de l'étape 3
+INFO     ====== Traitement de l'étape 4======
+DEBUG    Etape 4 tranche 1 : début=2019-07-11 09:15:00 fin=2019-07-11 10:53:00
+DEBUG    Etape 4 tranche 2 : début=2019-07-11 10:54:00 fin=2019-07-11 12:03:00
+DEBUG    Etape 4 tranche 3 : début=2019-07-11 12:04:00 fin=2019-07-11 13:11:00
+DEBUG    Etape 4 tranche 4 : début=2019-07-11 13:12:00 fin=2019-07-11 14:13:00
+DEBUG    Répartition participants pour l'étape 4
+DEBUG    Nombre de participants 2107
+DEBUG    ------ Départ Blue------
+DEBUG    TRANCHE 1
+DEBUG    Traitement de :
+ auto=185
+ libre=0
+ boitier=45
+ ranking=0
+ manuel=0
+participants dans la tranche 1 de l'étape 4
+DEBUG    Tentative 1... 
+DEBUG    Tous les concurrents ont un horaire pour cette tranche.
+DEBUG    Répartition par heure de départ (avant étalement) [2, 2, 3, 3, 3, 4, 3, 4, 4, 5, 5, 2, 2, 4, 4, 3, 3, 3, 3, 3, 3, 3, 1, 4, 1, 1, 1, 2, 3, 2, 1, 1, 2, 1, 2, 2, 1, 2, 2, 3, 2, 2, 2, 4, 2, 2, 3, 1, 2, 2, 4, 2, 1, 2, 3, 2, 2, 1, 2, 1, 4, 2, 1, 2, 2, 1, 2, 3, 2, 1, 1, 1, 2, 1, 1, 2, 1, 1, 2, 2, 2, 1, 1, 1, 1], Ecart max=4
+DEBUG    Traitement de l'étalement
+DEBUG    Répartition par heure de départ (apres traitement) [2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 2, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 2, 1, 1, 1, 2, 2, 2, 2, 1, 2, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 3, 2, 2, 3, 2, 2, 2, 3, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 1, 2, 3, 2, 3, 3, 2, 2, 2, 2, 2, 1, 1, 2, 1, 1, 3, 2, 2, 2, 3, 2, 2, 2, 1, 2, 1, 1], Ecart max=2
+DEBUG    TRANCHE 2
+DEBUG    Traitement de :
+ auto=171
+ libre=0
+ boitier=28
+ ranking=0
+ manuel=0
+participants dans la tranche 2 de l'étape 4
+DEBUG    Tentative 1... 
+DEBUG    Tous les concurrents ont un horaire pour cette tranche.
+DEBUG    Répartition par heure de départ (avant étalement) [3, 2, 4, 2, 3, 2, 4, 3, 2, 5, 2, 3, 4, 5, 5, 1, 4, 5, 3, 4, 3, 1, 4, 6, 4, 3, 4, 2, 2, 3, 3, 1, 3, 2, 3, 3, 3, 2, 2, 2, 3, 3, 1, 2, 3, 2, 2, 1, 3, 2, 2, 3, 2, 1, 2, 3, 2, 2, 2, 2, 1, 3, 1, 1], Ecart max=5
+DEBUG    Traitement de l'étalement
+DEBUG    Répartition par heure de départ (apres traitement) [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 4, 3, 4, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 2, 2, 3, 3, 1, 2, 3, 2, 2, 1, 3, 2, 2, 3, 2, 1, 2, 3, 2, 2, 2, 2, 1, 3, 1, 1, 3], Ecart max=3
+DEBUG    TRANCHE 3
+DEBUG    Traitement de :
+ auto=205
+ libre=1
+ boitier=59
+ ranking=0
+ manuel=0
+participants dans la tranche 3 de l'étape 4
+DEBUG    Tentative 1... 
+DEBUG    Tous les concurrents ont un horaire pour cette tranche.
+DEBUG    Répartition par heure de départ (avant étalement) [3, 3, 3, 4, 2, 4, 2, 3, 2, 3, 5, 2, 4, 2, 3, 5, 3, 3, 2, 1, 1, 3, 2, 3, 3, 3, 5, 3, 6, 3, 1, 5, 5, 2, 4, 4, 4, 4, 7, 3, 4, 4, 4, 2, 1, 4, 4, 3, 3, 4, 3, 3, 3, 3, 4, 5, 3, 3, 2, 1, 2, 1, 2, 3, 2, 1, 1], Ecart max=6
+DEBUG    Traitement de l'étalement
+DEBUG    Répartition par heure de départ (apres traitement) [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 3, 3, 3, 3, 3, 3, 3, 1, 2, 3, 2, 3, 3, 3, 3, 3, 3, 3, 3, 3, 4, 3, 4, 4, 4, 4, 4, 3, 4, 4, 4, 4, 3, 4, 4, 3, 4, 4, 4, 3, 3, 3, 4, 4, 4, 3, 3, 1, 2, 1, 2, 3, 3, 1, 1, 1], Ecart max=3
+DEBUG    TRANCHE 4
+DEBUG    Traitement de :
+ auto=210
+ libre=0
+ boitier=25
+ ranking=0
+ manuel=0
+participants dans la tranche 4 de l'étape 4
+DEBUG    Tentative 1... 
+DEBUG    Tous les concurrents ont un horaire pour cette tranche.
+DEBUG    Répartition par heure de départ (avant étalement) [2, 4, 2, 3, 5, 3, 4, 4, 4, 3, 2, 4, 2, 3, 4, 3, 4, 4, 4, 4, 4, 2, 2, 5, 3, 4, 5, 5, 5, 4, 3, 2, 4, 2, 4, 1, 3, 4, 5, 4, 3, 3, 4, 4, 4, 3, 4, 5, 3, 3, 4, 4, 2, 4, 5, 4, 4, 3, 3, 2], Ecart max=4
+DEBUG    Traitement de l'étalement
+DEBUG    Répartition par heure de départ (apres traitement) [3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 4, 4, 4, 4, 3, 3, 4, 4, 4, 4, 4, 4, 3, 3, 3, 3, 3, 3, 3, 3, 3, 4, 4, 3, 3, 4, 4, 4, 3, 4, 4, 3, 3, 4, 4, 3, 4, 4, 4, 4, 3, 4, 3, 3, 3], Ecart max=1
+DEBUG    ------ Départ Red------
+DEBUG    TRANCHE 1
+DEBUG    Traitement de :
+ auto=301
+ libre=0
+ boitier=19
+ ranking=0
+ manuel=0
+participants dans la tranche 1 de l'étape 4
+DEBUG    Tentative 1... 
+DEBUG    Tous les concurrents ont un horaire pour cette tranche.
+DEBUG    Répartition par heure de départ (avant étalement) [5, 6, 4, 2, 8, 4, 4, 4, 7, 5, 3, 3, 4, 4, 3, 3, 6, 6, 4, 3, 4, 5, 5, 3, 4, 4, 4, 4, 3, 4, 5, 2, 1, 2, 6, 4, 1, 3, 3, 4, 5, 3, 4, 3, 3, 2, 5, 3, 6, 1, 3, 1, 3, 3, 1, 1, 4, 2, 1, 3, 2, 3, 2, 3, 2, 3, 3, 2, 2, 2, 5, 3, 2, 3, 2, 4, 3, 5, 2, 3, 2, 2, 1, 1, 1, 2, 2, 2, 2, 2, 1, 1, 2, 2, 3, 2, 1], Ecart max=7
+DEBUG    Traitement de l'étalement
+DEBUG    Répartition par heure de départ (apres traitement) [3, 4, 3, 3, 3, 4, 4, 3, 3, 3, 4, 4, 4, 4, 4, 4, 3, 3, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 3, 4, 4, 4, 3, 4, 4, 4, 4, 4, 4, 4, 3, 1, 3, 1, 3, 3, 1, 1, 3, 3, 1, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2, 2, 3, 3, 2, 3, 2, 4, 3, 3, 3, 3, 3, 3, 1, 1, 1, 3, 2, 2, 3, 2, 1, 1, 2, 2, 3, 3, 2, 2], Ecart max=3
+DEBUG    TRANCHE 2
+DEBUG    Traitement de :
+ auto=233
+ libre=0
+ boitier=10
+ ranking=0
+ manuel=0
+participants dans la tranche 2 de l'étape 4
+DEBUG    Tentative 1... 
+DEBUG    Tous les concurrents ont un horaire pour cette tranche.
+DEBUG    Répartition par heure de départ (avant étalement) [5, 6, 1, 4, 5, 4, 3, 6, 4, 5, 5, 6, 6, 5, 6, 4, 4, 4, 4, 5, 3, 4, 6, 3, 5, 7, 4, 7, 5, 3, 3, 4, 4, 2, 1, 2, 2, 6, 5, 3, 2, 4, 2, 3, 2, 2, 2, 3, 3, 2, 2, 2, 4, 2, 1, 3, 2, 2, 2, 2, 4, 1, 1, 1, 2, 2, 3, 1], Ecart max=6
+DEBUG    Traitement de l'étalement
+DEBUG    Répartition par heure de départ (apres traitement) [4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 5, 4, 5, 4, 5, 5, 4, 4, 4, 4, 5, 4, 5, 4, 5, 4, 5, 4, 5, 4, 4, 4, 4, 3, 2, 4, 4, 4, 2, 4, 3, 4, 2, 2, 2, 3, 3, 2, 2, 2, 4, 3, 1, 3, 2, 2, 2, 3, 4, 1, 1, 1, 2, 2, 4, 1], Ecart max=4
+DEBUG    TRANCHE 3
+DEBUG    Traitement de :
+ auto=316
+ libre=0
+ boitier=17
+ ranking=0
+ manuel=0
+participants dans la tranche 3 de l'étape 4
+DEBUG    Tentative 1... 
+DEBUG    Tous les concurrents ont un horaire pour cette tranche.
+DEBUG    Répartition par heure de départ (avant étalement) [6, 4, 6, 5, 5, 6, 6, 7, 5, 5, 5, 8, 5, 6, 6, 5, 2, 8, 5, 6, 3, 9, 7, 6, 7, 5, 5, 9, 4, 5, 3, 5, 3, 2, 7, 6, 3, 6, 3, 2, 4, 6, 4, 2, 4, 4, 4, 4, 3, 4, 4, 6, 4, 3, 4, 5, 2, 7, 2, 3, 3, 3, 4, 1, 5, 4, 3, 3], Ecart max=8
+DEBUG    Traitement de l'étalement
+DEBUG    Répartition par heure de départ (apres traitement) [5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 6, 6, 6, 5, 5, 6, 6, 5, 5, 5, 5, 5, 6, 5, 6, 5, 6, 5, 5, 6, 3, 2, 5, 5, 3, 5, 4, 2, 4, 5, 5, 3, 5, 4, 5, 5, 3, 4, 4, 5, 4, 3, 5, 5, 2, 5, 2, 3, 5, 5, 5, 2, 5, 5, 5, 5], Ecart max=4
+DEBUG    TRANCHE 4
+DEBUG    Traitement de :
+ auto=266
+ libre=0
+ boitier=16
+ ranking=0
+ manuel=0
+participants dans la tranche 4 de l'étape 4
+DEBUG    Tentative 1... 
+DEBUG    Tous les concurrents ont un horaire pour cette tranche.
+DEBUG    Répartition par heure de départ (avant étalement) [4, 5, 5, 4, 4, 6, 6, 8, 6, 6, 6, 5, 6, 7, 6, 8, 7, 4, 4, 8, 6, 6, 7, 6, 5, 4, 6, 5, 4, 3, 3, 4, 3, 4, 4, 5, 4, 3, 4, 3, 6, 4, 2, 3, 2, 4, 3, 4, 3, 2, 6, 4, 4, 4, 2, 3, 1, 1, 2, 1, 1], Ecart max=7
+DEBUG    Traitement de l'étalement
+DEBUG    Répartition par heure de départ (apres traitement) [5, 5, 5, 5, 5, 5, 5, 5, 6, 6, 6, 5, 6, 6, 6, 6, 5, 5, 5, 5, 5, 6, 6, 6, 6, 5, 6, 5, 5, 5, 5, 4, 3, 5, 4, 5, 4, 3, 4, 3, 5, 4, 2, 3, 3, 4, 3, 4, 3, 2, 5, 4, 4, 4, 2, 3, 1, 1, 3, 2, 2], Ecart max=5
+DEBUG    Génération des départs suivant le ranking
+DEBUG    Génération des fichiers de sortie
+DEBUG    remplissage md et CSV
+DEBUG    Génération du rapport d'erreurs
+INFO     Fin de traitement de l'étape 4
+INFO     ====== Traitement de l'étape 5======
+DEBUG    Répartition participants pour l'étape 5
+DEBUG    Nombre de participants 2069
+DEBUG    ------ Départ Blue------
+DEBUG    TRANCHE 1
+DEBUG    Traitement de :
+ auto=0
+ libre=0
+ boitier=24
+ ranking=0
+ manuel=209
+participants dans la tranche 1 de l'étape 5
+DEBUG    Tentative 1... 
+DEBUG    Tous les concurrents ont un horaire pour cette tranche.
+DEBUG    TRANCHE 2
+DEBUG    Traitement de :
+ auto=0
+ libre=0
+ boitier=45
+ ranking=0
+ manuel=181
+participants dans la tranche 2 de l'étape 5
+DEBUG    Tentative 1... 
+DEBUG    Tous les concurrents ont un horaire pour cette tranche.
+DEBUG    TRANCHE 3
+DEBUG    Traitement de :
+ auto=0
+ libre=0
+ boitier=26
+ ranking=0
+ manuel=167
+participants dans la tranche 3 de l'étape 5
+DEBUG    Tentative 1... 
+DEBUG    Tous les concurrents ont un horaire pour cette tranche.
+DEBUG    TRANCHE 4
+DEBUG    Traitement de :
+ auto=0
+ libre=1
+ boitier=60
+ ranking=0
+ manuel=203
+participants dans la tranche 4 de l'étape 5
+DEBUG    Tentative 1... 
+DEBUG    Tous les concurrents ont un horaire pour cette tranche.
+DEBUG    ------ Départ Red------
+DEBUG    TRANCHE 1
+DEBUG    Traitement de :
+ auto=0
+ libre=0
+ boitier=16
+ ranking=0
+ manuel=270
+participants dans la tranche 1 de l'étape 5
+DEBUG    Tentative 1... 
+DEBUG    Tous les concurrents ont un horaire pour cette tranche.
+DEBUG    TRANCHE 2
+DEBUG    Traitement de :
+ auto=0
+ libre=0
+ boitier=16
+ ranking=0
+ manuel=284
+participants dans la tranche 2 de l'étape 5
+DEBUG    Tentative 1... 
+DEBUG    Tous les concurrents ont un horaire pour cette tranche.
+DEBUG    TRANCHE 3
+DEBUG    Traitement de :
+ auto=0
+ libre=0
+ boitier=10
+ ranking=0
+ manuel=224
+participants dans la tranche 3 de l'étape 5
+DEBUG    Tentative 1... 
+DEBUG    Tous les concurrents ont un horaire pour cette tranche.
+DEBUG    TRANCHE 4
+DEBUG    Traitement de :
+ auto=0
+ libre=0
+ boitier=16
+ ranking=0
+ manuel=317
+participants dans la tranche 4 de l'étape 5
+DEBUG    Tentative 1... 
+DEBUG    Tous les concurrents ont un horaire pour cette tranche.
+DEBUG    Génération des départs suivant le ranking
+DEBUG    Génération des fichiers de sortie
+DEBUG    remplissage md et CSV
+DEBUG    Génération du rapport d'erreurs
+INFO     Fin de traitement de l'étape 5
+INFO     Fin.
