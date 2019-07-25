@@ -282,89 +282,89 @@ __*Remarques*__
 ### Inscriptions
 | Clef | Type valeur | Détails |
 |------------|:--------:|-----------------------------|
-|"Inscriptions" | *element complexe* | Cete section détaille la façon de gérer le fichier d'inscription
-|
-|"Inscriptions" "FichierCSV" | *chaine* | Nom du fichier CSV contenant les inscriptions
-|
-|"Inscriptions" "Encodage" | *chaine* | Encodage utilisé pour le fichier CSV. Typiquement "ansi" ou "utf8"
-|
-|"Inscriptions" "SeparateurColonnesCSV" | *chaine* | Séparateur de colonnes du fichier CSV. Typiquement une virgule ou un point-virgule.
-|
-|"Inscriptions" "LignesDeTitre" | *nombre* | Nombre de lignes de titre à sauter lors de la lecture du fichier CSV d'inscription
-|
-|"Inscriptions" "DebutTitre" | *chaine* | Début des lignes à sauter
-|
-|"Inscriptions" "Colonnes" | *element complexe* | Définition des colonnes contenant les informations à récupérer
-|
-|"Inscriptions" "Colonnes" "Nom" | *nombre* | Numéro de la colonne, en comptant à partir de 1, contenant le nom du participant
-|
-|"Inscriptions" "Colonnes" "Prenom" | *nombre* | Numéro de la colonne, en comptant à partir de 1, contenant le prénom du participant
-|
-|"Inscriptions" "Colonnes" "Sexe" | *nombre* | Numéro de la colonne, en comptant à partir de 1, contenant le sexe du participant
-|
-|"Inscriptions" "Colonnes" "Annee" | *nombre* | Numéro de la colonne, en comptant à partir de 1, contenant l'année de naissance du participant
-|
-|"Inscriptions" "Colonnes" "Pays" | *nombre* | Numéro de la colonne, en comptant à partir de 1, contenant la nationalité du participant
-|
-|"Inscriptions" "Colonnes" "NumeroClub" | *nombre* | Numéro de la colonne, en comptant à partir de 1, contenant le numéro de club (par exemple 1307) du participant
-|
-|"Inscriptions" "Colonnes" "ReferenceClub" | *nombre* | Numéro de la colonne, en comptant à partir de 1, contenant le numéro de club complet (par exemple 1307PZ) du participant
-|
-|"Inscriptions" "Colonnes" "NomClub" | *nombre* | Numéro de la colonne, en comptant à partir de 1, contenant le nom de club (par exemple ACA Aix-en-Provence) du participant
-|
-|"Inscriptions" "Colonnes" "NumeroLicenceFFCO" | *nombre* | Numéro de la colonne, en comptant à partir de 1, contenant le numéro de licence du participant
-|
-|"Inscriptions" "Colonnes" "IOFid" | *nombre* | Numéro de la colonne, en comptant à partir de 1, contenant l'identifiant IOF du participant
-|
-|"Inscriptions" "Colonnes" "Etapes" | *nombre* | Numéro de la colonne, en comptant à partir de 1, contenant la liste des étapes auxquelles est inscrit le participant
-|
-|"Inscriptions" "Colonnes" "Categorie" | *nombre* | Numéro de la colonne, en comptant à partir de 1, contenant la catégorie du participant
-|
-|"Inscriptions" "Colonnes" "NumeroPuceSI" | *nombre* | Numéro de la colonne, en comptant à partir de 1, contenant le numéro de puce SI du participant
-|
-|"Inscriptions" "Colonnes" "ModeleTshirt" | *nombre* | Numéro de la colonne, en comptant à partir de 1, contenant le modèle de T-shirt souhaité
-|
-|"Inscriptions" "Colonnes" "TailleTshirt" | *nombre* | Numéro de la colonne, en comptant à partir de 1, contenant la taille de T-shirt souhaitée
-|
-|"Inscriptions" "ParticipantsASupprimer" | *liste d'éléments complexes* | Liste des participants figurant dans le fichier CSV d'inscription mais devant être supprimés ( par exemple à cause d'erreurs d'inscription).
-|
-|"Inscriptions" "ParticipantsASupprimer"[*] "Nom" | *chaine* | Nom du participant devant être supprimé des inscriptions
-|
-|"Inscriptions" "ParticipantsASupprimer"[*] "Prenom" | *chaine* | Prénom du participant devant être supprimé des inscriptions
-|
-|"Inscriptions" "ParticipantsASupprimer"[*] "Club" | *chaine* | Club du participant devant être supprimé des inscriptions
-|
-|"Inscriptions" "ParticipantsSupplementaires" :| *liste d'éléments complexes* | Liste des participants devant être ajoutés ( par exemple à cause d'erreurs d'inscription ou d'inscriptions tardives).
-|
-|"Inscriptions" "ParticipantsSupplementaires"[*] "Nom" | *chaine* | Nom du participant devant être ajouté aux inscriptions
-|
-|"Inscriptions" "ParticipantsSupplementaires"[*] "Prenom" | *chaine* | Prénom du participant devant être ajouté aux inscriptions
-|
-|"Inscriptions" "ParticipantsSupplementaires"[*] "Sexe" | *chaine* | Sexe du participant devant être ajouté aux inscriptions
-|
-|"Inscriptions" "ParticipantsSupplementaires"[*] "Annee" | *chaine* | Année de naissance du participant devant être ajouté aux inscriptions
-|
-|"Inscriptions" "ParticipantsSupplementaires"[*] "Pays" | *chaine* | Nationalité du participant devant être ajouté aux inscriptions
-|
-|"Inscriptions" "ParticipantsSupplementaires"[*] "NumeroClub" | *chaine* | Numéro de club (par exemple "1307") du participant devant être ajouté aux inscriptions. Peut être laissé vide ("").
-|
-|"Inscriptions" "ParticipantsSupplementaires"[*] "ReferenceClub" | *chaine* | Numéro de club complet (par exemple "1307PZ") du participant devant être ajouté aux inscriptions. Peut être laissé vide ("").
-|
-|"Inscriptions" "ParticipantsSupplementaires"[*] "NomClub" | *chaine* | Nom de club du participant devant être ajouté aux inscriptions
-|
-|"Inscriptions" "ParticipantsSupplementaires"[*] "NumeroLicenceFFCO" | *chaine* | Numéro de licence FFCO du participant, sous forme de chaine de caractères entre doubles quotes, devant être ajouté aux inscriptions (par exemple "12345"). Doit être laissé vide pour les non licenciés FFCO ("").
-|
-|"Inscriptions" "ParticipantsSupplementaires"[*] "IOFid" | *chaine* | Identifiant IOF du participant devant être ajouté aux inscriptions. Peut être laissé vide ("")
-|
-|"Inscriptions" "ParticipantsSupplementaires"[*] "Etapes" | *chaine* | Liste des étapes auxquelles le participant doit être inscrit. Les étapes sont indiqués sous forme d'une seule chaine de caractère, donc entre doubles quotes, contenant les numéros séparés par des virgules (par exemple "1,2,4").
-|
-|"Inscriptions" "ParticipantsSupplementaires"[*] "Categorie" | *chaine* | Nom de la catégorie du participant devant être ajouté aux inscriptions (par exemple "H50")
-|
-|"Inscriptions" "ParticipantsSupplementaires"[*] "NumeroPuceSI" | *chaine* | Numéro de puce SI (sous forme de chaine de caractères) du participant devant être ajouté aux inscriptions (par exemple "123456").
-|
-|"Inscriptions" "ParticipantsSupplementaires"[*] "ModeleTshirt" | *chaine* | Modèle de T-shirt souhaité par le participant devant être ajouté aux inscriptions (par exemple "COL V").
-|
-|"Inscriptions" "ParticipantsSupplementaires"[*] "TailleTshirt" | *chaine* | Taille du T-shirt (sous forme de chaine de caractères) souhaitée par le participant devant être ajouté aux inscriptions (par exemple "XXL").
+|"Inscriptions" | *element complexe* | Cete section détaille la façon de gérer le fichier d'inscription|
+|  |  |  |
+|"Inscriptions" "FichierCSV" | *chaine* | Nom du fichier CSV contenant les inscriptions|
+|  |  |  |
+|"Inscriptions" "Encodage" | *chaine* | Encodage utilisé pour le fichier CSV. Typiquement "ansi" ou "utf8"|
+|  |  |  |
+|"Inscriptions" "SeparateurColonnesCSV" | *chaine* | Séparateur de colonnes du fichier CSV. Typiquement une virgule ou un point-virgule.|
+|  |  |  |
+|"Inscriptions" "LignesDeTitre" | *nombre* | Nombre de lignes de titre à sauter lors de la lecture du fichier CSV d'inscription|
+|  |  |  |
+|"Inscriptions" "DebutTitre" | *chaine* | Début des lignes à sauter|
+|  |  |  |
+|"Inscriptions" "Colonnes" | *element complexe* | Définition des colonnes contenant les informations à récupérer|
+|  |  |  |
+|"Inscriptions" "Colonnes" "Nom" | *nombre* | Numéro de la colonne, en comptant à partir de 1, contenant le nom du participant|
+|  |  |  |
+|"Inscriptions" "Colonnes" "Prenom" | *nombre* | Numéro de la colonne, en comptant à partir de 1, contenant le prénom du participant|
+|  |  |  |
+|"Inscriptions" "Colonnes" "Sexe" | *nombre* | Numéro de la colonne, en comptant à partir de 1, contenant le sexe du participant|
+|  |  |  |
+|"Inscriptions" "Colonnes" "Annee" | *nombre* | Numéro de la colonne, en comptant à partir de 1, contenant l'année de naissance du participant|
+|  |  |  |
+|"Inscriptions" "Colonnes" "Pays" | *nombre* | Numéro de la colonne, en comptant à partir de 1, contenant la nationalité du participant|
+|  |  |  |
+|"Inscriptions" "Colonnes" "NumeroClub" | *nombre* | Numéro de la colonne, en comptant à partir de 1, contenant le numéro de club (par exemple 1307) du participant|
+|  |  |  |
+|"Inscriptions" "Colonnes" "ReferenceClub" | *nombre* | Numéro de la colonne, en comptant à partir de 1, contenant le numéro de club complet (par exemple 1307PZ) du participant|
+|  |  |  |
+|"Inscriptions" "Colonnes" "NomClub" | *nombre* | Numéro de la colonne, en comptant à partir de 1, contenant le nom de club (par exemple ACA Aix-en-Provence) du participant|
+|  |  |  |
+|"Inscriptions" "Colonnes" "NumeroLicenceFFCO" | *nombre* | Numéro de la colonne, en comptant à partir de 1, contenant le numéro de licence du participant|
+|  |  |  |
+|"Inscriptions" "Colonnes" "IOFid" | *nombre* | Numéro de la colonne, en comptant à partir de 1, contenant l'identifiant IOF du participant|
+|  |  |  |
+|"Inscriptions" "Colonnes" "Etapes" | *nombre* | Numéro de la colonne, en comptant à partir de 1, contenant la liste des étapes auxquelles est inscrit le participant|
+|  |  |  |
+|"Inscriptions" "Colonnes" "Categorie" | *nombre* | Numéro de la colonne, en comptant à partir de 1, contenant la catégorie du participant|
+|  |  |  |
+|"Inscriptions" "Colonnes" "NumeroPuceSI" | *nombre* | Numéro de la colonne, en comptant à partir de 1, contenant le numéro de puce SI du participant|
+|  |  |  |
+|"Inscriptions" "Colonnes" "ModeleTshirt" | *nombre* | Numéro de la colonne, en comptant à partir de 1, contenant le modèle de T-shirt souhaité|
+|  |  |  |
+|"Inscriptions" "Colonnes" "TailleTshirt" | *nombre* | Numéro de la colonne, en comptant à partir de 1, contenant la taille de T-shirt souhaitée|
+|  |  |  |
+|"Inscriptions" "ParticipantsASupprimer" | *liste d'éléments complexes* | Liste des participants figurant dans le fichier CSV d'inscription mais devant être supprimés ( par exemple à cause d'erreurs d'inscription).|
+|  |  |  |
+|"Inscriptions" "ParticipantsASupprimer"[*] "Nom" | *chaine* | Nom du participant devant être supprimé des inscriptions|
+|  |  |  |
+|"Inscriptions" "ParticipantsASupprimer"[*] "Prenom" | *chaine* | Prénom du participant devant être supprimé des inscriptions|
+|  |  |  |
+|"Inscriptions" "ParticipantsASupprimer"[*] "Club" | *chaine* | Club du participant devant être supprimé des inscriptions|
+|  |  |  |
+|"Inscriptions" "ParticipantsSupplementaires" :| *liste d'éléments complexes* | Liste des participants devant être ajoutés ( par exemple à cause d'erreurs d'inscription ou d'inscriptions tardives).|
+|  |  |  |
+|"Inscriptions" "ParticipantsSupplementaires"[*] "Nom" | *chaine* | Nom du participant devant être ajouté aux inscriptions|
+|  |  |  |
+|"Inscriptions" "ParticipantsSupplementaires"[*] "Prenom" | *chaine* | Prénom du participant devant être ajouté aux inscriptions|
+|  |  |  |
+|"Inscriptions" "ParticipantsSupplementaires"[*] "Sexe" | *chaine* | Sexe du participant devant être ajouté aux inscriptions|
+|  |  |  |
+|"Inscriptions" "ParticipantsSupplementaires"[*] "Annee" | *chaine* | Année de naissance du participant devant être ajouté aux inscriptions|
+|  |  |  |
+|"Inscriptions" "ParticipantsSupplementaires"[*] "Pays" | *chaine* | Nationalité du participant devant être ajouté aux inscriptions|
+|  |  |  |
+|"Inscriptions" "ParticipantsSupplementaires"[*] "NumeroClub" | *chaine* | Numéro de club (par exemple "1307") du participant devant être ajouté aux inscriptions. Peut être laissé vide ("").|
+|  |  |  |
+|"Inscriptions" "ParticipantsSupplementaires"[*] "ReferenceClub" | *chaine* | Numéro de club complet (par exemple "1307PZ") du participant devant être ajouté aux inscriptions. Peut être laissé vide ("").|
+|  |  |  |
+|"Inscriptions" "ParticipantsSupplementaires"[*] "NomClub" | *chaine* | Nom de club du participant devant être ajouté aux inscriptions|
+|  |  |  |
+|"Inscriptions" "ParticipantsSupplementaires"[*] "NumeroLicenceFFCO" | *chaine* | Numéro de licence FFCO du participant, sous forme de chaine de caractères entre doubles quotes, devant être ajouté aux inscriptions (par exemple "12345"). Doit être laissé vide pour les non licenciés FFCO ("").|
+|  |  |  |
+|"Inscriptions" "ParticipantsSupplementaires"[*] "IOFid" | *chaine* | Identifiant IOF du participant devant être ajouté aux inscriptions. Peut être laissé vide ("")|
+|  |  |  |
+|"Inscriptions" "ParticipantsSupplementaires"[*] "Etapes" | *chaine* | Liste des étapes auxquelles le participant doit être inscrit. Les étapes sont indiqués sous forme d'une seule chaine de caractère, donc entre doubles quotes, contenant les numéros séparés par des virgules (par exemple "1,2,4").|
+|  |  |  |
+|"Inscriptions" "ParticipantsSupplementaires"[*] "Categorie" | *chaine* | Nom de la catégorie du participant devant être ajouté aux inscriptions (par exemple "H50")|
+|  |  |  |
+|"Inscriptions" "ParticipantsSupplementaires"[*] "NumeroPuceSI" | *chaine* | Numéro de puce SI (sous forme de chaine de caractères) du participant devant être ajouté aux inscriptions (par exemple "123456").|
+|  |  |  |
+|"Inscriptions" "ParticipantsSupplementaires"[*] "ModeleTshirt" | *chaine* | Modèle de T-shirt souhaité par le participant devant être ajouté aux inscriptions (par exemple "COL V").|
+|  |  |  |
+|"Inscriptions" "ParticipantsSupplementaires"[*] "TailleTshirt" | *chaine* | Taille du T-shirt (sous forme de chaine de caractères) souhaitée par le participant devant être ajouté aux inscriptions (par exemple "XXL").|
 
 __*Remarques*__
 - L'utilisation des listes *"Inscriptions" "ParticipantsASupprimer"* et *"Inscriptions" "ParticipantsSupplementaires"* permet de corriger d'éventuelles erreurs d'inscription en faisant figurer un participant dans les deux listes.
@@ -373,119 +373,119 @@ __*Remarques*__
 ### FichiersGeneres
 | Clef | Type valeur | Détails |
 |------|:-----------:|---------|
-|"FichiersGeneres" | *element complexe* | Informations sur le format des fichiers à générer pour la GEC.
-|
-|"FichiersGeneres" "NomFichierMD" | *chaine* | Nom du fichier markdown contenant le rapport d'exécution
-|
-|"FichiersGeneres" "GEC" | *chaine* | Indique le logiciel de GEC qui sera utilisé et adapte le format de sortie. Actuellement seul "MeOS" est reconnu.
-|
-|"FichiersGeneres" "NomFichierCSV" | *chaine* | Préfixe des nom de fichiers CSV à générer pour la GEC. Ce préfixe est suivi de _Etape_1, _Etape2 etc. en fonction de l'étape.
-|
-|"FichiersGeneres" "SeparateurColonnesCSV" | *chaine* | Séparateur de colonnes des fichiers CSV prévus pour la GEC. Typiquement une virgule ou un point-virgule.
+|"FichiersGeneres" | *element complexe* | Informations sur le format des fichiers à générer pour la GEC.|
+|  |  |  |
+|"FichiersGeneres" "NomFichierMD" | *chaine* | Nom du fichier markdown contenant le rapport d'exécution|
+|  |  |  |
+|"FichiersGeneres" "GEC" | *chaine* | Indique le logiciel de GEC qui sera utilisé et adapte le format de sortie. Actuellement seul "MeOS" est reconnu.|
+|  |  |  |
+|"FichiersGeneres" "NomFichierCSV" | *chaine* | Préfixe des nom de fichiers CSV à générer pour la GEC. Ce préfixe est suivi de _Etape_1, _Etape2 etc. en fonction de l'étape.|
+|  |  |  |
+|"FichiersGeneres" "SeparateurColonnesCSV" | *chaine* | Séparateur de colonnes des fichiers CSV prévus pour la GEC. Typiquement une virgule ou un point-virgule.|
 
 ### Dossards
 | Clef | Type valeur | Détails |
 |------|:-----------:|---------|
-|"Dossards" | *element complexe* | Informations sur le format du fichier à générer pour l'impression des dossards
-|
-|"Dossards" "NomFichierCSVDossards" | *chaine* | Nom du fichier CSV à générer en vue de l'impression des dossards
-|
-|"Dossards" "SeparateurColonnesCSV" | *chaine* | Séparateur de colonnes du fichier CSV des dossards. Typiquement une virgule ou un point-virgule.
-|
-|"Dossards" "PremierDossard" | *nombre entier* | Numéro du premier dossard affecté
-|
-|"Dossards" "DossardsSupplementaires" | *nombre entier* | Nombre de dossars surnuméraires à prévoir (non affectés à des participants inscrits). Prévu pour les inscriptions ou changements sur place.
-|
-|"Dossards" "CircuitsSurDossards" | *chaine* | Indique si les circuits doivent figurer sur les dossards. Valeurs possibles : 'oui' ou 'non'.
+|"Dossards" | *element complexe* | Informations sur le format du fichier à générer pour l'impression des dossards|
+|  |  |  |
+|"Dossards" "NomFichierCSVDossards" | *chaine* | Nom du fichier CSV à générer en vue de l'impression des dossards|
+|  |  |  |
+|"Dossards" "SeparateurColonnesCSV" | *chaine* | Séparateur de colonnes du fichier CSV des dossards. Typiquement une virgule ou un point-virgule.|
+|  |  |  |
+|"Dossards" "PremierDossard" | *nombre entier* | Numéro du premier dossard affecté|
+|  |  |  |
+|"Dossards" "DossardsSupplementaires" | *nombre entier* | Nombre de dossars surnuméraires à prévoir (non affectés à des participants inscrits). Prévu pour les inscriptions ou changements sur place.|
+|  |  |  |
+|"Dossards" "CircuitsSurDossards" | *chaine* | Indique si les circuits doivent figurer sur les dossards. Valeurs possibles : 'oui' ou 'non'.|
 
 ### Listes détailées par club pour enveloppes
 | Clef | Type valeur | Détails |
 |------|:-----------:|---------|
-|"Enveloppes" | *element complexe* | Informations sur le format du fichier à générer pour l'impression des listes par club à mettre dans les enveloppes
-|
-|"Enveloppes" "NomFichierLaTeX" | *chaine* | Nom du fichier LaTeX à générer en vue de l'impression des listes
-|
-|"Enveloppes" "CircuitsSurListe" | *chaine* | "oui" si le nom des circuits doit figurer dans le tableau pour chaque étape; "non" dans le cas contraire.
-|
-|"Enveloppes" "MargeGauche_mm" | *nombre* | Taille en mm de la marge gauche de la page générée (exemples : 10 ou 10.2)
-|
-|"Enveloppes" "MargeDroite_mm" | *nombre* | Taille en mm de la marge droite de la page générée (exemples : 10 ou 10.2)
-|
-|"Enveloppes" "MargeSuperieure_mm" | *nombre* | Taille en mm de la marge supérieure de la page générée (exemples : 10 ou 10.2)
-|
-|"Enveloppes" "MargeInferieure_mm" | *nombre* | Taille en mm de la marge inférieure de la page générée (exemples : 10 ou 10.2)
-|
-|"Enveloppes" "HauteurDrapeau_mm" | *nombre* | Hauteur en mm du drapeau correspondant au pays du club (exemples : 10 ou 10.2)
+|"Enveloppes" | *element complexe* | Informations sur le format du fichier à générer pour l'impression des listes par club à mettre dans les enveloppes|
+|  |  |  |
+|"Enveloppes" "NomFichierLaTeX" | *chaine* | Nom du fichier LaTeX à générer en vue de l'impression des listes|
+|  |  |  |
+|"Enveloppes" "CircuitsSurListe" | *chaine* | "oui" si le nom des circuits doit figurer dans le tableau pour chaque étape; "non" dans le cas contraire.|
+|  |  |  |
+|"Enveloppes" "MargeGauche_mm" | *nombre* | Taille en mm de la marge gauche de la page générée (exemples : 10 ou 10.2)|
+|  |  |  |
+|"Enveloppes" "MargeDroite_mm" | *nombre* | Taille en mm de la marge droite de la page générée (exemples : 10 ou 10.2)|
+|  |  |  |
+|"Enveloppes" "MargeSuperieure_mm" | *nombre* | Taille en mm de la marge supérieure de la page générée (exemples : 10 ou 10.2)|
+|  |  |  |
+|"Enveloppes" "MargeInferieure_mm" | *nombre* | Taille en mm de la marge inférieure de la page générée (exemples : 10 ou 10.2)|
+|  |  |  |
+|"Enveloppes" "HauteurDrapeau_mm" | *nombre* | Hauteur en mm du drapeau correspondant au pays du club (exemples : 10 ou 10.2)|
 
 ### Etiquettes club
 | Clef | Type valeur | Détails |
 |------|:-----------:|---------|
-|"Etiquettes" | *element complexe* | Informations sur le format du fichier à générer pour l'impression des étiquettes club à mettre sur les enveloppes ou les sacs de récupération des cartes.
-|
-|"Etiquettes" "NomFichierLaTeX" | *chaine* | Nom du fichier LaTeX à générer en vue de l'impression des étiquettes
-|
-|"Etiquettes" "CouleurCadre" | *chaine* | Couleur (en anglais) du cadre de l'étiquette. Par exemple "black". Mettre "white" si l'on ne souhaite pas avoir de cadre.
-|
-|"Etiquettes" "NombreDeColonnes" | *nombre entier* | Nombre de colonnes sur la planche d'étiquettes (exemple : 2)
-|
-|"Etiquettes" "NombreDeLignes" | *nombre entier* | Nombre de lignes d'étiquettes sur la planche d'étiquettes (exemple : 5)
-|
-|"Etiquettes" "LargeurEtiquette_mm" | *nombre* | Largeur en mm des étiquettes (exemple : 99.1)
-|
-|"Etiquettes" "HauteurEtiquette_mm" | *nombre* | Largeur en mm des étiquettes (exemple : 57)
-|
-|"Etiquettes" "MargeGauche_mm" | *nombre* | Taille en mm de la marge gauche de la page générée (exemple : 10 ou 10.2)
-|
-|"Etiquettes" "MargeEntreColonnes_mm" | *nombre* | Largeur en mm de la marge entre les colonnes d'étiquettes (exemple : 3 ou 3.2)
-|
-|"Etiquettes" "MargeSuperieure_mm" | *nombre* | Taille en mm de la marge supérieure de la page générée (exemple : 10 ou 10.2)
-|
-|"Etiquettes" "MargeEntreLignes_mm" | *nombre* | Distance en mm entre lignes d'étiquettes (exemple : 3 ou 3.2)
-|
-|"Etiquettes" "HauteurDrapeau_mm" | *nombre* | Hauteur en mm du drapeau correspondant au pays du club (exemple : 10)
+|"Etiquettes" | *element complexe* | Informations sur le format du fichier à générer pour l'impression des étiquettes club à mettre sur les enveloppes ou les sacs de récupération des cartes.|
+|  |  |  |
+|"Etiquettes" "NomFichierLaTeX" | *chaine* | Nom du fichier LaTeX à générer en vue de l'impression des étiquettes|
+|  |  |  |
+|"Etiquettes" "CouleurCadre" | *chaine* | Couleur (en anglais) du cadre de l'étiquette. Par exemple "black". Mettre "white" si l'on ne souhaite pas avoir de cadre.|
+|  |  |  |
+|"Etiquettes" "NombreDeColonnes" | *nombre entier* | Nombre de colonnes sur la planche d'étiquettes (exemple : 2)|
+|  |  |  |
+|"Etiquettes" "NombreDeLignes" | *nombre entier* | Nombre de lignes d'étiquettes sur la planche d'étiquettes (exemple : 5)|
+|  |  |  |
+|"Etiquettes" "LargeurEtiquette_mm" | *nombre* | Largeur en mm des étiquettes (exemple : 99.1)|
+|  |  |  |
+|"Etiquettes" "HauteurEtiquette_mm" | *nombre* | Largeur en mm des étiquettes (exemple : 57)|
+|  |  |  |
+|"Etiquettes" "MargeGauche_mm" | *nombre* | Taille en mm de la marge gauche de la page générée (exemple : 10 ou 10.2)|
+|  |  |  |
+|"Etiquettes" "MargeEntreColonnes_mm" | *nombre* | Largeur en mm de la marge entre les colonnes d'étiquettes (exemple : 3 ou 3.2)|
+|  |  |  |
+|"Etiquettes" "MargeSuperieure_mm" | *nombre* | Taille en mm de la marge supérieure de la page générée (exemple : 10 ou 10.2)|
+|  |  |  |
+|"Etiquettes" "MargeEntreLignes_mm" | *nombre* | Distance en mm entre lignes d'étiquettes (exemple : 3 ou 3.2)|
+|  |  |  |
+|"Etiquettes" "HauteurDrapeau_mm" | *nombre* | Hauteur en mm du drapeau correspondant au pays du club (exemple : 10)|
 
 ### TranchesHoraires
 | Clef | Type valeur | Détails |
 |------|:-----------:|---------|
-|"TranchesHoraires" | *element complexe* | Paramètres définissant les tranches horaires qui seront générés
-|
-|"TranchesHoraires" "ReserveVacantsPourcent" | *nombre entier* | Pourcentage de vacants à prévoir pour chaque catégorie
-|
-|"TranchesHoraires" "ReserveVacantsOffset" | *nombre entier* | Nombre minimal de vacants à prévoir pour chaque catégorie
-|
-|"TranchesHoraires" "SeuilClub" | *nombre entier* | Les clubs au-dessus de ce seuil sont considérés comme des *gros* clubs, et sont affectés en priorité par l'algorithme
-|
+|"TranchesHoraires" | *element complexe* | Paramètres définissant les tranches horaires qui seront générés|
+|  |  |  |
+|"TranchesHoraires" "ReserveVacantsPourcent" | *nombre entier* | Pourcentage de vacants à prévoir pour chaque catégorie|
+|  |  |  |
+|"TranchesHoraires" "ReserveVacantsOffset" | *nombre entier* | Nombre minimal de vacants à prévoir pour chaque catégorie|
+|  |  |  |
+|"TranchesHoraires" "SeuilClub" | *nombre entier* | Les clubs au-dessus de ce seuil sont considérés comme des *gros* clubs, et sont affectés en priorité par l'algorithme|
+|  |  |  |
 |"TranchesHoraires" "SeuilPays" | *nombre entier* | Les participants des pays dont le nombre d'inscrits est au-dessous de ce seuil sont conservés dans la même tranche |
-horaire même s'ils ne sont pas du même club.
-|
-|"TranchesHoraires" "NbTranches" | *nombre entier* | Nombre de tranches horaires. La rotation des tranches s'effectuera sur la base de ce nombre.
-|
-|"TranchesHoraires" "MargeTranches" | *nombre entier* | Le nombre de départs possibles dans une tranche horaire est le nombre d'inscrits sur le circuit ayant le plus d'inscrits additionné de ce nombre.
+horaire même s'ils ne sont pas du même club.|
+|  |  |  |
+|"TranchesHoraires" "NbTranches" | *nombre entier* | Nombre de tranches horaires. La rotation des tranches s'effectuera sur la base de ce nombre.|
+|  |  |  |
+|"TranchesHoraires" "MargeTranches" | *nombre entier* | Le nombre de départs possibles dans une tranche horaire est le nombre d'inscrits sur le circuit ayant le plus d'inscrits additionné de ce nombre.|
 
 ### AliasCategories
 | Clef | Type valeur | Détails |
 |------|:-----------:|---------|
-|"AliasCategories" | *liste d'éléments complexes* | Table de conversion du nom des catégories. Essentiellement une liste de paires de noms et d'identifiants sans ordre particulier.
-|
-|"AliasCategories"[*] "input" | *chaine* | Nom de la catégorie telle qu'elle apparait dansle fichier d'inscription (ex H10)
-|
-|"AliasCategories"[*] "output" | *chaine* | Nom de la catégorie telle qu'elle doit apparaître dansle fichier pour la GEC (ex M10)
-|
-|"AliasCategories"[*] "id" | *nombre entier* | Numéro de la catégorie à utiliser par le logiciel de GEC
+|"AliasCategories" | *liste d'éléments complexes* | Table de conversion du nom des catégories. Essentiellement une liste de paires de noms et d'identifiants sans ordre particulier.|
+|  |  |  |
+|"AliasCategories"[*] "input" | *chaine* | Nom de la catégorie telle qu'elle apparait dansle fichier d'inscription (ex H10)|
+|  |  |  |
+|"AliasCategories"[*] "output" | *chaine* | Nom de la catégorie telle qu'elle doit apparaître dansle fichier pour la GEC (ex M10)|
+|  |  |  |
+|"AliasCategories"[*] "id" | *nombre entier* | Numéro de la catégorie à utiliser par le logiciel de GEC|
 
 ### AliasSexe
 | Clef | Type valeur | Détails |
 |------|:-----------:|---------|
-|"AliasSexes" | liste de {clefs : valeurs} | Table de conversion des identifiants de sexe (par exemple pour passer de français à anglais). Une liste de paires de lettres sans ordre particulier.
-|
-|"AliasSexes"[*] { , } | {clefs : valeurs} | La clef (par exemple "H") correspond à l'identifiant dans le CSV d'inscription, la valeur (par exemple "M") à ce qui doit être fourni à la GEC.
+|"AliasSexes" | liste de {clefs : valeurs} | Table de conversion des identifiants de sexe (par exemple pour passer de français à anglais). Une liste de paires de lettres sans ordre particulier.|
+|  |  |  |
+|"AliasSexes"[*] { , } | {clefs : valeurs} | La clef (par exemple "H") correspond à l'identifiant dans le CSV d'inscription, la valeur (par exemple "M") à ce qui doit être fourni à la GEC.|
 
 ### AliasClub
 | Clef | Type valeur | Détails |
 |------|:-----------:|---------|
-|"AliasClubs" | liste de {clefs : valeurs} | Table de conversion des noms de club (par exemple pour corriger des noms de club). Une liste de paires de noms sans ordre particulier.
-|
-|"AliasClubs" [*] { , } | {clefs : valeurs} | La clef (par exemple "COLIEGE") est le nom apparaissant dans le fichier d'inscription, la valeur (par exemple "CO LIEGE") le nom devant apparaître dans la GEC.
+|"AliasClubs" | liste de {clefs : valeurs} | Table de conversion des noms de club (par exemple pour corriger des noms de club). Une liste de paires de noms sans ordre particulier.|
+|  |  |  |
+|"AliasClubs" [*] { , } | {clefs : valeurs} | La clef (par exemple "COLIEGE") est le nom apparaissant dans le fichier d'inscription, la valeur (par exemple "CO LIEGE") le nom devant apparaître dans la GEC.|
 
 __*Remarques*__
 Pour corriger un nom de club ayant des apostrophes et pour lequel une barre oblique inverse apparait avant l'apostrophe dans le fichier d'inscription, insérez devant les apostrophes une seconde barre oblique inverse. Par exemple utilisez la conversion suivante : {"O\\'JURA":"O'JURA"}
@@ -494,17 +494,17 @@ Pour corriger un nom de club ayant des apostrophes et pour lequel une barre obli
 ### NationaliteClubs
 | Clef | Type valeur | Détails |
 |------|:-----------:|---------|
-|"NationaliteClubs" | liste de {clefs : valeurs} | Table d'affectation d'un pays à un club (si tous les membres n'ont pas la même nationalité). Une liste de paires de noms de clubs et de code pays sur 3 lettres sans ordre particulier.
-|
-|"NationaliteClubs" [*] { , } | {clefs : valeurs} | La clef (par exemple "IFK GOTEBORG") est le nom du club apparaissant dans le fichier d'inscription, la valeur (par exemple "SWE") est le code ISO en 3 lettres du pays.
+|"NationaliteClubs" | liste de {clefs : valeurs} | Table d'affectation d'un pays à un club (si tous les membres n'ont pas la même nationalité). Une liste de paires de noms de clubs et de code pays sur 3 lettres sans ordre particulier.|
+|  |  |  |
+|"NationaliteClubs" [*] { , } | {clefs : valeurs} | La clef (par exemple "IFK GOTEBORG") est le nom du club apparaissant dans le fichier d'inscription, la valeur (par exemple "SWE") est le code ISO en 3 lettres du pays.|
 
 
 ### AliasPrenoms
 | Clef | Type valeur | Détails |
 |------|:-----------:|---------|
-|"AliasPrenoms" | liste de {clefs : valeurs} | Table de conversion de prénoms (par exemple pour accentuier des prénoms). Une liste de paires de prénoms sans ordre particulier.
-|
-|"AliasPrenoms" [*] { , } | {clefs : valeurs} | La clef (par exemple "Joel") est le prénom apparaissant dans le fichier d'inscription après n'avoir conservé que les capitales en majuscule, la valeur (par exemple "Joël") le nom devant apparaître dans la GEC.
+|"AliasPrenoms" | liste de {clefs : valeurs} | Table de conversion de prénoms (par exemple pour accentuier des prénoms). Une liste de paires de prénoms sans ordre particulier.|
+|  |  |  |
+|"AliasPrenoms" [*] { , } | {clefs : valeurs} | La clef (par exemple "Joel") est le prénom apparaissant dans le fichier d'inscription après n'avoir conservé que les capitales en majuscule, la valeur (par exemple "Joël") le nom devant apparaître dans la GEC.|
 
 
 ### ClubGroupeHoraireForce
@@ -513,9 +513,9 @@ Pour corriger un nom de club ayant des apostrophes et pour lequel une barre obli
 
 | Clef | Type valeur | Détails |
 |-----------------|:-------------:|-------------------------------------------------------|
-|"CGHF"           | liste de {clefs : valeurs} | Table définissant le groupe horaire auquel doit appartenir le club.
-|
-|"CGHF" [*] { , } | {clefs : valeurs}          | La clef est le nom du club apparaissant dans le fichier d'inscription éventuellement après avoir été remplacé par son alias (voir "AliasClub" ci-dessus), la valeur (nombre entier, par exemple 4) est le numéro du groupe horaire.
+|"CGHF"           | liste de {clefs : valeurs} | Table définissant le groupe horaire auquel doit appartenir le club.|
+|  |  |  |
+|"CGHF" [*] { , } | {clefs : valeurs}          | La clef est le nom du club apparaissant dans le fichier d'inscription éventuellement après avoir été remplacé par son alias (voir "AliasClub" ci-dessus), la valeur (nombre entier, par exemple 4) est le numéro du groupe horaire.|
 __*Remarques*__
 - Les groupes horaires vont de 1 au nombre de tranches horaires définies par "TranchesHoraires" "NbTranches".
 - Le groupe horaire définit la tranche horaire du premier jour. Ainsi :
@@ -531,17 +531,17 @@ __*Remarques*__
 
 | Clef | Type valeur | Détails |
 |---------------------|:-------------:|-------------------------------------------------------|
-|"PTHAC"                | liste d'élements complexes | Indique qu'un participant doit être dans la même tranche horaire qu'un certain club pour les jours précisés, par exemple parce qu'il loge avec ce club.
-|
-|"PTHAC"[*] "nom"       | *chaine*                   | Nom du participant dont on veut changer la tranche horaire
-|
-|"PTHAC"[*] "prenom"    | *chaine*                   | Prénom du participant dont on veut changer la tranche horaire
-|
-|"PTHAC"[*] "club"      | *chaine*                   | Club du participant dont on veut changer la tranche horaire
-|
-|"PTHAC"[*] "autreclub" | *chaine*                   | Club auquel le participant veut être rattaché
-|
-|"PTHAC"[*] "etapes"    | *liste de nombres entiers* | Liste de numéros d'étapes pour lesquelles le rattachement doit être fait (par exemple [3,4,5])
+|"PTHAC"                | liste d'élements complexes | Indique qu'un participant doit être dans la même tranche horaire qu'un certain club pour les jours précisés, par exemple parce qu'il loge avec ce club.|
+|  |  |  |
+|"PTHAC"[*] "nom"       | *chaine*                   | Nom du participant dont on veut changer la tranche horaire|
+|  |  |  |
+|"PTHAC"[*] "prenom"    | *chaine*                   | Prénom du participant dont on veut changer la tranche horaire|
+|  |  |  |
+|"PTHAC"[*] "club"      | *chaine*                   | Club du participant dont on veut changer la tranche horaire|
+|  |  |  |
+|"PTHAC"[*] "autreclub" | *chaine*                   | Club auquel le participant veut être rattaché|
+|  |  |  |
+|"PTHAC"[*] "etapes"    | *liste de nombres entiers* | Liste de numéros d'étapes pour lesquelles le rattachement doit être fait (par exemple [3,4,5])|
 
 ### ParticipantsTranchesHorairesForcees
 
@@ -549,15 +549,15 @@ __*Remarques*__
 
 | Clef | Type valeur | Détails |
 |---------------------|:-------------:|-------------------------------------------------------|
-|"PTHF"               | liste d'élements complexes | Indique qu'un participant doit être affecté à une tranche horaire précise pour les étapes précisées. Cette fonctionnalité peut être utilisée pour imposer un départ tôt ou tardif certains jours (garde d'enfants ou trajet long par exemple).
-|
-|"PTHF"[*] "nom"      | *chaine*                   | Nom du participant dont on veut forcer la tranche horaire
-|
-|"PTHF"[*] "prenom"   | *chaine*                   | Prénom du participant dont on veut forcer la tranche horaire
-|
-|"PTHF"[*] "club"     | *chaine*                   | Club du participant dont on veut forcer la tranche horaire
-|
-|"PTHF"[*] "tranches" | *liste de nombres entiers* | Liste des tranches horaires souhaitées pour les différentes étapes. Il doit y avoir autant de nombre que d'étapes. Chaque nombre doit être compris entre 1 et le nombre de tranches horaires (voir paramètre "TranchesHoraires" "NbTranches") ou valoir 0 si pour cette étape la tranche horaire ne doit pas être forcée. Dans ce dernier cas l'algorithme normal (groupe du club ou ranking) s'applique pour cette étape.
+|"PTHF"               | liste d'élements complexes | Indique qu'un participant doit être affecté à une tranche horaire précise pour les étapes précisées. Cette fonctionnalité peut être utilisée pour imposer un départ tôt ou tardif certains jours (garde d'enfants ou trajet long par exemple).|
+|  |  |  |
+|"PTHF"[*] "nom"      | *chaine*                   | Nom du participant dont on veut forcer la tranche horaire|
+|  |  |  |
+|"PTHF"[*] "prenom"   | *chaine*                   | Prénom du participant dont on veut forcer la tranche horaire|
+|  |  |  |
+|"PTHF"[*] "club"     | *chaine*                   | Club du participant dont on veut forcer la tranche horaire|
+|  |  |  |
+|"PTHF"[*] "tranches" | *liste de nombres entiers* | Liste des tranches horaires souhaitées pour les différentes étapes. Il doit y avoir autant de nombre que d'étapes. Chaque nombre doit être compris entre 1 et le nombre de tranches horaires (voir paramètre "TranchesHoraires" "NbTranches") ou valoir 0 si pour cette étape la tranche horaire ne doit pas être forcée. Dans ce dernier cas l'algorithme normal (groupe du club ou ranking) s'applique pour cette étape.|
 
 ### ParticipantsTranchesHorairesIdentiques
 
@@ -565,63 +565,63 @@ __*Remarques*__
 
 | Clef | Type valeur | Détails |
 |--------------------|:-------------:|-------------------------------------------------------|
-|"PTHI"              | liste d'élements complexes | Indique qu'un participant doit être affecté à la même tranche horaire qu'un second participant (par exemple parce qu'ils covoiturent)
-|
-|"PTHI"[*] "nom1"    | *chaine*                   | Nom du participant dont on veut forcer la tranche horaire
-|
-|"PTHI"[*] "prenom1" | *chaine*                   | Prénom du participant dont on veut forcer la tranche horaire
-|
-|"PTHI"[*] "club1"   | *chaine*                   | Club du participant dont on veut forcer la tranche horaire
-|
-|"PTHI"[*] "nom2"    | *chaine*                   | Nom du second participant auquel le premier sera rattaché
-|
-|"PTHI"[*] "prenom2" | *chaine*                   | Prénom du second participant auquel le premier sera rattaché
-|
-|"PTHI"[*] "club2"   | *chaine*                   | Club du second participant
-|
-|"PTHI"[*] "etapes"  | *liste de nombres entiers* | Liste de numéros d'étapes pour lesquelles le rattachement doit être fait (par exemple [3,4,5])
+|"PTHI"              | liste d'élements complexes | Indique qu'un participant doit être affecté à la même tranche horaire qu'un second participant (par exemple parce qu'ils covoiturent)|
+|  |  |  |
+|"PTHI"[*] "nom1"    | *chaine*                   | Nom du participant dont on veut forcer la tranche horaire|
+|  |  |  |
+|"PTHI"[*] "prenom1" | *chaine*                   | Prénom du participant dont on veut forcer la tranche horaire|
+|  |  |  |
+|"PTHI"[*] "club1"   | *chaine*                   | Club du participant dont on veut forcer la tranche horaire|
+|  |  |  |
+|"PTHI"[*] "nom2"    | *chaine*                   | Nom du second participant auquel le premier sera rattaché|
+|  |  |  |
+|"PTHI"[*] "prenom2" | *chaine*                   | Prénom du second participant auquel le premier sera rattaché|
+|  |  |  |
+|"PTHI"[*] "club2"   | *chaine*                   | Club du second participant|
+|  |  |  |
+|"PTHI"[*] "etapes"  | *liste de nombres entiers* | Liste de numéros d'étapes pour lesquelles le rattachement doit être fait (par exemple [3,4,5])|
 
 ### Etapes
 | Clef | Type valeur | Détails |
 |-------------------------|:------------------:|----------------------------------------------------------------------|
-|"Etapes"                                    | *liste d'éléments complexes*| Liste, donc entre crochets et séparées par des virgules, des différentes étapes constituant l'évènement
-|
-|"Etapes"[*n*] "Nom"                         | *chaine*                    | Nom de l'étape. Sera utilisé dans le rapport généré.
-|
-|"Etapes"[*n*] "Lieu"                        | *chaine*                    | Lieu de l'étape. Sera utilisé dans le rapport généré.
-|
-|"Etapes"[*n*] "ZeroDate"                    | *chaine*                    | Heure zéro de la GEC. MeOS demande de générer les heures de départ par rapport à cette heure zéro. L'heure doit être rentrée sous un format complet AAAA/MM/JJThh:mm, par exemple "2019/07/07T8:00"
-|
-|"Etapes"[*n*] "Information"                 | *chaine*                    | Commentaire destiné au relecteur du fichier JSON. Non utilisé par le script.
-|
-|"Etapes"[*n*] "Format"                      | *chaine*                    | Un des formats de course (par exemple "PedestreMDLD") défini dans la section ranking IOF. Cette information n'est utilisée que si un des circuits est au ranking.
-|
-|"Etapes"[*n*] "Circuits"                    | *liste d'éléments complexes*| Liste, donc entre crochets et séparées par des virgules, des différents circuits de l'étape
-|
-|"Etapes"[*n*] "Circuits"[*m*] "Nom"         | *chaine*                     | Nom du circuit tel qu'il apparaitra dansla GEC
-|
-|"Etapes"[*n*] "Circuits"[*m*] "Depart"      | *chaine*                     | Nom du départ correspondant à ce circuit (exemple "red" ou "1")
-|
-|"Etapes"[*n*] "Circuits"[*m*] "Horaires"    | *chaine*                     | Type de génération d'horaire. Les valeurs reconnues sont définies dans le tableau ci-dessous.
-|
-|"Etapes"[*n*] "Circuits"[*m*] "HeureDepart" | *chaine*                     | Heure des premiers départ de ce circuit. L'heure doit être rentrée sous un format complet AAAA/MM/JJThh:mm, par exemple "2019/07/07T9:00". Ce champ peut être utilisé par exemple pour faire partir des circuits sur les minutes paires, et d'autres sur la minute impaire.
-|
-|"Etapes"[*n*] "Circuits"[*m*] "Ecart":      | *chaine*                     | Temps minimal, exprimé en minute, séparant deux départs consécutifs sur ce circuit
-|
-|"Etapes"[*n*] "Circuits"[*m*] "Categories"  | *liste de chaines*           | Liste de catégories sur ce circuit entre double quotes et séparées par des virgules. Les catégories doivent être celle qui seront utilisées dans la GEC. Exemple : ["W21A", "W35"]
+|"Etapes"                                    | *liste d'éléments complexes*| Liste, donc entre crochets et séparées par des virgules, des différentes étapes constituant l'évènement|
+|  |  |  |
+|"Etapes"[*n*] "Nom"                         | *chaine*                    | Nom de l'étape. Sera utilisé dans le rapport généré.|
+|  |  |  |
+|"Etapes"[*n*] "Lieu"                        | *chaine*                    | Lieu de l'étape. Sera utilisé dans le rapport généré.|
+|  |  |  |
+|"Etapes"[*n*] "ZeroDate"                    | *chaine*                    | Heure zéro de la GEC. MeOS demande de générer les heures de départ par rapport à cette heure zéro. L'heure doit être rentrée sous un format complet AAAA/MM/JJThh:mm, par exemple "2019/07/07T8:00"|
+|  |  |  |
+|"Etapes"[*n*] "Information"                 | *chaine*                    | Commentaire destiné au relecteur du fichier JSON. Non utilisé par le script.|
+|  |  |  |
+|"Etapes"[*n*] "Format"                      | *chaine*                    | Un des formats de course (par exemple "PedestreMDLD") défini dans la section ranking IOF. Cette information n'est utilisée que si un des circuits est au ranking.|
+|  |  |  |
+|"Etapes"[*n*] "Circuits"                    | *liste d'éléments complexes*| Liste, donc entre crochets et séparées par des virgules, des différents circuits de l'étape|
+|  |  |  |
+|"Etapes"[*n*] "Circuits"[*m*] "Nom"         | *chaine*                     | Nom du circuit tel qu'il apparaitra dansla GEC|
+|  |  |  |
+|"Etapes"[*n*] "Circuits"[*m*] "Depart"      | *chaine*                     | Nom du départ correspondant à ce circuit (exemple "red" ou "1")|
+|  |  |  |
+|"Etapes"[*n*] "Circuits"[*m*] "Horaires"    | *chaine*                     | Type de génération d'horaire. Les valeurs reconnues sont définies dans le tableau ci-dessous.|
+|  |  |  |
+|"Etapes"[*n*] "Circuits"[*m*] "HeureDepart" | *chaine*                     | Heure des premiers départ de ce circuit. L'heure doit être rentrée sous un format complet AAAA/MM/JJThh:mm, par exemple "2019/07/07T9:00". Ce champ peut être utilisé par exemple pour faire partir des circuits sur les minutes paires, et d'autres sur la minute impaire.|
+|  |  |  |
+|"Etapes"[*n*] "Circuits"[*m*] "Ecart":      | *chaine*                     | Temps minimal, exprimé en minute, séparant deux départs consécutifs sur ce circuit|
+|  |  |  |
+|"Etapes"[*n*] "Circuits"[*m*] "Categories"  | *liste de chaines*           | Liste de catégories sur ce circuit entre double quotes et séparées par des virgules. Les catégories doivent être celle qui seront utilisées dans la GEC. Exemple : ["W21A", "W35"]|
 
 #### Valeurs possibles pour le champ *Horaires*
 | valeur | Signification |
 |:------:|---------------------------------------------|
-| "oui"  | Les horaires de départ seront attribués automatiquement en tenant compte des groupes horaires des clubs. Les concurrents de ce circuit seront inscrits dans la GEC **avec** leur heure de départ.
-|
-| "rank" | Les horaires de départ seront attribués automatiquement en fonction du ranking. Les concurrents de ce circuit seront inscrits dans la GEC **avec** leur heure de départ.
-|
-| "man"  | Les horaires de départ seront affectés manuellement par la GEC avant l'épreuve. Les concurrents de ce circuit seront inscrits dans la GEC **sans** heure de départ.
-|
-| "boi"  | Les départs de ce circuit s'effectueront au boîtier. Les concurrents de ce circuit seront inscrits dans la GEC **sans** heure de départ.
-|
-|"non"   | Les concurrents de ce circuit **ne seront pas gérés** par la GEC
+| "oui"  | Les horaires de départ seront attribués automatiquement en tenant compte des groupes horaires des clubs. Les concurrents de ce circuit seront inscrits dans la GEC **avec** leur heure de départ.|
+|  |  |  |
+| "rank" | Les horaires de départ seront attribués automatiquement en fonction du ranking. Les concurrents de ce circuit seront inscrits dans la GEC **avec** leur heure de départ.|
+|  |  |  |
+| "man"  | Les horaires de départ seront affectés manuellement par la GEC avant l'épreuve. Les concurrents de ce circuit seront inscrits dans la GEC **sans** heure de départ.|
+|  |  |  |
+| "boi"  | Les départs de ce circuit s'effectueront au boîtier. Les concurrents de ce circuit seront inscrits dans la GEC **sans** heure de départ.|
+|  |  |  |
+|"non"   | Les concurrents de ce circuit **ne seront pas gérés** par la GEC|
 
 __*Remarques*__
 - Il est possible de définir plusieurs fois le même circuit, par exemple si certaines catégories sur ce circuit sont gérées par la GEC et d'autres ne le sont pas (loisirs). Attention toutefois à la gestion des départs pour s'assurer qu'il n'y aura pas de départs simultanés.
@@ -742,91 +742,91 @@ Sa lecture n'est pas nécessaire pour l'utilisation du programme.
 |  Champ          | Description  |
 |-----------------|--------------------------------------------------------|
 |nomcomplet       | Nom complet du club. Exemple : "A.B.C.O. DIJON 2101BF" |
-|
+|  |  |
 |refclub          | Code FFCO du club. Exemple "2101BF"  |
-|
+|  |  |
 |effectif         | Nombre de participants pour ce club  |
-|
+|  |  |
 |groupe           | Groupe horaire (correspond à la tranche horaire du premier jour)  |
-|
+|  |  |
 |flag             | Code ISO 3166-1 alpha-3 du pays (déterminé à partir de la nationalité du premier membre rencontré si non forcé dans le JSON) |
-|
+|  |  |
 |dossardmin       | Preemier numéro de dossard utilisé pour ce club  |
-|
+|  |  |
 |dossardmax       | Dernier numéro de dossard utilisé pour ce club   |
-|
+|  |  |
 |dossardultramax  | Dernier numéro de dossard utilisé pour ce club en prenant en compte la réserve pour inscriptions au dernier moment |
 
 ### Competiteurs :
 |  Champ          | Description  |
 |-----------------|--------------------------------------------------------|
 |prenom           | Prénom |
-|
+|  |  |
 |nom              | Nom de famille  |
-|
+|  |  |
 |sexe             | Sexe |
-|
+|  |  |
 |an               | Années de naissance |
-|
+|  |  |
 |flag             | Code ISO 3166-1 alpha-3 de nationalité |
-|
+|  |  |
 |num_club         | Numéro FFCO du club auquel appartient le compétiteur. Exemple "2101" |
-|
+|  |  |
 |ref_club         | Numéro FFCO complet du club auquel appartient le compétiteur. Exemple "2101BF" |
-|
+|  |  |
 |club             | Nom du club auquel appartient le compétiteur. Exemple "A.B.C.O. DIJON" |
-|
+|  |  |
 |num_lic          | Numéro de licence FFCO du compétiteur |
-|
+|  |  |
 |etapes           | Liste des étapes auxquelles participe le compétieteur. Exemple [1,2,4] |
-|
+|  |  |
 |categorie        | Catégorie du compétiteur. Exemple : "W21E" |
-|
+|  |  |
 |puce_si          | Numéro de puce SI |
-|
+|  |  |
 |modele_tshirt    | Modèle de t-shirt souhaité. Exemples "ZIP" ou "COL V" |
-|
+|  |  |
 |taille_tshirt    | Taille du T-shirt souhaité. Exemple "XL" |
-|
+|  |  |
 |iofid            | Identifiant IOF du compétiteur |
-|
+|  |  |
 |dossard          | Numéro de dossard |
-|
+|  |  |
 |heure_dep        | Liste d'horaires de départ pour les différentes étapes. Exemple ["10:56","13:01","13:04","09:38",None] |
-|
+|  |  |
 |tranches         | Liste de tranches horaires de départ pour les différentes étapes. Exemple [4,1,2,3,None] |
-|
+|  |  |
 |posdepart        | Liste de nom de départs pour les différentes étapes. Exemple ["red","blue","blue","blue","blue"] |
-|
+|  |  |
 |pointscn         | Points CN du compétiteur
-|
+|  |  |
 |pointsiofsprint  | Points au classement IOF pour le format sprint |
-|
+|  |  |
 |pointsiofmdld    | Points au classement IOF pour les formats MD et LD |
-|
+|  |  |
 |pointsiofmtbo    | Points au classement IOF pour le format orientation à VTT |
-|
+|  |  |
 |pointsiofskio    | Points au classement IOF pour le format orientation à ski |
-|
+|  |  |
 |pointsioftrailo  | Points au classement IOF pour le format orientation de précision |
-|
+|  |  |
 |circuits         | Liste de nom de circuits pour les différentes étapes. Exemple ["B","B","C","C","C"] |
-|
+|  |  |
 |horaires         | Type d'horaires pour les différentes étapes. Exemple ["rank","rank","oui","oui","man"]
 
 ### Circuits
 |  Champ          | Description  |
 |-----------------|--------------------------------------------------------|
 |Nom              | Nom du circuit (ex. 'A') |
-|
+|  |  |
 |Depart           | Nom du départ (ex. bleu, rouge) |
-|
+|  |  |
 |Horaires         | Méthode de génération d'horaire (ex. 'rank') |
-|
+|  |  |
 |HeureDepart      | Heure des premiers départs (ex. '2019/07/07T09:00') |
-|
+|  |  |
 |Ecart            | Ecart entre deux départs consécutifs (ex. 2) |
-|
+|  |  |
 |Categories       | Liste des catégories du circuit (ex. ['M21E']) |
-|
+
 
