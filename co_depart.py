@@ -652,7 +652,7 @@ class CODepart(object):
             if self.epreuve['Dossards']['CircuitsSurDossards'] == 'oui':
                 header = ['Dossard', 'Puce', 'Nom', 'Prenom', 'cat.','N° Club' ,'Nom Club','Nat', 'T-shirt']
                 for etape in range(self.epreuve['NbEtapes']):
-                    info_etape = ['Circuit E'+str(e+1), self.epreuve["Etapes"][etape]["Nom"], 'H depart E'+str(etape+1) ]
+                    info_etape = ['Circuit E'+str(etape+1), self.epreuve["Etapes"][etape]["Nom"], 'H depart E'+str(etape+1) ]
                     header = [*header, *info_etape]
                 out_str = sep.join(header)
             else:
