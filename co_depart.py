@@ -9,7 +9,7 @@ import logging
 import datetime
 import csv
 
-__updated__ = '2019-07-25 17:36:01'
+__updated__ = '2025-11-26 12:00:00'
 
 # ======================================================
 # Qui Quand      Quoi
@@ -18,22 +18,39 @@ __updated__ = '2019-07-25 17:36:01'
 # JM  05/06/2019 Rajout option circuit sur dossards
 # JM  11/06/2019 Génération des étiquettes et listes par club pour enveloppes
 # JM  13/06/2019 Meilleure gestion du CSV d'inscription
-# JM  18/06/2019 Gestion T-shirts
-# JM  21/06/2019 Possibilité d'ajouter dans le JSON des identifiants IOF
-# JM  24/06/2019 Correction bug en cas d'absence de solution pour un concurrent
-# JM  28/06/2019 Correction bug génération étapes en l'absence d'horaires de type auto ou ranking
-# JM  30/06/2019 Ajout possibilité d'affecter le numéro de licence FFCO et le pays d'un club dansle JSON
-# JM  25/07/2019 Correction problème membres d'un "petit" pays dans un "petit" club si différent du pays du club
+# JM  18/06/2019 Gestion T-shirt
+# JM    21/06/2019 Possibilité d'ajouter dans le JSON des identifiants IOF
+# JM    24/06/2019 Correction bug en cas d'absence de solution pour un concurrent
+# JM    28/06/2019 Correction bug génération étapes en l'absence d'horaires de type auto ou ranking
+# JM    30/06/2019 Ajout possibilité d'affecter le numéro de licence FFCO et le pays d'un club dans le JSON
+# JM    25/07/2019 Correction problème membres d'un "petit" pays dans un "petit" club si différent du pays du club
+# MM  27/01/2022 Modif entête Latex PROVOM
+# JM  06/02/2022 Ajout pays du club forcé
+# MM  08/10/2024 mod ligne 771 colonne n°club + Ville "str(p['club'])+" "+str(p['ref_club'])"
+# MM  09/10/2024 inversion nom prenom
+# JM  28/01/2025 correction problème de non génération de fichiers si aucun horaire attribué. 
+# JM  28/01/2025 Réconciliation des branches du 25/07/2019 et du 28/01/2025 issue de la version du 27/01/2022 elle-même basée sur la
+#                version du 18/06/2019 par erreur. Utilisation du nom des étapes dans les tableaux. Ajout nom étape en anglais. Tri des
+#                étiquettes et enveloppe par numéros de club dans les pdf.
+# JM  03/02/2025 Ajout gestion des groupes. Nbre max de tentative dans fichier JSON (clef "NbMaxTentatives")
+# JM  16/06/2025 Gestion du cas où il n'y a que des "non" pour le champ "Horaires" des différents circuits dans le JSON
+# JM  20/07/2025 Gestion du cas où ne veut pas de N° de dossards sur les enveloppes (Ajout dans le json, "DossardsSurListe": "non")
+# MM  02/10/2025 "remplacement5Etapes" ajout une épreuve pour 4 jours (1,2,3,4,5,6) en remplacement de (1,2,3,4,5),
+#                 ajout ligne 655 'Circuit6'; 'Jour 4', 'H dep Jour 4'; ajout ligne 6 'Jour 4', 'H dep Jour 4'
+# MM   07/10/2026 mis a jour nom etape en anglais dans la liste "generelistparclub" enveloppe "Day" qui n'etait plus 
+# JM   25/11/2026 Fusion des versions du 07/10/2026 avec celle du 20/07/2025. remplacementToutesEtapes au lieu d'un nombre précis d'étapes dans le code
 # ======================================================
 # PP : ppardo@metraware.com
 # JM : jmonclard@metraware.com
+# MM : Maurice Mathieu
 # ======================================================
 
 
-DEFAULT_JSON_CONFIG = "ofrance2019.json"
+DEFAULT_JSON_CONFIG = "Provom27_2026-11-25.json"
 DEFAULT_JSON_CODES_PAYS = "codespays.json"
-MAX_TENTATIVES = 100
 
+def pad(nom):
+    return nom.rjust(7)
 
 class LogTool(object):
 
@@ -51,8 +68,7 @@ class LogTool(object):
 
         if usefile:
             self.log.debug("Enable log file at " + str(logfile))
-            fh = logging.FileHandler(str(logfile),
-                                     mode='w')  # le fichier de log est append, mais on ne stocke QUE les grosses erreurs
+            fh = logging.FileHandler(str(logfile), mode='w')  # le fichier de log est append, mais on ne stocke QUE les grosses erreurs
             fh.setLevel(level)  # logging.WARNING
             fmt = logging.Formatter(fmt=niceformat, datefmt='%H:%M:%S')
             fh.setFormatter(fmt)
@@ -72,12 +88,11 @@ class CODepart(object):
             argv = sys.argv[1:]
 
         # gestion des arguments de la ligne de commande de cette application
-        parser = argparse.ArgumentParser(description="CO Départ",
-                                         epilog="(c)CO")
+        parser = argparse.ArgumentParser(description="CO Départ", epilog="(c)CO")
         parser.add_argument('-v',
                             dest="verbose",
                             action="count",
-                            default=5,
+                            default=2,
                             help="Increase verbosity level (can be used many times)")
         parser.add_argument('-c',
                             dest="config",
@@ -179,12 +194,14 @@ class CODepart(object):
                 horaire = c['Horaires']
         return horaire
 
-    def remplacement5Etapes(self, etapes_str):
+    def remplacementToutesEtapes(self, etapes_str):
         '''
-        Remplacement de "5 ETAPES" par "1,2,3,4,5"
+        Remplacement de "n ETAPES" par "1,2,3,...,n"
         '''
-        if "5 ETAPES" in etapes_str:
-            etapes_str = "1,2,3,4,5"
+        if (str(self.epreuve['NbEtapes'])+" ETAPES") in etapes_str:
+            etapes_str = "1"
+            for e in range(2,self.epreuve['NbEtapes']+1):
+                etapes_str = etapes_str + "," + str(e)
         return etapes_str
 
     def ajoutCompetiteur(self, nom, prenom, sexe, club, numclub, refclub, annee, flag, categorie, licenceffco, puce_si,
@@ -216,7 +233,7 @@ class CODepart(object):
                 mespointscn = int(pts[0])
 
         macategorie = self.convertToGoodCategory(categorie.strip())
-        mesetapes_one_based = list(map(int, self.remplacement5Etapes(etapes).split(",")))
+        mesetapes_one_based = list(map(int, self.remplacementToutesEtapes(etapes).split(",")))
         mesetapes = [x - 1 for x in mesetapes_one_based]
 
         monsexe = sexe.strip()
@@ -455,13 +472,20 @@ class CODepart(object):
         if ic != 0:
             fileOutputMD.write("\n")
 
+    def posttreatment(self):
+        #---- Pays forcés pour les clubs
+        for cc in self.clubs:
+            for c in self.epreuve['ClubPaysForce']:
+                if cc.strip() in c:
+                    self.clubs[cc]['flag'] = c[cc]
+
     def knownCategorie(self, depart, categorie, lst_circuits):
         known = [v for v in lst_circuits if v['Depart'] == depart and categorie in v['Categories']]
         if len(known) > 1:
             self.log.error("[" + str(len(known)) + "] La catégorie " + str(categorie) + " est présente plusieurs fois au départ " +
                            str(depart) + " dans la liste " + str(lst_circuits))
         return known
-
+    
     def genereListeParClub(self):
         with open(self.epreuve['Enveloppes']['NomFichierLaTeX'] + ".tex", "w", encoding='utf-8') as file:
             file.write("\\documentclass{report}\n")
@@ -479,11 +503,10 @@ class CODepart(object):
             file.write("  \\pagenumbering{gobble}\n")
             file.write("  \\sffamily\n")
 
-            for club, v in sorted(self.clubs.items()):
+            for club, v in sorted(self.clubs.items(), key=lambda x:x[0].rjust(7)):
                 nomclub = club.replace("\\", "\\\\")
                 nomclub = nomclub.replace("&", "\\&")
                 flagfilename = self.epreuve['FlagsSubdirectory'] + "/" + self.Code3ToCode2(v['flag']).lower() + ".png"
-
                 file.write("  \\Huge \\centering \\bfseries " + nomclub + " " + str(v['refclub']) + " " + v['flag'] +
                            "\\normalfont \\footnotesize \\sffamily \\hfill \\includegraphics[height=" +
                            str(self.epreuve['Enveloppes']['HauteurDrapeau_mm']) + "mm]{" + flagfilename + "} \\newline \n")
@@ -499,11 +522,13 @@ class CODepart(object):
                     file.write("    \\hline\n")
                     ch = ''
                     for etape in range(self.epreuve['NbEtapes']):
-                        ch += " & \\multicolumn{3}{c|}{Étape " + str(etape + 1) + "}"
+                        nom = self.epreuve["Etapes"][etape]["Nom"]
+                        ch += " & \\multicolumn{3}{c|}{" + nom + "}"
                     file.write("    & & & &" + ch + " \\\\\n")
                     ch = ''
                     for etape in range(self.epreuve['NbEtapes']):
-                        ch += " & \\multicolumn{3}{c|}{\\itshape Stage " + str(etape + 1) + "}"
+                        name = self.epreuve["Etapes"][etape]["Name"]
+                        ch += " & \\multicolumn{3}{c|}{\\itshape " + name + "}"
                     file.write("    & & & &" + ch + " \\\\\n")
                 else:
                     file.write("  \\begin{longtable}{|c|l|r|c|c|*{" + str(self.epreuve['NbEtapes']) + "}{cc|}}\n")
@@ -516,11 +541,13 @@ class CODepart(object):
                     file.write("    \\hline\n")
                     ch = ''
                     for etape in range(self.epreuve['NbEtapes']):
-                        ch += " & \\multicolumn{2}{c|}{Étape " + str(etape + 1) + "}"
+                        nom = self.epreuve["Etapes"][etape]["Nom"]
+                        ch += " & \\multicolumn{2}{c|}{"+ nom + "}"
                     file.write("    & & & &" + ch + " \\\\\n")
                     ch = ''
                     for etape in range(self.epreuve['NbEtapes']):
-                        ch += " & \\multicolumn{2}{c|}{\\itshape Stage " + str(etape + 1) + "}"
+                        name = self.epreuve["Etapes"][etape]["Name"]
+                        ch += " & \\multicolumn{2}{c|}{\\itshape " + name + "}"
                     file.write("    & & & &" + ch + " \\\\\n")
                 file.write("    \\hline\n")
                 coureurs_du_club = [x for x in self.competiteurs if x['club'] == club]
@@ -547,10 +574,14 @@ class CODepart(object):
                         tshirt = " "
                     else:
                         tshirt = comp['modele_tshirt'] + "/" + comp['sexe'] + "/" + comp['taille_tshirt']
-                    file.write("    " + str(comp['dossard']) + " & " +
+                    if self.epreuve['Enveloppes']['DossardsSurListe'] == 'oui':
+                        dossard = str(comp['dossard'])
+                    else:
+                        dossard = " "
+                    file.write("    " + dossard + "\\large & " +
                                comp['nom'] + " " + comp['prenom'] + " & " +
                                str(comp['puce_si']) + " & " +
-                               comp['categorie'][:14] + " & " +
+                               comp['categorie'][:14] + "\\large & " +
                                tshirt +
                                etapes_str + "\\\\\n")
                 file.write("  \\end{longtable}\n")
@@ -595,7 +626,7 @@ class CODepart(object):
 
             col = 0
             lig = 0
-            for c, v in sorted(self.clubs.items()):
+            for c, v in sorted(self.clubs.items(), key=lambda x:x[0].rjust(7)):
                 flagfilename = self.epreuve['FlagsSubdirectory'] + "/" + self.Code3ToCode2(v['flag']).lower() + ".png"
                 nomclub = c.replace("\\", "\\\\")
                 nomclub = nomclub.replace("&", "\\&")
@@ -617,29 +648,19 @@ class CODepart(object):
 
     def genereFichierDossards(self):
         sep = self.epreuve['Dossards']['SeparateurColonnesCSV']
-        with open(self.epreuve['Dossards']['NomFichierCSVDossards'] + ".csv", "w", encoding='ansi') as file:
+        with open(self.epreuve['Dossards']['NomFichierCSVDossards'] + ".csv", "w", encoding='cp1252') as file:
             if self.epreuve['Dossards']['CircuitsSurDossards'] == 'oui':
-                out_str = sep.join(
-                    [
-                        'Dossard', 'Puce', 'Nom', 'Prenom', 'cat.', 'Nom Club', 'Nat', 'T-shirt',
-                        'Circuit1', 'Depart1', 'H Depart1',
-                        'Circuit2', 'Depart2', 'H Depart2',
-                        'Circuit3', 'Depart3', 'H Depart3',
-                        'Circuit4', 'Depart4', 'H Depart4',
-                        'Circuit5', 'Depart5', 'H Depart5'
-                    ]
-                )
+                header = ['Dossard', 'Puce', 'Nom', 'Prenom', 'cat.','N° Club' ,'Nom Club','Nat', 'T-shirt']
+                for etape in range(self.epreuve['NbEtapes']):
+                    info_etape = ['Circuit E'+str(e+1), self.epreuve["Etapes"][etape]["Nom"], 'H depart E'+str(etape+1) ]
+                    header = [*header, *info_etape]
+                out_str = sep.join(header)
             else:
-                out_str = sep.join(
-                    [
-                        'Dossard', 'Puce', 'Nom', 'Prenom', 'cat.', 'Nom Club', 'Nat', 'T-shirt',
-                        'Depart1', 'H Depart1',
-                        'Depart2', 'H Depart2',
-                        'Depart3', 'H Depart3',
-                        'Depart4', 'H Depart4',
-                        'Depart5', 'H Depart5'
-                    ]
-                )
+                header = ['Dossard', 'Puce', 'Nom', 'Prenom', 'cat.','N° Club' ,'Nom Club','Nat', 'T-shirt']
+                for etape in range(self.epreuve['NbEtapes']):
+                    info_etape = [self.epreuve["Etapes"][etape]["Nom"], 'H depart E'+str(etape+1) ]
+                    header = [*header, *info_etape]
+                out_str = sep.join(header)
 
             max_dossard = 0
 
@@ -653,10 +674,9 @@ class CODepart(object):
                         tshirt = " "
                     else:
                         tshirt = p['modele_tshirt'] + "/" + p['sexe'] + "/" + p['taille_tshirt']
-
                     out_str = sep.join(
                         [
-                            str(p['dossard']), str(p['puce_si']), str(p['nom']), str(p['prenom']), str(p['categorie']), str(p['club']), str(p['flag']), tshirt
+                            str(p['dossard']), str(p['puce_si']), str(p['nom']), str(p['prenom']), str(p['categorie']), str(p['club']), str(p['ref_club']), str(p['flag']), tshirt
                         ]
                     )
                     etapes_str = ''
@@ -697,14 +717,15 @@ class CODepart(object):
     def genereCSV(self, etape, contenu):
         out_str = ''
         sep = self.epreuve['FichiersGeneres']['SeparateurColonnesCSV']
-        with open(self.epreuve['FichiersGeneres']['NomFichierCSV'] + "_Etape_" + str(etape + 1) + ".csv", "w", encoding='ansi') as file:
+        nom = self.epreuve["Etapes"][etape]["Nom"]
+        with open(self.epreuve['FichiersGeneres']['NomFichierCSV'] + "_" + nom + ".csv", "w", encoding='cp1252') as file:
             if self.epreuve['FichiersGeneres']['GEC'] == 'MeOS':
                 out_str = sep.join(
                     [
-                        'Depart', 'Puce', 'Licence', 'Prenom', 'Nom', 'Ne', 'S',
+                        'Depart', 'Puce', 'Licence', 'Nom', 'Prenom', 'Ne', 'S',
                         'Plage', 'nc', 'H Depart', 'H Arrivée', 'Temps', 'Evaluation',
                         'Num club', 'Id club', 'Nom Club', 'Nat', 'Num cat.', 'Court', 'Long',
-                        'Num1', 'Num2', 'Num3', 'Dossards', 'Text2', 'Text3', 'Adr. nom', 'Rue', 'Ligne2', 'Code Post.', 'Ville',
+                        'Num1', 'Num2', 'Num3', 'Dossards', 'Text2', 'iof', 'Adr. nom', 'Rue', 'Ligne2', 'Code Post.', 'Ville',
                         'Tel.', 'Fax', 'E-mail', 'Id/Club', 'Louée', 'Engagement', 'Paye'
                     ]
                 )
@@ -722,12 +743,12 @@ class CODepart(object):
         if self.epreuve['FichiersGeneres']['GEC'] == 'MeOS':
             out_str = sep.join(
                 [
-                    '', str(p['puce_si']), str(p['num_lic']), str(p['prenom']), str(p['nom']),
+                    '', str(p['puce_si']), str(p['num_lic']), str(p['nom']), str(p['prenom']),
                     str(p['an']), str(p['sexe']), '', '0', str(heure),
-                    '', '', '0', str(p['num_club']), str(p['ref_club']),
-                    str(p['club']), str(p['flag']), str(num_categorie), str(p['categorie']), '',
+                    '', '', '0', str(p['num_club']), str(p['club']),
+                    str(p['club'])+" "+str(p['ref_club']), str(p['flag']), str(num_categorie), str(p['categorie']), '',
                     '', '', '', str(p['dossard']),
-                    '', '', '', '', '', '', '', '', '', '', '', '', str(pts_iof), str(p['iofid'])
+                    str(pts_iof), str(p['iofid']), '', '', '', '', '', '', '', '', '', '', '', ''
                 ]
             )
         else:  # format pour d'autres logiciel de GEC à écrire ici
@@ -780,10 +801,9 @@ class CODepart(object):
             mespointsiof = p['pointsioftrailo']
         return mespointsiof
 
-    def traitementEtape(self, etape, fileOutputMD):
-        self.log.info("====== Traitement de l'étape " + str(etape + 1) + "======")
+    def traitementEtape(self, etape, nom, fileOutputMD):
+        self.log.info("====== Traitement de l'étape " + str(etape + 1) + " ("+nom+") ======")
         self.calculHeuresMinMaxTranches(etape, fileOutputMD)
-        # if self.epreuve['Etapes'][etape]['FinTranches'][0] is not None:
         self.repartitionParticipants(etape, fileOutputMD)
 
     def calculHeureDebutDuCircuitDansLaTranche(self, heure_debut_circuit, intervalle, heure_debut_tranche):
@@ -831,9 +851,15 @@ class CODepart(object):
                         stats_circuits[p['circuits'][etape]] = 0
                     stats_circuits[p['circuits'][etape]] += 1
 
+                participants_max = 0
+                circuit_participants_max = ""
+
                 for c in circuits_auto_de_l_etape:
                     if c['Nom'] in stats_circuits:
                         nbre_participants = stats_circuits[c['Nom']]  # nbre participants pour ce circuit à cette tranche de cette étape
+                        if nbre_participants > participants_max:
+                            participants_max = nbre_participants
+                            circuit_participants_max = c['Nom']
                     else:
                         nbre_participants = 0
                     heure_debut_circuit = c['premier_depart']
@@ -846,7 +872,7 @@ class CODepart(object):
                         heure_fin_tranche = heure_fin
                 self.epreuve['Etapes'][etape]['DebutTranches'][t] = heure_debut_tranche
                 self.epreuve['Etapes'][etape]['FinTranches'][t] = heure_fin_tranche
-                self.log.debug('Etape ' + str(etape + 1) + ' tranche ' + str(t + 1) + ' : début=' + str(heure_debut_tranche) + ' fin=' + str(heure_fin_tranche))
+                self.log.debug('Etape ' + str(etape + 1) + ' tranche ' + str(t + 1) + ' : début=' + str(heure_debut_tranche) + ' fin=' + str(heure_fin_tranche)+ ' participants max=' + str(participants_max)+' ('+circuit_participants_max+')')
                 heure_debut_tranche = heure_fin_tranche + datetime.timedelta(minutes=1)
             # endfor tranche
         # endif non vide
@@ -936,6 +962,35 @@ class CODepart(object):
                 depart_all[heure_courante].append(participants[ip[0]])
                 heure_courante += datetime.timedelta(minutes=ecart)
         # endfor circuit
+
+
+    # ---------
+    def affectationSuivantGroupes(self, etape, participants, circuits_groupes, depart_all):
+
+        # Liste des circuits groupés
+        for circ in circuits_groupes:
+            heure_courante = datetime.datetime.strptime(circ['HeureDepart'], "%Y/%m/%dT%H:%M")
+            ecart = int(circ['Ecart'])
+
+            presents_dans_groupes = [i for (i, p) in enumerate(participants) if p['circuits'][etape] == circ['Nom']]
+            random.shuffle(presents_dans_groupes)  # ordre aléatoire
+
+            club_precedent = ''
+            for ip in presents_dans_groupes:
+                club = participants[ip]['club']
+                if (club == club_precedent):
+                    heure_courante += datetime.timedelta(minutes=ecart) # même club on laisse un vide
+                participants[ip]['heure_dep'][etape] = heure_courante
+                participants[ip]['posdepart'][etape] = circ['Depart']
+                if heure_courante not in depart_all:
+                    depart_all[heure_courante] = []
+                depart_all[heure_courante].append(participants[ip])
+                heure_courante += datetime.timedelta(minutes=ecart)
+                club_precedent = club
+
+        # endfor circuit
+
+
 
     def genereFichiersSortie(self, fileOutputMD, etape, depart_all, zeroDate,
                              noms_circuits_ranking, liste_participants_manuel, liste_participants_depart_boitier, liste_participants_libre):
@@ -1249,7 +1304,6 @@ class CODepart(object):
         liste_participants_manuel = []
         liste_participants_libre = []
         liste_participants_depart_boitier = []
-
         local_info_departs = {d['Depart'] for d in circuits_de_l_etape}
         for depart in sorted(local_info_departs):
             fileOutputMD.write("\n---\n\n### Départ " + str(depart) + "\n\n")
@@ -1257,6 +1311,7 @@ class CODepart(object):
 
             liste_circuits_manuels = []
             liste_circuits_ranking = []
+            liste_circuits_groupes = []
             liste_circuits_depart_boitier = []
             liste_circuits_auto = []
             liste_circuits_libres = []
@@ -1264,7 +1319,7 @@ class CODepart(object):
             # init des informations temporelles
             for index_circuit in range(len(circuits_de_l_etape)):
                 horairesAuto = circuits_de_l_etape[index_circuit]['Horaires']
-                # normalement oui, non, manuel, ranking ou boitier
+                # normalement oui, non, manuel, ranking, groupe ou boitier
                 if horairesAuto == "oui":  # traitement automatique
                     circuits_de_l_etape[index_circuit]['NbParticipants'] = 0
                     liste_circuits_auto.append(circuits_de_l_etape[index_circuit])
@@ -1279,6 +1334,8 @@ class CODepart(object):
                     liste_circuits_manuels.append(circuits_de_l_etape[index_circuit])
                 elif horairesAuto == "rank":  # départs en fonction du ranking iof puis cn
                     liste_circuits_ranking.append(circuits_de_l_etape[index_circuit])
+                elif horairesAuto == "grp":  # départs sans tenir compte de la tranche horaire
+                    liste_circuits_groupes.append(circuits_de_l_etape[index_circuit])
 
             for t in range(self.epreuve['TranchesHoraires']['NbTranches']):
                 self.log.debug("TRANCHE " + str(t + 1))
@@ -1287,26 +1344,29 @@ class CODepart(object):
                 presentAuto_parts = [p for p in participants if
                                      p['tranches'][etape] == t and
                                      len(self.knownCategorie(depart, p['categorie'], liste_circuits_auto)) == 1]
-                presentLibre_parts = [p for p in participants if
-                                      p['tranches'][etape] == t and
-                                      len(self.knownCategorie(depart, p['categorie'], liste_circuits_libres)) == 1]
-                presentManuel_parts = [p for p in participants if
-                                       p['tranches'][etape] == t and
-                                       len(self.knownCategorie(depart, p['categorie'], liste_circuits_manuels)) == 1]
-                # pas de tranche pour les catégories au ranking, on les génère lors de l'analyse de la première tranche
+                # pas de tranche pour les catégories au ranking, manuel, libre et au boîtier on les génère lors de l'analyse de la première tranche
                 presentRanking_parts = [p for p in participants if
                                         t == 0 and
                                         len(self.knownCategorie(depart, p['categorie'], liste_circuits_ranking)) == 1]
+                presentGroupes_parts = [p for p in participants if
+                                        t == 0 and
+                                        len(self.knownCategorie(depart, p['categorie'], liste_circuits_groupes)) == 1]
                 presentBoitier_parts = [p for p in participants if
-                                        p['tranches'][etape] == t and
+                                        t == 0 and
                                         len(self.knownCategorie(depart, p['categorie'], liste_circuits_depart_boitier)) == 1]
-
+                presentLibre_parts = [p for p in participants if
+                                      t == 0 and
+                                      len(self.knownCategorie(depart, p['categorie'], liste_circuits_libres)) == 1]
+                presentManuel_parts = [p for p in participants if
+                                       t == 0 and
+                                       len(self.knownCategorie(depart, p['categorie'], liste_circuits_manuels)) == 1]
                 self.log.debug(
                     "Traitement de :\n" +
                     " auto=" + str(len(presentAuto_parts)) + '\n' +
                     " libre=" + str(len(presentLibre_parts)) + '\n' +
                     " boitier=" + str(len(presentBoitier_parts)) + '\n' +
                     " ranking=" + str(len(presentRanking_parts)) + '\n' +
+                    " groupes=" + str(len(presentGroupes_parts)) + '\n' +
                     " manuel=" + str(len(presentManuel_parts)) + '\n' +
                     "participants dans la tranche " + str(t + 1) + " de l'étape " + str(etape + 1)
                 )
@@ -1327,7 +1387,8 @@ class CODepart(object):
                 # Création de bins communs, ensuite on sortira les cas spéciaux
                 tentative = 0
                 bins_are_good = False
-                while (tentative < MAX_TENTATIVES) and (not bins_are_good):
+                max_tentatives = int(self.epreuve['NbMaxTentatives'])
+                while (tentative < max_tentatives) and (not bins_are_good):
                     tentative += 1
                     self.log.debug("Tentative " + str(tentative) + "... ")
 
@@ -1375,7 +1436,7 @@ class CODepart(object):
                                 if not foundPlace:
                                     self.log.debug("(Répartition) Impossible de trouver une place dans le circuit" + str(c) + " pour " + str(p))
                                     bins_are_good = False
-                if tentative >= MAX_TENTATIVES:
+                if tentative >= max_tentatives:
                     self.log.error("(Répartition) Impossible de trouver une place pour un concurent !")
                 else:
                     self.log.debug("Tous les concurrents ont un horaire pour cette tranche.")
@@ -1439,6 +1500,7 @@ class CODepart(object):
                     for part in presentBoitier_parts:
                         part['posdepart'][etape] = depart
                     liste_participants_depart_boitier.append(presentBoitier_parts)
+
             # endfor tranche
         # endfor depart
 
@@ -1453,6 +1515,18 @@ class CODepart(object):
         self.genereFichiersSortie(fileOutputMD, etape, depart_all, zeroDate,
                                   noms_circuits_ranking, liste_participants_manuel, liste_participants_depart_boitier, liste_participants_libre)
 
+        # ------------------------------------------------------------------------------------------------------------------
+
+        self.log.debug("Génération des départs groupés")
+        circuits_groupes = [c for c in circuits_de_l_etape if c['Horaires'] == 'grp']
+        self.affectationSuivantGroupes(etape, participants, circuits_groupes, depart_all)
+
+        self.log.debug("Génération des fichiers de sortie")
+        noms_circuits_groupes = [c['Nom'] for c in circuits_groupes]
+        self.genereFichiersSortie(fileOutputMD, etape, depart_all, zeroDate,
+                                  noms_circuits_groupes, liste_participants_manuel, liste_participants_depart_boitier, liste_participants_libre)
+
+        # ------------------------------------------------------------------------------------------------------------------
         self.log.debug("Génération du rapport d'erreurs")
         self.gestionParticipantsOublies(fileOutputMD, participants, etape)
 
@@ -1572,15 +1646,17 @@ class CODepart(object):
         flags = dict()
         effectifGroupes = self.epreuve['TranchesHoraires']['NbTranches'] * [0]
 
+        # exemple num_club='0111' ref_club='CO AMBERIEU' club='0111AR'
         for r in self.competiteurs:
             nomclub = r['club']
             if nomclub not in self.clubs:
                 pays = r['flag']
 
                 # Recherche si le club a un code de pays forcé
+                refclub = r['ref_club'].strip()
                 for c in self.epreuve['NationaliteClubs']:
-                    if nomclub in c:
-                        pays = c[nomclub.strip()].strip()
+                    if refclub in c:
+                        pays = c[refclub].strip()
 
                 # Ajout du club à la liste des clubs
                 self.clubs[nomclub] = {'nomcomplet': nomclub + ' ' + str(r['ref_club']),
@@ -1745,11 +1821,11 @@ class CODepart(object):
                 self.log.warning('Impossible de trouver le compétiteur : ' + pp['nom2'] + ' ' + pp['prenom2'] + ' du club : ' + pp['club2'] +
                                  " en vue d'affecter sa tranche horaire à " + pp['nom1'] + ' ' + pp['prenom1'] + ' du club : ' + pp['club1'])
 
-        # On force la tranche horaire des ranking à la première tranche
+        # On force la tranche horaire des ranking ou groupe à la première tranche
         # afin d'éviter la multiplication des vacants pour ces catégories
         for i, p in enumerate(self.competiteurs):
             for j, h in enumerate(p['horaires']):
-                if h == 'rank':
+                if ((h == 'rank') or (h=='grp')):
                     self.competiteurs[i]['tranches'][j] = 0
 
         self.log.info("Effectif des groupes de tranches horaires:" + str(effectifGroupes))
@@ -1813,10 +1889,11 @@ class CODepart(object):
                 if etape in m['etapes']:
                     circuit = self.circuitDeLaCategorie(etape, m['categorie'])
                     c = [d for d in self.epreuve['Etapes'][etape]['Circuits'] if d['Nom'] == circuit]
-                    if (c[0]['Horaires'] != 'non'):
-                        if m['categorie'] not in participants_par_categorie_de_l_etape:
-                            participants_par_categorie_de_l_etape[m['categorie']] = [0] * self.epreuve['TranchesHoraires']['NbTranches']
-                        participants_par_categorie_de_l_etape[m['categorie']][m['tranches'][etape]] += 1
+                    if (len(c)>0) :
+                        if (c[0]['Horaires'] != 'non'):
+                            if m['categorie'] not in participants_par_categorie_de_l_etape:
+                                participants_par_categorie_de_l_etape[m['categorie']] = [0] * self.epreuve['TranchesHoraires']['NbTranches']
+                            participants_par_categorie_de_l_etape[m['categorie']][m['tranches'][etape]] += 1
 
             for categ in participants_par_categorie_de_l_etape:
                 # nbre n de participants de cette categorie dans la tranche
@@ -1834,7 +1911,7 @@ class CODepart(object):
         fileOutputMD.write('| - | - | - | - |\n')
 
         # dossards par club
-        cbyclub = sorted(self.competiteurs, key=lambda k: k['club'])
+        cbyclub = sorted(self.competiteurs, key=lambda k: k['club'].rjust(7))
 
         in_club = 0
         prev_club = ''
@@ -1866,6 +1943,20 @@ class CODepart(object):
 
         fileOutputMD.write('\n')
 
+        #---- Dossard forcés pour les coureurs
+
+        for p in self.epreuve['ParticipantsDossardForce']:
+            trouve = False
+            for m in self.competiteurs:
+                if m['nom'] == p['nom'] and m['prenom'] == p['prenom'] and m['club'] == p['club']:
+                    trouve = True
+                    m['dossard']=p['dossard']
+            if not trouve:
+                self.log.warning('Impossible de trouver le compétiteur : ' + p['nom'] + ' ' + p['prenom'] +
+                                 ' du club : ' + p['club'] +
+                                 " en vue de lui forcer un dossard.")
+
+
     def dataCrunch(self):
         """ Le traitement total des données
         """
@@ -1896,15 +1987,17 @@ class CODepart(object):
             self.ajoutTousVacants(fileOutputMD)
 
             for etape in range(self.epreuve['NbEtapes']):
-                self.traitementEtape(etape, fileOutputMD)
+                nom = self.epreuve["Etapes"][etape]["Nom"]
+                self.traitementEtape(etape, nom, fileOutputMD)
 
     def run(self):
         # try:
-        self.log.info('co_depart dernier enregiostrement : ' + __updated__)
+        self.log.info('co_depart dernier enregistrement : ' + __updated__)
         self.importFromIofCSV()
         self.importFromFfcoCSV()
         self.importFromCSVData()
         self.dataCrunch()
+        self.posttreatment()
         self.genereFichierDossards()
         self.genereListeParClub()
         self.genereEtiquettes()
