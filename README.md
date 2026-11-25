@@ -205,12 +205,16 @@ Bien que l'ordre des sections dans un fichier JSON n'ait aucune importance, les 
 |"FlagsSubdirectory"         | *chaine* | Sous-répertoire contenant les images des drapeaux. Ceux-ci doivent être des fichiers png dont le nom contient les deux lettres identifiant le pays dans la norme ISO.|
 |  |  |  |
 |"GraineGenerateurAleatoire" | *chaine* | Peut contenir soit "None" soit une chaîne de caractères contenant un nombre. Dans le premier cas, chaque exécution conduira à des résultats différents, même avec les mêmes données d'entrée; si un nombre est fourni, il servira de valeur initiale pour le générateur de nombre aléatoire. Dans ce cas chaque exécution - si les données d'entrées sont inchangées - conduiront au même résultat.|
+|  |  |  |
+|"NbMaxTentatives"           | *nombre* | Nombre maximum de tentatives pour trouver une solution.|
 
 #### Ranking FFCO
 
 | Clef | Type valeur | Détails |
 |------------|:--------:|-----------------------------|
 |"RankingFFCO"| *element complexe* | Défini la façon d'accéder et de traiter les données issues du classement national de la FFCO. |
+|  |  |  |
+|"RankingFFCO" "UtiliserRankingFFCO" | *chaine* | Défini si le ranking FFCO (CN) doit être utilisé. Valeurs possibles : "Oui" ou "Non"|
 |  |  |  |
 |"RankingFFCO" "FichierCSV" | *chaine* | Nom du fichier CSV contenant les données du classement|
 |  |  |  |
@@ -355,6 +359,8 @@ __*Remarques*__
 |"Inscriptions" "Colonnes" "ModeleTshirt" | *nombre* | Numéro de la colonne, en comptant à partir de 1, contenant le modèle de T-shirt souhaité|
 |  |  |  |
 |"Inscriptions" "Colonnes" "TailleTshirt" | *nombre* | Numéro de la colonne, en comptant à partir de 1, contenant la taille de T-shirt souhaitée|
+|  |  |  |
+|"Inscriptions" "Colonnes" "Ranking" | *nombre* | Numéro de la colonne, en comptant à partir de 1, contenant le ranking|
 |  |  |  |
 |"Inscriptions" "ParticipantsASupprimer" | *liste d'éléments complexes* | Liste des participants figurant dans le fichier CSV d'inscription mais devant être supprimés ( par exemple à cause d'erreurs d'inscription).|
 |  |  |  |
@@ -640,7 +646,9 @@ __*Remarques*__
 |-------------------------|:------------------:|----------------------------------------------------------------------|
 |"Etapes"                                    | *liste d'éléments complexes*| Liste, donc entre crochets et séparées par des virgules, des différentes étapes constituant l'évènement|
 |  |  |  |
-|"Etapes"[*n*] "Nom"                         | *chaine*                    | Nom de l'étape. Sera utilisé dans le rapport généré.|
+|"Etapes"[*n*] "Nom"                         | *chaine*                    | Nom de l'étape. Sera utilisé dans le rapport généré et sur les enveloppes club.|
+|  |  |  |
+|"Etapes"[*n*] "Name"                        | *chaine*                    | Nom de l'étape en anglais. Sera utilisé dans le rapport généré et sur les enveloppes club.|
 |  |  |  |
 |"Etapes"[*n*] "Lieu"                        | *chaine*                    | Lieu de l'étape. Sera utilisé dans le rapport généré.|
 |  |  |  |
