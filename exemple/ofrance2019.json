@@ -402,6 +402,11 @@
         {"T.A. FAMECK":4}
     ],
 
+    "ClubPaysForce":[
+        {"ACA AIX EN PROV":"FRA"},
+        {"COMULHOUSE":"FRA"}
+    ],
+    
     "ParticipantsTranchesHorairesAutreClub":[
         {"nom" :"CARLE", "prenom":"Odin", "club":"ADOCHENOVE", "autreclub":"OE42", "etapes" : [1,2,3,4,5]},
         {"nom" :"CARLE", "prenom":"Titouan", "club":"ADOCHENOVE", "autreclub":"OE42", "etapes" : [1,2,3,4,5]},

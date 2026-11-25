@@ -2,7 +2,7 @@
 
 co_depart est un programme qui, partant d'un fichier CSV d'inscriptions, génère des listes de départ pour les courses d'orientation à étapes.
 
-# Fonctionnalités
+## Fonctionnalités
 
 Ses caractéristiques principales sont :
 
@@ -15,14 +15,14 @@ Ses caractéristiques principales sont :
 - Gère un nombre quelconque de circuits
 - Gère plusieurs catégories par circuit
 - Permet de définir pour chaque circuit
-    - L'heure du premier départ (autorisant ainsi, par exemple, les départs sur minutes paires et impaires)
-    - L'intervalle entre départs pour un même circuit
-    - La méthode de détermination des heures de départ :
-        - aléatoire
-        - suivant un ranking (IOF ou CN)
-        - au boîtier
-        - libre
-        - aucune gestion
+  - L'heure du premier départ (autorisant ainsi, par exemple, les départs sur minutes paires et impaires)
+  - L'intervalle entre départs pour un même circuit
+  - La méthode de détermination des heures de départ :
+    - aléatoire
+    - suivant un ranking (IOF ou CN)
+    - au boîtier
+    - libre
+    - aucune gestion
 - utilise directement les fichiers CSV de l'IOF et de la FFCO pour les circuits avec ranking
 - s'assure qu'il n'y a pas deux personnes du même club sur le même circuit partant consécutivement
 - minimise la durée des départs
@@ -35,50 +35,57 @@ Ses caractéristiques principales sont :
 - est un programme *Python* open source sous licence GNU GPL pouvant être modifié à volonté
 - fonctionne dans tous les environnements (Windows, Linux, Mac,...)
 
-# Installation
-## Interpréteur Python
+## Installation et configuration
+
+### Interpréteur Python
+
 *co_depart* étant un fichier source *Python*, il est nécessaire de disposer d'un interpréteur *Python* installé sur sa machine.
 Si vous travaillez sous Linux, c'est déjà probablement le cas, sinon vous pouvez vous en assurer en ouvrant une fenêtre de commande et en tapant *python*
 
-Si aucun interpréteur n'est installé, vous devez en télécharger un, typiquement à partir de https://www.python.org/downloads/
+Si aucun interpréteur n'est installé, vous devez en télécharger un, typiquement à partir de <https://www.python.org/downloads/>
 
 Il est recommandé de télécharger le plus récent. Le programme a étét testé avec *Python 3.7.3* sous *Windows*.
 Veuillez suivre les informations du site de téléchargement pour les consignes d'installation de l'interpréteur *Python*.
 
-## Editeur de texte
+### Editeur de texte
+
 Vous devez également disposer d'un éditeur de texte, type notepad. Si vous n'en avez pas, quelques bons éditeurs gratuits sont :
 
-- PSPAD (http://www.pspad.com/fr/)
+- PSPAD (<http://www.pspad.com/fr/)>
 
-- Notepad++ (https://notepad-plus-plus.org/download/v7.6.6.html)
+- Notepad++ (<https://notepad-plus-plus.org/download/v7.6.6.html)>
 
-- Vim (https://www.vim.org/download.php)
+- Vim (<https://www.vim.org/download.php)>
 
-- Visual Studio Code (https://code.visualstudio.com/)
+- Visual Studio Code (<https://code.visualstudio.com/)>
 
-## Compilation des fichiers LaTeX
+### Compilation des fichiers LaTeX
+
 Les étiquettes et les listes récapitulatives par club sont générées au format LaTeX. Pour obtenir le fichier PDF correspondant il est nécessaire d'avoir un compilateur LaTeX.
 
-Par exemple sous Windows vous pouvez utiliser MikTex (https://miktex.org/download)
+Par exemple sous Windows vous pouvez utiliser MikTex (<https://miktex.org/download)>
 
-Il peut être utile d'avoir un environnement de développement LaTeX, soit en chargeant le module correspondant dans votre éditeur, soit en utilisant TeXnicCenter (http://www.texniccenter.org/download/)
+Il peut être utile d'avoir un environnement de développement LaTeX, soit en chargeant le module correspondant dans votre éditeur, soit en utilisant TeXnicCenter (<http://www.texniccenter.org/download/)>
 
-## Mise en forme du rapport
+### Outil de mise en forme du rapport
+
 Lors de l'exécution un rapport au format *Markdown* est généré. Ce fichier est plus agréable à lire s'il est transformé en fichier pdf à l'aide de *Pandoc*.
-Vous pouvez télécharger *Pandoc* ici :https://pandoc.org/
+Vous pouvez télécharger *Pandoc* ici :<https://pandoc.org/>
 
 Attention *Pandoc* risque de vous obliger à télécharger un compilateur *LaTeX*, Miktek par exemple. Et l'installation de tout ceci peut être... complexe !
 Si vous utilisez déjà *LaTeX* n'hésitez pas, sinon une solution plus simple peut être d'ajouter une extension à votre navigateur qui sait mettre en forme les fichiers Markdown.
 
 On en trouve facilement, au moins pour Firefox et Chrome, par exemple *Markdown Viewer Webext*. Procédez comme vous le faite habituellement pour ajouter des extensions à votre navigateur.
 
-## Drapeaux
+### Drapeaux
+
 Si vous générez les listes par club ou les étiquettes il est nécessaire de disposer des fichiers png correspondant aux différents pays.
 
-Vous pouvez, par exemple, récupérer ces derniers ici (sélectionner "résolution classique"): http://www.drapeauxdespays.fr/telecharger
+Vous pouvez, par exemple, récupérer ces derniers ici (sélectionner "résolution classique"): <http://www.drapeauxdespays.fr/telecharger>
 
-## Installation
-Créez un répertoire de travail et copiez-y le programme python obtenu sur https://github.com/jmonclard
+### Installation
+
+Créez un répertoire de travail et copiez-y le programme python obtenu sur <https://github.com/jmonclard>
 
 Nous vous conseillons également d'y copier les fichiers JSON fournis dans le sous répertoire d'exemple afin de disposer d'une structure de départ complète.
 
@@ -86,58 +93,73 @@ Même s'il est possible de définir des chemins complets dans le fichier JSON, i
 
 Enfin il est nécessaire de créer un sous-répertoire et y mettre les fichiers png des drapeaux des différents payas.
 
-# Configuration
+## Configuration
+
 L'essentiel de la configuration du programme s'effectue à l'aide du fichier JSON.
-Par défaut le fichier JSON recherché est *ofrance2019.json*. Vous pouvez chnager ceci soit en éditant le fichier Python (constante DEFAULT_JSON_CONFIG ligne 25, en début de fichier) soit en précisant le nom du fichier en ligne de commande lors de l'exécution.
+Par défaut le fichier JSON recherché est *ofrance2019.json*. Vous pouvez changer ceci soit en éditant le fichier Python (constante DEFAULT_JSON_CONFIG ligne 25, en début de fichier) soit en précisant le nom du fichier en ligne de commande lors de l'exécution.
 
 Les détails des différents champs du fichier JSON sont définis dans le chapitre *Syntaxe du fichier JSON de paramétrage* ci-après.
 
-# Exécution
-## Traitement des données
+## Exécution
+
+### Traitement des données
+
 Une fois le fichier JSON adapté, l'exécution du programme s'effectue simplement en exécutant le script *Python*.
 
 Celà se fait :
 
+- soit à partir d'un environnement de développement (IDLE ou votre éditeur par exemple).
 - soit dans une fenêtre de commande, entrer alors comme commande :
-```
+
+```bash
 python co_depart.py
 ```
+
 ou
-```
+
+```bash
 python co_depart.py -c <nom_du_fichier_JSON_de_configuration>
 ```
+
 Il est également possible d'augmenter la verbosité avec l'option -v en ligne de commande (il est possible d'en mettre plusieurs pour augmenter la quantité de texte affiché). Exemple :
-```
+
+```bash
 python co_depart.py -v -v -v
 ```
-- soit à partir d'un environnement de développement (IDLE ou votre éditeur par exemple).
 
 Dans IDLE chargez le fichier co_depart.py avec *File/Open...* et, dans le fenêtre qui vient de s'ouvrir et contient le fichier python, cliquez sur *Run*
 
 #### Génération impossible
+
 Les affectations d'heures de départ dans une tranche sont aléatoires (sauf ranking) mais tiennent compte de la contrainte de ne pas avoir deux coureurs du même club partant successivement.
 
 Le nombre de départs possibles dans une tranche horaire est lié à la catégorie ayant le plus grand nombre de départs. Dans certaines situations l'algorithme peut ne pas trouver de solution avec le tirage aléatoire effectué. Si c'est le cas, vous pouvez relancer l'exécution.
 
 Si après plusieurs tentatives vous ne parvenez pas à obtenir une répartition acceptable, vous pouvez augmenter la valeur du paramètre *"TranchesHoraires" "MargeTranches"* dans le fichier JSON. Ceci a pour effet de crééer des horaires de départ supplémentaires, facilitant l'affectation d'horaires aux participants au dépend d'une durée totale des départs plus importante.
 
-## Mise en forme du rapport
+### Mise en forme du rapport
+
 Le script *Python* génère un rapport d'exécution au format *Markdown*, il s'agit du fichier créé ayant pour suffixe .md et que vous pouvez faciement lire avec un éditeur de texte.
 
 Toutefois un rapport plus agréable à lire, au format pdf, peut facilement être généré à l'aide de *pandoc*.
 
 Dans une fenêtre de commande, dans le répertoire de travail entrez :
-```
+
+```bash
 pandoc -t latex -f markdown -o <fichier_à_créer.pdf> <fichier_rapport.md>
 ```
+
 par exemple :
-```
+
+```bash
 pandoc -t latex -f markdown -o ofrance-out.pdf ofrance-out.md
 ```
 
-# Syntaxe du fichier JSON de paramétrage
-## Généralités sur la syntaxe d'un fichier JSON
-Vous pouvez trouver une explication détaillée sur le format JSON ici : https://www.json.org/json-fr.html
+## Syntaxe du fichier JSON de paramétrage
+
+### Généralités sur la syntaxe d'un fichier JSON
+
+Vous pouvez trouver une explication détaillée sur le format JSON ici : <https://www.json.org/json-fr.html>
 Toutefois, les indications suivantes devraient être suffisantes pour l'utilisation de ce programme.
 
 - Un fichier JSON est un fichier texte standard, utilisez donc un éditeur de texte (et non un traitement de texte !) pour le créer ou l'éditer
@@ -145,30 +167,33 @@ Toutefois, les indications suivantes devraient être suffisantes pour l'utilisat
 - Vous pouvez laisser des lignes vides et indenter les lignes comme vous le souhaitez , mais il n'y a pas de commentaires dans le format JSON
 - Un fichier JSON commence par une accolade ouvrante et se termine par une accolade fermante.
 - Entre ces deux accolades on va trouver :
-    - soit des couples {clef : valeur} où les champs *clef* et *valeur* sont séparés par des virgules
-    - soit des listes entre crochets pouvant contenir des nombres ou des couples {clef : valeur} séparées par des virgules ou encore des listes pouvant elles-même contenir....
-    - soit des couples {clef : ensemble de couples clef : valeur }. Dans ce cas l'ensemble des couples clef:valeur, comme chaque couple, est entouré d'accolades et les différents couples sont séparés par des virgules
-    - il n'y a pas de virgule après le dernier couple {clef : valeur}
-    - les clefs sont entre double quotes
-    - les valeurs sont entre doubles quotes si ce sont des chaînes de caractères, sans doubles quotes sinon.
-    Un exemple de code légal est :
-    ```
-    {
-        "MaClef":"SaValeur",
-        "MonAutreClef":"La Valeur De Cette Autre Clef",
-        "UnNombre":12,
-        "UneListeDeNombres":[1,2,3,4],
-        "UnObjetComplexe":{
-            "SaPremiereClef":"Premier contenu",
-            "Une deuxième clef":2345
-        }
-    }
-    ```
+  - soit des couples {clef : valeur} où les champs *clef* et *valeur* sont séparés par un symbole «deux points»
+  - soit des listes entre crochets pouvant contenir des nombres ou des couples {clef : valeur} séparées par des virgules ou encore des listes pouvant elles-même contenir....
+  - soit des couples {clef : ensemble de couples clef : valeur }. Dans ce cas l'ensemble des couples clef:valeur, comme chaque couple, est entouré d'accolades et les différents couples sont séparés par des virgules
+  - il n'y a pas de virgule après le dernier couple {clef : valeur}
+  - les clefs sont entre double quotes
+  - les valeurs sont entre doubles quotes si ce sont des chaînes de caractères, sans doubles quotes sinon.
+  Un exemple de code légal est :
 
-## Mots clefs reconnus
+  ```json
+  {
+      "MaClef":"SaValeur",
+      "MonAutreClef":"La Valeur De Cette Autre Clef",
+      "UnNombre":12,
+      "UneListeDeNombres":[1,2,3,4],
+      "UnObjetComplexe":{
+          "SaPremiereClef":"Premier contenu",
+          "Une deuxième clef":2345
+      }
+  }
+  ```
+
+### Mots clefs reconnus
+
 Bien que l'ordre des sections dans un fichier JSON n'ait aucune importance, les mots clefs reconnus sont présentés ci-après dans l'ordre du fichier JSON fourni en exemple.
 
-## En-tête
+### En-tête
+
 | Clef | Type valeur | Détails |
 |----------------------------|:--------:|-------------------------------------------|
 |"Nom"                       | *chaine* | Nom de l'évènement. N'est utilisé que dans les rapports.|
@@ -181,7 +206,8 @@ Bien que l'ordre des sections dans un fichier JSON n'ait aucune importance, les 
 |  |  |  |
 |"GraineGenerateurAleatoire" | *chaine* | Peut contenir soit "None" soit une chaîne de caractères contenant un nombre. Dans le premier cas, chaque exécution conduira à des résultats différents, même avec les mêmes données d'entrée; si un nombre est fourni, il servira de valeur initiale pour le générateur de nombre aléatoire. Dans ce cas chaque exécution - si les données d'entrées sont inchangées - conduiront au même résultat.|
 
-### Ranking FFCO
+#### Ranking FFCO
+
 | Clef | Type valeur | Détails |
 |------------|:--------:|-----------------------------|
 |"RankingFFCO"| *element complexe* | Défini la façon d'accéder et de traiter les données issues du classement national de la FFCO. |
@@ -217,10 +243,12 @@ Bien que l'ordre des sections dans un fichier JSON n'ait aucune importance, les 
 |"RankingFFCO" "AjoutIdentifiant"[*] "LicenceFFCO" | *nombre entier* | Numéro de licence FFCO du participant pour lequel on veut ajouter un un numéro de licence FFCO|
 
 __*Remarques*__
-- Cette section n'est nécessaire que si un départ au ranking d'au moins un circuit est envisagé
-- Le fichier CSV contenant le classement national FFCO peut être téléchargé ici : http://cn.ffcorientation.fr/classement/
 
-### Ranking IOF
+- Cette section n'est nécessaire que si un départ au ranking d'au moins un circuit est envisagé
+- Le fichier CSV contenant le classement national FFCO peut être téléchargé ici : <http://cn.ffcorientation.fr/classement/>
+
+#### Ranking IOF
+
 | Clef | Type valeur | Détails |
 |------------|:--------:|-----------------------------|
 |"RankingIOF" | *element complexe* | Défini la façon d'accéder et de traiter les données issues des divers classements de l'IOF.|
@@ -274,12 +302,14 @@ __*Remarques*__
 |"RankingIOF" "AjoutIdentifiant"[*] "IdIof" | *nombre entier* | Identifiant IOF du participant pour lequel on veut ajouter un identifiant IOF|
 
 __*Remarques*__
+
 - Cette section n'est nécessaire que si un départ au ranking d'au moins un circuit est envisagé
 - Il n'est pas nécessaire de définir tous les fichiers. Seuls les fichiers concernant le type d'épreuve envisagée comme ayant un départ au ranking sont à renseigner. Les autres peuvent être laissés vides ("").
-- Les fichiers CSV des différents rankings IOF peuvent être téléchargés ici : https://ranking.orienteering.org/Ranking
+- Les fichiers CSV des différents rankings IOF peuvent être téléchargés ici : <https://ranking.orienteering.org/Ranking>
 - Si des participants n'ont pas renseigné leur identifiant IOF au moment de l'inscription, il est possible de le faire à l'aide de la section "AjoutIdentifiant"
 
-### Inscriptions
+#### Inscriptions
+
 | Clef | Type valeur | Détails |
 |------------|:--------:|-----------------------------|
 |"Inscriptions" | *element complexe* | Cete section détaille la façon de gérer le fichier d'inscription|
@@ -367,10 +397,12 @@ __*Remarques*__
 |"Inscriptions" "ParticipantsSupplementaires"[*] "TailleTshirt" | *chaine* | Taille du T-shirt (sous forme de chaine de caractères) souhaitée par le participant devant être ajouté aux inscriptions (par exemple "XXL").|
 
 __*Remarques*__
+
 - L'utilisation des listes *"Inscriptions" "ParticipantsASupprimer"* et *"Inscriptions" "ParticipantsSupplementaires"* permet de corriger d'éventuelles erreurs d'inscription en faisant figurer un participant dans les deux listes.
 - Si un participant change de circuit d'un jour à l'autre, on peut le supprimer et l'ajouter deux fois (ou plus), une fois pour chaque circuit. Il figurera autant de fois dans la GEC avec des dossards différents.
 
-### FichiersGeneres
+#### FichiersGeneres
+
 | Clef | Type valeur | Détails |
 |------|:-----------:|---------|
 |"FichiersGeneres" | *element complexe* | Informations sur le format des fichiers à générer pour la GEC.|
@@ -383,7 +415,8 @@ __*Remarques*__
 |  |  |  |
 |"FichiersGeneres" "SeparateurColonnesCSV" | *chaine* | Séparateur de colonnes des fichiers CSV prévus pour la GEC. Typiquement une virgule ou un point-virgule.|
 
-### Dossards
+#### Dossards
+
 | Clef | Type valeur | Détails |
 |------|:-----------:|---------|
 |"Dossards" | *element complexe* | Informations sur le format du fichier à générer pour l'impression des dossards|
@@ -398,7 +431,8 @@ __*Remarques*__
 |  |  |  |
 |"Dossards" "CircuitsSurDossards" | *chaine* | Indique si les circuits doivent figurer sur les dossards. Valeurs possibles : 'oui' ou 'non'.|
 
-### Listes détailées par club pour enveloppes
+#### Listes détailées par club pour enveloppes
+
 | Clef | Type valeur | Détails |
 |------|:-----------:|---------|
 |"Enveloppes" | *element complexe* | Informations sur le format du fichier à générer pour l'impression des listes par club à mettre dans les enveloppes|
@@ -417,7 +451,8 @@ __*Remarques*__
 |  |  |  |
 |"Enveloppes" "HauteurDrapeau_mm" | *nombre* | Hauteur en mm du drapeau correspondant au pays du club (exemples : 10 ou 10.2)|
 
-### Etiquettes club
+#### Etiquettes club
+
 | Clef | Type valeur | Détails |
 |------|:-----------:|---------|
 |"Etiquettes" | *element complexe* | Informations sur le format du fichier à générer pour l'impression des étiquettes club à mettre sur les enveloppes ou les sacs de récupération des cartes.|
@@ -444,7 +479,8 @@ __*Remarques*__
 |  |  |  |
 |"Etiquettes" "HauteurDrapeau_mm" | *nombre* | Hauteur en mm du drapeau correspondant au pays du club (exemple : 10)|
 
-### TranchesHoraires
+#### TranchesHoraires
+
 | Clef | Type valeur | Détails |
 |------|:-----------:|---------|
 |"TranchesHoraires" | *element complexe* | Paramètres définissant les tranches horaires qui seront générés|
@@ -462,7 +498,8 @@ horaire même s'ils ne sont pas du même club.|
 |  |  |  |
 |"TranchesHoraires" "MargeTranches" | *nombre entier* | Le nombre de départs possibles dans une tranche horaire est le nombre d'inscrits sur le circuit ayant le plus d'inscrits additionné de ce nombre.|
 
-### AliasCategories
+#### AliasCategories
+
 | Clef | Type valeur | Détails |
 |------|:-----------:|---------|
 |"AliasCategories" | *liste d'éléments complexes* | Table de conversion du nom des catégories. Essentiellement une liste de paires de noms et d'identifiants sans ordre particulier.|
@@ -473,14 +510,16 @@ horaire même s'ils ne sont pas du même club.|
 |  |  |  |
 |"AliasCategories"[*] "id" | *nombre entier* | Numéro de la catégorie à utiliser par le logiciel de GEC|
 
-### AliasSexe
+#### AliasSexe
+
 | Clef | Type valeur | Détails |
 |------|:-----------:|---------|
 |"AliasSexes" | liste de {clefs : valeurs} | Table de conversion des identifiants de sexe (par exemple pour passer de français à anglais). Une liste de paires de lettres sans ordre particulier.|
 |  |  |  |
 |"AliasSexes"[*] { , } | {clefs : valeurs} | La clef (par exemple "H") correspond à l'identifiant dans le CSV d'inscription, la valeur (par exemple "M") à ce qui doit être fourni à la GEC.|
 
-### AliasClub
+#### AliasClub
+
 | Clef | Type valeur | Détails |
 |------|:-----------:|---------|
 |"AliasClubs" | liste de {clefs : valeurs} | Table de conversion des noms de club (par exemple pour corriger des noms de club). Une liste de paires de noms sans ordre particulier.|
@@ -490,24 +529,23 @@ horaire même s'ils ne sont pas du même club.|
 __*Remarques*__
 Pour corriger un nom de club ayant des apostrophes et pour lequel une barre oblique inverse apparait avant l'apostrophe dans le fichier d'inscription, insérez devant les apostrophes une seconde barre oblique inverse. Par exemple utilisez la conversion suivante : {"O\\'JURA":"O'JURA"}
 
+#### NationaliteClubs
 
-### NationaliteClubs
 | Clef | Type valeur | Détails |
 |------|:-----------:|---------|
 |"NationaliteClubs" | liste de {clefs : valeurs} | Table d'affectation d'un pays à un club (si tous les membres n'ont pas la même nationalité). Une liste de paires de noms de clubs et de code pays sur 3 lettres sans ordre particulier.|
 |  |  |  |
 |"NationaliteClubs" [*] { , } | {clefs : valeurs} | La clef (par exemple "IFK GOTEBORG") est le nom du club apparaissant dans le fichier d'inscription, la valeur (par exemple "SWE") est le code ISO en 3 lettres du pays.|
 
+#### AliasPrenoms
 
-### AliasPrenoms
 | Clef | Type valeur | Détails |
 |------|:-----------:|---------|
 |"AliasPrenoms" | liste de {clefs : valeurs} | Table de conversion de prénoms (par exemple pour accentuier des prénoms). Une liste de paires de prénoms sans ordre particulier.|
 |  |  |  |
 |"AliasPrenoms" [*] { , } | {clefs : valeurs} | La clef (par exemple "Joel") est le prénom apparaissant dans le fichier d'inscription après n'avoir conservé que les capitales en majuscule, la valeur (par exemple "Joël") le nom devant apparaître dans la GEC.|
 
-
-### ClubGroupeHoraireForce
+#### ClubGroupeHoraireForce
 
 **ATTENTION** : Dans le tableau ci-desous "CGHF" est à remplacer par "ClubGroupeHoraireForce"
 
@@ -516,16 +554,31 @@ Pour corriger un nom de club ayant des apostrophes et pour lequel une barre obli
 |"CGHF"           | liste de {clefs : valeurs} | Table définissant le groupe horaire auquel doit appartenir le club.|
 |  |  |  |
 |"CGHF" [*] { , } | {clefs : valeurs}          | La clef est le nom du club apparaissant dans le fichier d'inscription éventuellement après avoir été remplacé par son alias (voir "AliasClub" ci-dessus), la valeur (nombre entier, par exemple 4) est le numéro du groupe horaire.|
+
 __*Remarques*__
+
 - Les groupes horaires vont de 1 au nombre de tranches horaires définies par "TranchesHoraires" "NbTranches".
 - Le groupe horaire définit la tranche horaire du premier jour. Ainsi :
-    - Le groupe horaire 1 partira successivement dans les tranches horaires 1, 2, 3 etc. selon les jours (la tranche 1 est la plus matinale)
-    - Le groupe horaire 2 partira successivement dans les tranches horaires 2, 3, 4, etc. selon les jours pour terminer par la tranche 1
-    - Le groupe horaire 3 partira successivement dans les tranches horaires 3, 4, etc. selon les jours pour terminer par les tranches 1 et 2
-    - etc.
+  - Le groupe horaire 1 partira successivement dans les tranches horaires 1, 2, 3 etc. selon les jours (la tranche 1 est la plus matinale)
+  - Le groupe horaire 2 partira successivement dans les tranches horaires 2, 3, 4, etc. selon les jours pour terminer par la tranche 1
+  - Le groupe horaire 3 partira successivement dans les tranches horaires 3, 4, etc. selon les jours pour terminer par les tranches 1 et 2
+  - etc.
 
+#### ClubPaysForce
 
-### ParticipantsTranchesHorairesAutreClub
+**ATTENTION** : Dans le tableau ci-desous "CPF" est à remplacer par "ClubPaysForce"
+
+| Clef | Type valeur | Détails |
+|-----------------|:-------------:|-------------------------------------------------------|
+|"CPF"            | liste de {clefs : valeurs} | Table définissant le pays auquel doit appartenir le club.|
+|  |  |  |
+|"CPF" [*] { , }  | {clefs : valeurs}          | La clef est le nom du club apparaissant dans le fichier d'inscription éventuellement après avoir été remplacé par son alias (voir "AliasClub" ci-dessus), la valeur est le code à trois lettre du pays.|
+
+__*Remarques*__
+
+- En l'absence d'indication dans cette section, le pays d'un club correspond à la nationalité du premier membre dans l'ordre alphabétique.
+
+#### ParticipantsTranchesHorairesAutreClub
 
 **ATTENTION** : Dans le tableau ci-desous "PTHAC" est à remplacer par "ParticipantsTranchesHorairesAutreClub"
 
@@ -543,7 +596,7 @@ __*Remarques*__
 |  |  |  |
 |"PTHAC"[*] "etapes"    | *liste de nombres entiers* | Liste de numéros d'étapes pour lesquelles le rattachement doit être fait (par exemple [3,4,5])|
 
-### ParticipantsTranchesHorairesForcees
+#### ParticipantsTranchesHorairesForcees
 
 **ATTENTION** : Dans le tableau ci-desous "PTHF" est à remplacer par "ParticipantsTranchesHorairesForcees"
 
@@ -559,7 +612,7 @@ __*Remarques*__
 |  |  |  |
 |"PTHF"[*] "tranches" | *liste de nombres entiers* | Liste des tranches horaires souhaitées pour les différentes étapes. Il doit y avoir autant de nombre que d'étapes. Chaque nombre doit être compris entre 1 et le nombre de tranches horaires (voir paramètre "TranchesHoraires" "NbTranches") ou valoir 0 si pour cette étape la tranche horaire ne doit pas être forcée. Dans ce dernier cas l'algorithme normal (groupe du club ou ranking) s'applique pour cette étape.|
 
-### ParticipantsTranchesHorairesIdentiques
+#### ParticipantsTranchesHorairesIdentiques
 
 **ATTENTION** : Dans le tableau ci-desous "PTHI" est à remplacer par "ParticipantsTranchesHorairesIdentiques"
 
@@ -581,7 +634,8 @@ __*Remarques*__
 |  |  |  |
 |"PTHI"[*] "etapes"  | *liste de nombres entiers* | Liste de numéros d'étapes pour lesquelles le rattachement doit être fait (par exemple [3,4,5])|
 
-### Etapes
+#### Etapes
+
 | Clef | Type valeur | Détails |
 |-------------------------|:------------------:|----------------------------------------------------------------------|
 |"Etapes"                                    | *liste d'éléments complexes*| Liste, donc entre crochets et séparées par des virgules, des différentes étapes constituant l'évènement|
@@ -610,7 +664,8 @@ __*Remarques*__
 |  |  |  |
 |"Etapes"[*n*] "Circuits"[*m*] "Categories"  | *liste de chaines*           | Liste de catégories sur ce circuit entre double quotes et séparées par des virgules. Les catégories doivent être celle qui seront utilisées dans la GEC. Exemple : ["W21A", "W35"]|
 
-#### Valeurs possibles pour le champ *Horaires*
+##### Valeurs possibles pour le champ *Horaires*
+
 | valeur | Signification |
 |:------:|---------------------------------------------|
 | "oui"  | Les horaires de départ seront attribués automatiquement en tenant compte des groupes horaires des clubs. Les concurrents de ce circuit seront inscrits dans la GEC **avec** leur heure de départ.|
@@ -622,13 +677,17 @@ __*Remarques*__
 | "boi"  | Les départs de ce circuit s'effectueront au boîtier. Les concurrents de ce circuit seront inscrits dans la GEC **sans** heure de départ.|
 |  |  |  |
 |"non"   | Les concurrents de ce circuit **ne seront pas gérés** par la GEC|
+|  |  |  |
+|"grp"   | Les concurrents de ce circuit appartiennent à un groupe particulier et ne respectent donc pas les tranches horaires de leur club (exemple Groupe France)|
 
 __*Remarques*__
+
 - Il est possible de définir plusieurs fois le même circuit, par exemple si certaines catégories sur ce circuit sont gérées par la GEC et d'autres ne le sont pas (loisirs). Attention toutefois à la gestion des départs pour s'assurer qu'il n'y aura pas de départs simultanés.
 
+## Algorithmes utilisés
 
-# Algorithmes utilisés
-## Affectation des groupes horaires aux clubs
+### Affectation des groupes horaires aux clubs
+
 Les groupes horaires sont affectés aux clubs de la façon suivante :
 
 1. Le nombre de groupe horaire correspondant au nombre de tranches horaire est créé (voir section *"TranchesHoraires" "NbTranches"* dans le fichier JSON)
@@ -640,7 +699,8 @@ Les groupes horaires sont affectés aux clubs de la façon suivante :
 
 En affectant en priorité les clubs au groupe horaire ayant un effectif minimal, cet algorithme conduit à des groupes horaires équilibrés.
 
-## Génération des dossards
+### Génération des dossards
+
 Les dossards sont générés par ordre croissant, dans l'ordre alphabétique des noms de club, à partir du numéro défini par la section *"Dossards" "PremierDossard"* du fichier JSON.
 
 Pour chaque club, la numérotation commence à la dizaine suivante, tout en assurant un minimum de deux numéros vides afin d'insérer d'éventuelles inscriptions tardives.
@@ -649,7 +709,8 @@ Un certain nombre de dossards supplémentaires vides (mais numérotés) sont ens
 
 On préfèrera probablement ne pas utiliser cette dernière fonctionnalité (en mettant la valeur à 0) et imprimer des dossards vierges afin de pouvoir donner un numéro de dossard aux inscriptions tardives qui soit dans la continuité de ceux de leur club.
 
-## Affectation des tranches horaires aux compétiteurs
+### Affectation des tranches horaires aux compétiteurs
+
 Les tranches horaires des compétiteurs, pour chacune des étapes est définie de la façon suivante :
 
 1. Si le compétiteur est sur un circuit au ranking, il est affecté automatiquement à la première tranche horaire
@@ -662,7 +723,8 @@ Les tranches horaires des compétiteurs, pour chacune des étapes est définie d
 
 5. Sinon, le compétiteur est affecté à la tranche horaire correspondant au groupe horaire de son club
 
-## Détermination des heures de début et de fin des tranches horaires
+### Détermination des heures de début et de fin des tranches horaires
+
 Pour chacune des étapes on procède de la façon suivante :
 
 #### Première tranche
@@ -674,6 +736,7 @@ Pour chacune des étapes on procède de la façon suivante :
 3. A la plus tardive de ces heures minimales, est rajouté une marge définie par la section *"TranchesHoraires" "MargeTranches"* du fichier JSON. Ceci définit l'heure de fin de la tranche horaire.
 
 #### Tranches horaires suivantes
+
 1. Pour les autres tranches, l'heure de début est définie comme l'heure de fin de la tranche précédente à laquelle on ajoute 1 minute.
 
 2. L'heure de début d'un circuit tient compte de l'intervalle de départ depuis l'heure de départ déclarée pour le circuit. Ainsi si un circuit a un intervalle de 2 minutes et un premier départ sur une heure impaire, tous les départs, de toutes les tranches, seront sur des heures impaires.
@@ -682,13 +745,16 @@ Pour chacune des étapes on procède de la façon suivante :
 
 4. A la plus tardive de ces heures minimales, est rajouté une marge définie par la section *"TranchesHoraires" "MargeTranches"* du fichier JSON. Ceci définit l'heure de fin de la tranche horaire considérée.
 
-## Détermination des horaires des compétiteurs
+### Détermination des horaires des compétiteurs
+
 Les heures des compétiteurs sont définis de la façon suivantes :
 
 #### Circuits non gérés
+
 Les compétiteurs qui sont sur un circuit pour lequel le champ *"Etapes"[*n*] "Circuits"[*m*] "Horaires"* du fichier JSON est différent de "oui" et "rank" sont ignorés
 
 #### Circuits au ranking
+
 Les compétiteurs qui sont sur un circuit pour lequel le champ *"Etapes"[*n*] "Circuits"[*m*] "Horaires"* est "rank" sont affectés successivement à partir de l'heure de départ du circuit déclaré dans la section *"Etapes"[*n*] "Circuits"[*m*] "HeureDepart"* en respectant l'intervalle de temps défini par *"Etapes"[*n*] "Circuits"[*m*] "Ecart"*. **Il n'y a pas de considération de club ou de pays pour définir l'ordre. Seul le classement compte.** L'ordre d'affectation est le suivant :
 
 1. Les compétiteurs ayant ni CN ni ranking IOF sont affectés dans un ordre aléatoire à partir de l'heure de début
@@ -698,6 +764,7 @@ Les compétiteurs qui sont sur un circuit pour lequel le champ *"Etapes"[*n*] "C
 3. Enfin, les compétiteurs ayant un ranking IOF sont affectés dans l'ordre de leurs points IOF pour le type d'épreuve considéré (les rankings IOF peuvent être différents par exemple pour un sprint et une LD). Le compétiteur ayant le plus grand nombre de points IOF pour le type d'épreuve considéré part en dernier.
 
 #### Circuit normaux
+
 Les compétiteurs qui sont sur un circuit pour le quel le champ *"Etapes"[*n*] "Circuits"[*m*] "Horaires"* est "oui" sont affectés de la façon suivante :
 
 1. L'affectation s'effectue dans l'ordre des circuits décroissants en effectifs (on commence donc par le circuit ayant le plus grand nombre de départs dans la tranche horaire considérée)
@@ -706,39 +773,45 @@ Les compétiteurs qui sont sur un circuit pour le quel le champ *"Etapes"[*n*] "
 
 3. Cette répartition purement aléatoire conduit à des pics de charge pour l'atelier départ. L'algorithme essaie alors, pour chaque atelier départ, de lisser la charge en déplaçant les compétiteurs des créneaux horaires les plus chargés vers les moins chargés, tout en respectant les critères précédents.
 
-# Evolutions
-## Autres logiciel de GEC
+## Evolutions
+
+### Autres logiciel de GEC
+
 Actuellement *co_depart* prépare évidemment des fichiers CSV pour *MeOS* (What else ?), mais vous pouvez très facilement adapter le programme pour générer des fichiers CSV - ou autres - adaptés à d'autres logiciels.
 
 Pour cela nous vous conseillons :
 
 - de changer la valeur de la clef *"FichiersGeneres"/"GEC"* dans le fichier JSON.
-
 - d'écrire votre code en remplacement de :
-```
+
+```python
 else:  # format pour d'autres logiciels de GEC à écrire ici
 ```
+
 dans les fonctions *genereCSV* et *genereLigneCSV* aux alentours des lignes 450, en vous inspirant de ce qui a été fait pour MeOS.
 
-# Licence d'utilisation
+## Licence d'utilisation
+
 *co_depart* est un script *Python* open source distribué sous licence GNU GPL.
 
-Pour plus de détails voir : https://www.gnu.org/licenses/gpl-3.0.html
+Pour plus de détails voir : <https://www.gnu.org/licenses/gpl-3.0.html>
 
-# Auteurs
-* Pierre Pardo pour le code initial (04/2019)
-* Jérôme Monclard pour la ré-écriture du code, l'ajout de nombreuses fonctionnalités et la documentation (04/2019 - 06/2019)
-* Richard Heyriès pour les tests (04/2019 - 06/2019)
+## Auteurs
 
-# Détails d'implémentation
+- Pierre Pardo pour le code initial (04/2019)
+- Jérôme Monclard pour la ré-écriture du code, l'ajout de nombreuses fonctionnalités et la documentation (04/2019 - 06/2019)
+- Richard Heyriès pour les tests (04/2019 - 06/2019)
+
+## Détails d'implémentation
 
 Ce chapitre donne des détails d'implémentation à l'intention des personnes amenées à faire évoluer ce programme.
 
 Sa lecture n'est pas nécessaire pour l'utilisation du programme.
 
-## Structure de données
+### Structure de données
 
-### Clubs :
+#### Clubs
+
 |  Champ          | Description  |
 |-----------------|--------------------------------------------------------|
 |nomcomplet       | Nom complet du club. Exemple : "A.B.C.O. DIJON 2101BF" |
@@ -757,7 +830,8 @@ Sa lecture n'est pas nécessaire pour l'utilisation du programme.
 |  |  |
 |dossardultramax  | Dernier numéro de dossard utilisé pour ce club en prenant en compte la réserve pour inscriptions au dernier moment |
 
-### Competiteurs :
+#### Competiteurs
+
 |  Champ          | Description  |
 |-----------------|--------------------------------------------------------|
 |prenom           | Prénom |
@@ -814,7 +888,8 @@ Sa lecture n'est pas nécessaire pour l'utilisation du programme.
 |  |  |
 |horaires         | Type d'horaires pour les différentes étapes. Exemple ["rank","rank","oui","oui","man"]
 
-### Circuits
+#### Circuits
+
 |  Champ          | Description  |
 |-----------------|--------------------------------------------------------|
 |Nom              | Nom du circuit (ex. 'A') |
@@ -828,5 +903,3 @@ Sa lecture n'est pas nécessaire pour l'utilisation du programme.
 |Ecart            | Ecart entre deux départs consécutifs (ex. 2) |
 |  |  |
 |Categories       | Liste des catégories du circuit (ex. ['M21E']) |
-
-
